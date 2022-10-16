@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SevenSlots.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace SevenSlots
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SignInView();
         }
 
         protected override void OnStart()
