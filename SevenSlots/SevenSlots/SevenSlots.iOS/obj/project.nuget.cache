@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "HC7MletrQ1r7ud3aTz0Bd+BSSpYC8daem2Ze+7bkGUwk34tNcl6jhNsuw+fSQ8stTPx45pq1F1WgmduqvSvLxQ==",
+  "success": true,
+  "projectFilePath": "D:\\Education\\ANUL III\\Semestrul I\\DAM\\SlotsApp\\SevenSlots\\SevenSlots\\SevenSlots.iOS\\SevenSlots.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Catalin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Catalin\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\Catalin\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}
