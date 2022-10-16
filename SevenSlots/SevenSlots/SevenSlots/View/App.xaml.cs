@@ -11,7 +11,7 @@ namespace SevenSlots
         {
             InitializeComponent();
 
-            MainPage = new SignInView();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

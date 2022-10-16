@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SevenSlots.MainPage"
+             Title="I am the master"
+             MasterBehavior="Popover">
+
+    <MasterDetailPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonSmootherStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="MediumVioletRed"/>
+            </Style>
+        </ResourceDictionary>
+    </MasterDetailPage.Resources>
+    
+    <MasterDetailPage.Master>
+        <ContentPage Padding="10" BackgroundColor="Gray" Title="Master">
+            <ContentPage.Content>
+                <StackLayout Margin="5, 30, 5, 5">
+                    <Button Text="Menu Item 1" 
+                            Clicked="Button_Clicked"
+                            Style="{StaticResource buttonSmootherStyle}"/>
+                    <Button Text="Menu Item 2" 
+                            Clicked="Button_Clicked_1"
+                            Style="{StaticResource buttonSmootherStyle}"/>
+
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5, 30, 5, 5">
+                    <Label Text="Detail Page">
+
+                    </Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
