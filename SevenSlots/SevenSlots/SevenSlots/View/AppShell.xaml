@@ -7,8 +7,9 @@
         <views:HeaderContentView/>
     </Shell.FlyoutHeader>
     <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Page1" IsTabStop="True" ContentTemplate="{DataTemplate views:SomePage}"/>
-        <ShellContent Title="Page2" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
+        <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent Title="Some" IsTabStop="True" ContentTemplate="{DataTemplate views:SomePage}"/>
+        <ShellContent Title="Other" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
     </FlyoutItem>
     <ShellContent Title="About" ContentTemplate="{DataTemplate views:OtherPage}"/>
 </Shell>
