@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SevenSlots.View.HomePage">
+             x:Class="SevenSlots.View.HomePage" 
+             BindingContext="SevenSlots.ViewModel.HomePageViewModel">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to HOME PAGE"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button WidthRequest="100" HorizontalOptions="Start" HeightRequest="40" 
+                    Text="{Binding AccordionText}" 
+                    Command="{Binding AccordionAnimationCommand}"
+                    x:Name="accordionButton"
+                    CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
