@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="SevenSlots.View.AppShell"
+       xmlns:views="clr-namespace:SevenSlots.View">
+    <Shell.FlyoutHeader>
+        <views:HeaderContentView/>
+    </Shell.FlyoutHeader>
+    <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent Title="Some" IsTabStop="True" ContentTemplate="{DataTemplate views:SomePage}"/>
+        <ShellContent Title="Other" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
+    </FlyoutItem>
+    <ShellContent Title="About" ContentTemplate="{DataTemplate views:OtherPage}"/>
+</Shell>

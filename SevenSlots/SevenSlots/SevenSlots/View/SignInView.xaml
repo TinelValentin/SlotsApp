@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sevenslots1="clr-namespace:SevenSlots.View" 
+             x:DataType="sevenslots1:SignInView"
              x:Class="SevenSlots.View.SignInView">
     <StackLayout>
         <Label FontSize="30"
@@ -9,19 +11,14 @@
                Margin="0, 5, 0, 0">
             Welcome to SevenSlots!
         </Label>
-
         <BoxView HeightRequest="50"></BoxView>
-
         <Label Text="Username"
                Margin="5, 0, 0, 0"/>
         <Entry/>
-
         <Label Text="Password"
                Margin="5, 0, 0, 0"/>
         <Entry IsPassword="True"/>
-
         <BoxView HeightRequest="430"></BoxView>
-
         <StackLayout Orientation="Horizontal" 
                      VerticalOptions="Center"
                      HorizontalOptions="Center">
@@ -30,5 +27,4 @@
             <Button Text="Forgot Password"/>
         </StackLayout>
     </StackLayout>
-    
 </ContentPage>
