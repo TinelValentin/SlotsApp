@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SevenSlots.ViewModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +11,7 @@ namespace SevenSlots.View
         public HomePage()
         {
             InitializeComponent();
+            BindingContext = new HomePageViewModel();
         }
     }
 }
