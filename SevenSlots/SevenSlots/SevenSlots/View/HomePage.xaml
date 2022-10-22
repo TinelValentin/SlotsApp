@@ -7,10 +7,14 @@
              BindingContext="SevenSlots.ViewModel.HomePageViewModel">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to HOME PAGE"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Image Source="home.jpg"/>
+            <Image Source="home.jpg">
+                <Image.Clip>
+                    <EllipseGeometry                                
+                    Center="100,120"
+                    RadiusX="220"
+                    RadiusY="140"/>
+                </Image.Clip>
+            </Image>
             <Button WidthRequest="100" HorizontalOptions="Start" HeightRequest="40" 
                     Text="{Binding AccordionText}" 
                     Command="{Binding AccordionAnimationCommand}"
