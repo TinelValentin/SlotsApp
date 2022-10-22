@@ -17,7 +17,6 @@ namespace Backend.Services
             _users = database.GetCollection<User>(settings.SlotsCollectionName);
         }
 
-
         public async Task<List<User>> GetAll()
         {
             var result = await _users.FindAsync(user => true);
@@ -32,6 +31,5 @@ namespace Backend.Services
             await _users.InsertOneAsync(user);
             return true;
         }
-
     }
 }

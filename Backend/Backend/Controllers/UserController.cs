@@ -15,7 +15,6 @@ namespace Backend.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -29,7 +28,6 @@ namespace Backend.Controllers
                 return Ok(users);
             }
         }
-
 
         [HttpPut]
         public async Task<IActionResult> Create([FromBody] User user)
