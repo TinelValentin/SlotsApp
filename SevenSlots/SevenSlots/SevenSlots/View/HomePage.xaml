@@ -3,18 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SevenSlots.View.HomePage"
              Title="Welcome to Seven Slots!"
-             BackgroundColor="#400213">
-    <!--<ContentPage.Content>
+             BackgroundColor="#400213"
+             BindingContext="SevenSlots.ViewModel.HomePageViewModel">
+    <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to HOME PAGE"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Image Source="home.jpg"/>
+            <Button WidthRequest="100" HorizontalOptions="Start" HeightRequest="40" 
+                    Text="{Binding AccordionText}" 
+                    Command="{Binding AccordionAnimationCommand}"
+                    x:Name="accordionButton"
+                    CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
         </StackLayout>
-    </ContentPage.Content>-->
-
-    <StackLayout>
-        <Image Source="home.jpg"/>
-    </StackLayout>
-    
+    </ContentPage.Content>
 </ContentPage>
