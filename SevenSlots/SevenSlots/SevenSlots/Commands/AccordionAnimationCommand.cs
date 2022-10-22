@@ -33,7 +33,7 @@ namespace SevenSlots.Commands
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            Device.StartTimer(TimeSpan.FromSeconds(5), () => Animationtimer(parameter as Button));
+            Device.StartTimer(TimeSpan.FromSeconds(5), () => AnimationTimer(parameter as Button));
         }
 
         async Task MoveBackAsync(Button button)
@@ -54,12 +54,10 @@ namespace SevenSlots.Commands
             await button.TranslateTo(finalPoint, 0, animationTime);
         }
 
-        bool Animationtimer(Button button)
+        bool AnimationTimer(Button button)
         {
-
             Device.BeginInvokeOnMainThread(async () =>
             {
-
                 await MoveToCenterAsync(button);
                 await Task.Delay(TimeSpan.FromSeconds(waitTime));
                 await MoveAwayAsync(button);
