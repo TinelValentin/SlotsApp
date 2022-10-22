@@ -8,19 +8,34 @@ namespace Backend.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        IUserService<User> _userService;
+        IUserService _userService;
 
-        public UserController(IUserService<User> userService)
+        public UserController(IUserService userService)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
 
         [HttpGet]
-        public IActionResult GetNotes()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_userService.GetAll());
+            var users = await _userService.GetAll();
+            if (users == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(users);
+            }
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> Create([FromBody] User user)
+        {
+            await _userService.Create(user);
+            return Ok();
+        }
     }
 }

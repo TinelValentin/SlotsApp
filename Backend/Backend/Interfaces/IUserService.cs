@@ -1,7 +1,11 @@
-﻿namespace Backend.Interfaces
+﻿using Backend.Models;
+
+namespace Backend.Interfaces
 {
-    public interface IUserService<T>
+    public interface IUserService
     {
-        List<T> GetAll();
+        Task<List<User>> GetAll();
+
+        Task<bool> Create (User user);
     }
 }

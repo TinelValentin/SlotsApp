@@ -11,6 +11,5 @@
         public string Phone { get; set; }
         public string SSN { get; set; }
         public double Wallet { get; set; }
-        public byte[] IdCard { get; set; }
     }
 }
