@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SevenSlots.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace SevenSlots
         {
             InitializeComponent();
 
-            Detail = new NavigationPage(new Page1());
+            Detail = new NavigationPage(new HomePage());
 
             IsPresented = false;
         }
@@ -31,6 +32,13 @@ namespace SevenSlots
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             Detail = new NavigationPage(new Page2());
+
+            IsPresented = false;
+        }
+
+        private void HomePageButton(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new HomePage());
 
             IsPresented = false;
         }
