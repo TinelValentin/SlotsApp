@@ -20,14 +20,6 @@
                     Command="{Binding AccordionAnimationCommand}"
                     x:Name="accordionButton"
                     CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
-
-            <Ellipse HeightRequest="50"
-                     WidthRequest="200"
-                     Fill="Blue"
-                     HorizontalOptions="Start">
-                
-            </Ellipse>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
