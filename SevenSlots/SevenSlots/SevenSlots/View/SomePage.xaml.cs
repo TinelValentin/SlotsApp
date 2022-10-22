@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SevenSlots
+namespace SevenSlots.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page2 : ContentPage
+    public partial class SomePage : ContentPage
     {
-        public Page2()
+        public SomePage()
         {
             InitializeComponent();
         }

@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SevenSlots.Page2"
-             Title="Page 2">
+             x:Class="SevenSlots.View.OtherPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="I am The Page Twoooo!!"
+            <Label Text="Welcome to Xamarin.AAAAAAAAAAAAAAAAAAAAAAA!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
