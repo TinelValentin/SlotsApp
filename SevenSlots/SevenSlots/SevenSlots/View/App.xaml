@@ -8,6 +8,10 @@
                 <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="BackgroundColor" Value="MediumVioletRed"/>
             </Style>
+            <Style x:Key="LabelTextStyle" TargetType="Label">
+                <Setter Property="Margin" Value="5, 0, 0, 0"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 
