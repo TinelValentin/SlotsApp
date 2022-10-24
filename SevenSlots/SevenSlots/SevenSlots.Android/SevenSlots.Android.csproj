@@ -130,10 +130,10 @@
     <AndroidResource Include="Resources\drawable\seven.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\name.png" />
+    <AndroidResource Include="Resources\drawable\email.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\email.png" />
+    <AndroidResource Include="Resources\drawable\name.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\password.png" />

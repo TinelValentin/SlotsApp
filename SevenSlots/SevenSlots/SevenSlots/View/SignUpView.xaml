@@ -17,7 +17,7 @@
             <Label Text="Username"
                Style="{StaticResource LabelTextStyle}"/>
         </StackLayout>
-        <Entry/>
+        <Entry TextColor="Wheat"/>
         
         <StackLayout Orientation="Horizontal">
             <Image Source="password.png" HeightRequest="25" WidthRequest="25"/>
