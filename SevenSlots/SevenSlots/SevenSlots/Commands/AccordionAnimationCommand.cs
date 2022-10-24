@@ -33,8 +33,7 @@ namespace SevenSlots.Commands
         /// </summary>
         /// <param name="parameter"></param>
         public void Execute(object parameter)
-        {
-           
+        { 
         }
 
         async Task MoveBackAsync(Button button)
