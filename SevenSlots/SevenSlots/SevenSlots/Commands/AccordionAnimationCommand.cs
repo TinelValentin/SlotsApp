@@ -13,17 +13,18 @@ namespace SevenSlots.Commands
         //How many seconds the button will stay in the center
         const int waitTime = 2;
         const int startPoint = 0;
-        const int middlePoint = 150;
+        const int middlePoint = 130;
         const int finalPoint = 350;
         //Animation time (speed)
         const int animationTime = 1000;
         //Needs to be changed when the real implementation with the games is decided
-        string[] arr = new string[5] { "JoeJoe", "Bingo", "Birthday", "Party", "Meeting" };
+        string[] arr = new string[5] { "BlackJack", "Roulette", "Slots", "Bingo", "Loto" };
 
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
+            Device.StartTimer(TimeSpan.FromSeconds(5), () => AnimationTimer(parameter as Button));
             return true;
         }
 
@@ -32,8 +33,7 @@ namespace SevenSlots.Commands
         /// </summary>
         /// <param name="parameter"></param>
         public void Execute(object parameter)
-        {
-            Device.StartTimer(TimeSpan.FromSeconds(5), () => AnimationTimer(parameter as Button));
+        { 
         }
 
         async Task MoveBackAsync(Button button)
