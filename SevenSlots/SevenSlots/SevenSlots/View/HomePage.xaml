@@ -2,9 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SevenSlots.View.HomePage"
-             Title="Welcome to Seven Slots!"
              BackgroundColor="#400213"
-             BindingContext="SevenSlots.ViewModel.HomePageViewModel">
+             BindingContext="SevenSlots.ViewModel.HomePageViewModel" Title="SevenSlots">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="home.jpg">
@@ -15,11 +14,91 @@
                     RadiusY="140"/>
                 </Image.Clip>
             </Image>
-            <Button WidthRequest="100" HorizontalOptions="Start" HeightRequest="40" 
-                    Text="{Binding AccordionText}" 
-                    Command="{Binding AccordionAnimationCommand}"
-                    x:Name="accordionButton"
-                    CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
+            <StackLayout BackgroundColor="#c53b23" >
+                <StackLayout.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,2">
+                        <GradientStop Color="#e36f6f" 
+                          Offset="0.0"/>
+                        <GradientStop Color="#69100f"
+                          Offset="0.3"/>
+                        <GradientStop Color="#a62523"
+                          Offset="0.7"/>
+                        <GradientStop Color="#e36f6f"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </StackLayout.Background>
+                <Button TextColor="#fcd9b3" BackgroundColor= "Transparent"
+                        FontSize="20" FontAttributes="Bold" HeightRequest="50"                
+                        WidthRequest="150" HorizontalOptions="Start"
+                        Text="{Binding AccordionText}"
+                        Command="{Binding AccordionAnimationCommand}"
+                        x:Name="accordionButton"
+                        CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
+            </StackLayout>
+            <Label Text="Welcome Bonus" FontSize="40" TextColor="White" 
+                   HorizontalOptions="Center" Margin="0,40,0,0" 
+                   FontAttributes="Bold"/>
+            <Label Text="Up to 500 Ron" TextColor="White" FontSize="20" 
+                   LineBreakMode="WordWrap" WidthRequest="250" 
+                   HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" Margin="0,40,0,0">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                        EndPoint="1,1">
+                                        <GradientStop Color="#e36f6f" 
+                                                            Offset="0.0"/>
+                                        <GradientStop Color="#69100f"
+                                                            Offset="0.3"/>
+                                        <GradientStop Color="#a62523"
+                                                            Offset="0.7"/>
+                                        <GradientStop Color="#e36f6f"
+                                                            Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                        <Style x:Key="FrameLabel" TargetType="{x:Type Label}">
+                            <Setter Property="TextColor" Value="White"/>
+                            <Setter Property="FontSize" Value="17"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="Margin" Value="10"/>
+                        </Style>
+                        <Style x:Key="FrameIcon" TargetType="{x:Type Image}">
+                            <Setter Property="WidthRequest" Value="35"/>
+                            <Setter Property="Margin" Value="10,0,0,0"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                <Frame HeightRequest="50" Style="{StaticResource FrameStyle}">
+                    <StackLayout>
+                        <Label Text="Sign in" Style="{StaticResource FrameLabel}"/>
+                        <Image Source="form.png" Style="{StaticResource FrameIcon}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <StackLayout>
+                        <Label Text="Deposit"  Style="{StaticResource FrameLabel}"/>
+                        <Image Source="creditCard.png" Style="{StaticResource FrameIcon}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <StackLayout>
+                        <Label Text="Free Spins"  Style="{StaticResource FrameLabel}"/>
+                        <Image Source="gift.png" Style="{StaticResource FrameIcon}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout> 
+            <Button Text="Register now!" CornerRadius="10" WidthRequest="200" 
+                    HeightRequest="50" HorizontalOptions="Center" FontSize="20" 
+                    FontAttributes="Bold" Margin="0,40,0,0" BorderColor="#e08787"
+                    BorderWidth="2" TextColor="#fcd9b3" Background="#a62523">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
