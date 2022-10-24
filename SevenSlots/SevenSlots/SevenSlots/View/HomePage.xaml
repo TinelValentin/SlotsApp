@@ -48,7 +48,7 @@
                         <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0, "
+                                    <LinearGradientBrush StartPoint="0, 0"
                                                         EndPoint="1, 1">
                                         <GradientStop Color="#e36f6f" 
                                                             Offset="0.0"/>

@@ -10,7 +10,10 @@
             </Style>
             <Style x:Key="LabelTextStyle" TargetType="Label">
                 <Setter Property="Margin" Value="5, 0, 0, 0"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
