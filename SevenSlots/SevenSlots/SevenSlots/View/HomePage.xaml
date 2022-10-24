@@ -9,15 +9,15 @@
             <Image Source="home.jpg">
                 <Image.Clip>
                     <EllipseGeometry                                
-                    Center="100,120"
+                    Center="100, 120"
                     RadiusX="220"
                     RadiusY="140"/>
                 </Image.Clip>
             </Image>
             <StackLayout BackgroundColor="#c53b23" >
                 <StackLayout.Background>
-                    <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,2">
+                    <LinearGradientBrush StartPoint="0, 0"
+                             EndPoint="1, 2">
                         <GradientStop Color="#e36f6f" 
                           Offset="0.0"/>
                         <GradientStop Color="#69100f"
@@ -37,19 +37,19 @@
                         CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
             </StackLayout>
             <Label Text="Welcome Bonus" FontSize="40" TextColor="White" 
-                   HorizontalOptions="Center" Margin="0,40,0,0" 
+                   HorizontalOptions="Center" Margin="0, 40, 0, 0" 
                    FontAttributes="Bold"/>
             <Label Text="Up to 500 Ron" TextColor="White" FontSize="20" 
                    LineBreakMode="WordWrap" WidthRequest="250" 
                    HorizontalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" Margin="0,40,0,0">
+            <StackLayout Orientation="Horizontal" Margin="0, 40, 0, 0">
                 <StackLayout.Resources>
                     <ResourceDictionary>
                         <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0,0"
-                                                        EndPoint="1,1">
+                                    <LinearGradientBrush StartPoint="0, "
+                                                        EndPoint="1, 1">
                                         <GradientStop Color="#e36f6f" 
                                                             Offset="0.0"/>
                                         <GradientStop Color="#69100f"
@@ -71,7 +71,7 @@
                         </Style>
                         <Style x:Key="FrameIcon" TargetType="{x:Type Image}">
                             <Setter Property="WidthRequest" Value="35"/>
-                            <Setter Property="Margin" Value="10,0,0,0"/>
+                            <Setter Property="Margin" Value="10, 0, 0, 0"/>
                         </Style>
                     </ResourceDictionary>
                 </StackLayout.Resources>
@@ -96,7 +96,7 @@
             </StackLayout> 
             <Button Text="Register now!" CornerRadius="10" WidthRequest="200" 
                     HeightRequest="50" HorizontalOptions="Center" FontSize="20" 
-                    FontAttributes="Bold" Margin="0,40,0,0" BorderColor="#e08787"
+                    FontAttributes="Bold" Margin="0, 40, 0, 0" BorderColor="#e08787"
                     BorderWidth="2" TextColor="#fcd9b3" Background="#a62523">
             </Button>
         </StackLayout>
