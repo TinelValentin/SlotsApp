@@ -3,28 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:sevenslots1="clr-namespace:SevenSlots.View" 
              x:DataType="sevenslots1:SignInView"
-             x:Class="SevenSlots.View.SignInView">
+             x:Class="SevenSlots.View.SignInView"
+             BackgroundColor="#523943">
     <StackLayout>
         <Label FontSize="30"
                VerticalOptions="Center"
                HorizontalOptions="Center"
                Margin="0, 5, 0, 0">
-            Welcome to SevenSlots!
+            LogIn to SevenSlots!
         </Label>
         <BoxView HeightRequest="50"></BoxView>
         <Label Text="Username"
+               FontSize="20"
                Margin="5, 0, 0, 0"/>
-        <Entry/>
+        <Entry />
         <Label Text="Password"
+               FontSize="20"
                Margin="5, 0, 0, 0"/>
         <Entry IsPassword="True"/>
-        <BoxView HeightRequest="430"></BoxView>
+        <BoxView HeightRequest="420"></BoxView>
         <StackLayout Orientation="Horizontal" 
                      VerticalOptions="Center"
                      HorizontalOptions="Center">
-            <Button Text="LogIn"/>
-            <Button Text="SignUp"/>
-            <Button Text="Forgot Password"/>
+            <Button Text="LogIn" Style="{StaticResource ButtonSmootherStyle}"/>
+            <Button Text="SignUp" Style="{StaticResource ButtonSmootherStyle}"/>
+            <Button Text="Forgot Password" Style="{StaticResource ButtonSmootherStyle}"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>
