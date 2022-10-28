@@ -28,14 +28,6 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="Padding" Value="4"/>
             </Style>
-            <Style x:Key="InputLine" TargetType="Line">
-                <Setter Property="X1" Value="0"/>
-                <Setter Property="Y1" Value="0"/>
-                <Setter Property="X2" Value="0"/>
-                <Setter Property="Y2" Value="100"/>
-                <Setter Property="StrokeThickness" Value="20"/>
-                <Setter Property="Stroke" Value="#4a1110"/>
-            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="Center" >
@@ -58,8 +50,6 @@
                             <Frame Style="{StaticResource InputFrame}"
                        x:Name="usernameFrame"
                         />
-                            <Line Style="{StaticResource InputLine}" />
-
                             <controls:CustomInputBox
                              HeightRequest="45"
                              WidthRequest="300"
@@ -91,8 +81,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="passwordFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
-
                         <controls:CustomInputBox
                         HeightRequest="45"
                         WidthRequest="300"
@@ -131,8 +119,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="emailFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
-
                         <controls:CustomInputBox
                         HeightRequest="45"
                         WidthRequest="300"
@@ -154,8 +140,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="firstNameFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
-
                         <controls:CustomInputBox
                         HeightRequest="45"
                         WidthRequest="300"
@@ -186,7 +170,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="lastNameFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
                         <controls:CustomInputBox
                         HeightRequest="45"
                         WidthRequest="300"
@@ -217,7 +200,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="phoneFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
                         <controls:CustomInputBox
                          HeightRequest="45"
                          WidthRequest="300"
@@ -254,7 +236,6 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="SSNFrame"/>
-                        <Line Style="{StaticResource InputLine}" />
                         <controls:CustomInputBox
                         HeightRequest="45"
                         WidthRequest="300"
