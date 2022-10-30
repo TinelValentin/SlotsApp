@@ -48,7 +48,7 @@
                         <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0, "
+                                    <LinearGradientBrush StartPoint="0, 0"
                                                         EndPoint="1, 1">
                                         <GradientStop Color="#e36f6f" 
                                                             Offset="0.0"/>
@@ -93,11 +93,9 @@
                         <Image Source="gift.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
-            </StackLayout> 
-            <Button Text="Register now!" CornerRadius="10" WidthRequest="200" 
-                    HeightRequest="50" HorizontalOptions="Center" FontSize="20" 
-                    FontAttributes="Bold" Margin="0, 40, 0, 0" BorderColor="#e08787"
-                    BorderWidth="2" TextColor="#fcd9b3" Background="#a62523">
+            </StackLayout>
+            <Button Text="Register now!" WidthRequest="200" 
+                    HeightRequest="50" Margin="0, 40, 0, 0" Style="{StaticResource SignButton}">
             </Button>
         </StackLayout>
     </ContentPage.Content>

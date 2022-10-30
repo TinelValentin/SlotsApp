@@ -26,7 +26,7 @@
                      VerticalOptions="Center"
                      HorizontalOptions="Center">
             <Button Text="LogIn" Style="{StaticResource ButtonSmootherStyle}"/>
-            <Button Text="SignUp" Style="{StaticResource ButtonSmootherStyle}"/>
+            <Button Text="Sign In" Style="{StaticResource ButtonSmootherStyle}"/>
             <Button Text="Forgot Password" Style="{StaticResource ButtonSmootherStyle}"/>
         </StackLayout>
     </StackLayout>
