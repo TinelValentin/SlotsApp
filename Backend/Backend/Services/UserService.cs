@@ -24,11 +24,30 @@ namespace Backend.Services
 
         }
 
+        public async Task<User> Get(Guid id)
+        {
+            return (await _users.FindAsync(n => n.Id == id)).FirstOrDefault();
+        }
+
         public async Task<bool> Create(User user)
         {
             user.Id = Guid.NewGuid();
 
             await _users.InsertOneAsync(user);
+
+            return true;
+        }
+
+        public async Task<bool> Update(Guid id, User user)
+        {
+            user.Id = id;
+            var result = await _users.ReplaceOneAsync(u => u.Id == id, user);
+
+            if (!result.IsAcknowledged)
+            {
+                return false;
+            }
+
             return true;
         }
     }
