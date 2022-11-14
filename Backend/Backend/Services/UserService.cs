@@ -36,13 +36,32 @@ namespace Backend.Services
             return result.ToList();
         }
 
-        public async Task<bool> Create(User user)
+        public async Task<string> Create(User user)
         {
+            var sameUsername = await _users.FindAsync(u => u.Username == user.Username);
+            if (sameUsername.ToList().Count != 0)
+            {
+                return "Username already exists";
+            }
+
+            var sameSSN = await _users.FindAsync(u => u.SSN == user.SSN);
+
+            if (sameSSN.ToList().Count != 0)
+            {
+                return "SSN already exists";
+            }
+
+            var sameEmail = await _users.FindAsync(u => u.Email == user.Email);
+            if (sameEmail.ToList().Count != 0)
+            {
+                return "This email is already used";
+            }
+
             user.Id = Guid.NewGuid();
 
             await _users.InsertOneAsync(user);
 
-            return true;
+            return "Succes";
         }
 
         public async Task<bool> Update(Guid id, User user)

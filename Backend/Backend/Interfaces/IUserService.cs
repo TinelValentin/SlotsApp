@@ -10,7 +10,7 @@ namespace Backend.Interfaces
 
         Task<List<User>> Get(string username);
 
-        Task<bool> Create(User user);
+        Task<string> Create(User user);
 
         Task<bool> Update(Guid id, User user);
     }
