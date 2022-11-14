@@ -13,5 +13,7 @@ namespace Backend.Interfaces
         Task<string> Create(User user);
 
         Task<bool> Update(Guid id, User user);
+
+        Task<bool> Delete(Guid id);
     }
 }
