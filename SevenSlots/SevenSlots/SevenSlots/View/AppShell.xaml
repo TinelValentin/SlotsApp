@@ -19,6 +19,8 @@
         <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
         <ShellContent Title="Some" IsTabStop="True" ContentTemplate="{DataTemplate views:SomePage}"/>
         <ShellContent Title="Other" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
+        <ShellContent Title="Sign In" IsTabStop="True" ContentTemplate="{DataTemplate views:SignInView}"/>
+        <ShellContent Title="Sign Up" IsTabStop="True" ContentTemplate="{DataTemplate views:SignUpView}"/>
     </FlyoutItem>
     <ShellContent Title="About" ContentTemplate="{DataTemplate views:OtherPage}"/>
 </Shell>
