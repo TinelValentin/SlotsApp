@@ -55,7 +55,7 @@
                              WidthRequest="300"
                              x:Name="usernameInput" VerticalOptions="FillAndExpand"
                              Placeholder="Username"
-                             Text="{Binding Text,Mode=TwoWay}"
+                             Text="{Binding User.Username,Mode=TwoWay}"
                              Margin="10,0,0,0" >
                                 <Entry.Behaviors>
                                     <xct:MultiValidationBehavior 
@@ -273,6 +273,7 @@
                 WidthRequest="200"
                 HeightRequest="50"
                 HorizontalOptions="Center"
+                Command="{Binding RegisterCommand}"
                 Style="{StaticResource SignButton}"/>
                     <Button Text="Cancel"
                 WidthRequest="200"
