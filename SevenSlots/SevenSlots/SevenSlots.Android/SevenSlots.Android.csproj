@@ -143,19 +143,19 @@
     <AndroidResource Include="Resources\drawable\ssn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\slotsIcon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\newSlotsIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\slotsIcon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\newSlotsIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\slotsIcon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\newSlotsIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\slotsIcon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\newSlotsIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\slotsIcon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\newSlotsIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\fullLogo.png" />
