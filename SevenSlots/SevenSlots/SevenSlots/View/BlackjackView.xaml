@@ -8,7 +8,7 @@
             
         </StackLayout>
         <StackLayout>
-            <Image Source="blackjack/clubs/1_club.png"/>
+            <Image Source="1_club.png"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

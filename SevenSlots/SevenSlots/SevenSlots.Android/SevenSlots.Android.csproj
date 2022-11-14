@@ -82,6 +82,7 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\blackjack_6_spade.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
@@ -164,163 +165,160 @@
     <AndroidResource Include="Resources\drawable\casinoBackground4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\card_back.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_card_back.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\1_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_1_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\2_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_2_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\3_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_3_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_4_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\5_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_5_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\6_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_6_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\7_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_7_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\8_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_8_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\9_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_9_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\10_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_10_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\11_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_11_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\12_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_12_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\13_club.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_13_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\1_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_1_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\2_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_2_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\3_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_3_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_4_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\5_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_5_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\6_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_6_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\7_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_7_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\8_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_8_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\9_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_9_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\10_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_10_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\11_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_11_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\12_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_12_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\13_diamond.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_13_diamond.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\1_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_1_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\2_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_2_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\3_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_3_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_4_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\5_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_5_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\6_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_6_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\7_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_7_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\8_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_8_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\9_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_9_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\10_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_10_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\11_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_11_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\12_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_12_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\13_heart.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_13_heart.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\1_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_1_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\2_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_2_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\3_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_3_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_4_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\5_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_5_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\6_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_7_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\7_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_8_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\8_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_9_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\9_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_10_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\10_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_11_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\11_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_12_spade.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\12_spade.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\13_spade.png" />
+    <AndroidResource Include="Resources\drawable\blackjack_13_spade.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
