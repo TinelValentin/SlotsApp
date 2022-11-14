@@ -29,6 +29,13 @@ namespace Backend.Services
             return (await _users.FindAsync(n => n.Id == id)).FirstOrDefault();
         }
 
+        public async Task<List<User>> Get(string username)
+        {
+            var result = await _users.FindAsync(n => n.Username == username);
+
+            return result.ToList();
+        }
+
         public async Task<bool> Create(User user)
         {
             user.Id = Guid.NewGuid();

@@ -32,6 +32,11 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] User user)
         {
+            if(_userService.Get(user.Username) != null)
+            {
+                return Conflict("This username already exists");
+            }
+
             await _userService.Create(user);
             return Ok();
         }
