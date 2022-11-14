@@ -58,5 +58,18 @@ namespace Backend.Controllers
             await _userService.Update(id, user);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _userService.Delete(id);
+
+            if (result)
+            {
+                return Ok();
+            }
+
+            return BadRequest("No user found with that id");
+        }
     }
 }

@@ -76,5 +76,18 @@ namespace Backend.Services
 
             return true;
         }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            var result = await _users.DeleteOneAsync(note => note.Id == id);
+
+            if (result.IsAcknowledged && result.DeletedCount != 0)
+            {
+                return true;
+            }
+
+            return false;
+
+        }
     }
 }
