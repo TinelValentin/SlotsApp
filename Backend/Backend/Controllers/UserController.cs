@@ -29,7 +29,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] User user)
         {
             await _userService.Create(user);
