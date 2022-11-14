@@ -6,6 +6,12 @@ namespace Backend.Interfaces
     {
         Task<List<User>> GetAll();
 
-        Task<bool> Create (User user);
+        Task<User> Get(Guid id);
+
+        Task<List<User>> Get(string username);
+
+        Task<string> Create(User user);
+
+        Task<bool> Update(Guid id, User user);
     }
 }
