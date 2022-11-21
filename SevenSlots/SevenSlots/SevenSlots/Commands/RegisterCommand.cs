@@ -1,4 +1,5 @@
-﻿using SevenSlots.Services;
+﻿using SevenSlots.Model;
+using SevenSlots.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,6 @@ namespace SevenSlots.Commands
     internal class RegisterCommand : ICommand
     {
         IDatabaseService IDatabaseService;
-
         public RegisterCommand()
         {
             this.IDatabaseService = DependencyService.Get<IDatabaseService>();
@@ -25,7 +25,7 @@ namespace SevenSlots.Commands
 
         public void Execute(object parameter)
         {
-            IDatabaseService.getUserWithIdAsync(new Guid("a6715bbd-a234-4809-b9cb-7a1bbdc4b432"));
+            IDatabaseService.addUser(parameter as User);
         }
     }
 }

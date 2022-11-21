@@ -34,7 +34,7 @@
                         Text="{Binding AccordionText}"
                         Command="{Binding AccordionAnimationCommand}"
                         x:Name="accordionButton"
-                        CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
+                        CommandParameter="{Binding Source={x:Reference accordionButton}}"/>
             </StackLayout>
             <Label Text="Welcome Bonus" FontSize="40" TextColor="White" 
                    HorizontalOptions="Center" Margin="0, 40, 0, 0" 
