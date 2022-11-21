@@ -43,9 +43,7 @@
             <Style x:Key="BlackjackLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="#710824"/>
-                
             </Style>
         </ResourceDictionary>
     </Application.Resources>
-
 </Application>
