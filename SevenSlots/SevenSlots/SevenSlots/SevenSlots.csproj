@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup.Eddy" Version="2.0.0.10" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.3.0.52" />
     <PackageReference Include="System.Text.Json" Version="7.0.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
@@ -38,7 +39,7 @@
     <EmbeddedResource Update="View\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\OtherPage.xaml">
+    <EmbeddedResource Update="View\LoginErrorPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\SignInView.xaml">

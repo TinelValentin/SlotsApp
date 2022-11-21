@@ -1,4 +1,5 @@
-﻿using SevenSlots.Model;
+﻿using Rg.Plugins.Popup.Services;
+using SevenSlots.Model;
 using SevenSlots.Services;
 using SevenSlots.View;
 using System;
@@ -32,7 +33,7 @@ namespace SevenSlots.Commands
                              u.Password == (parameter as User).Password);
 
             if (result == null) {
-                //inca n-am facut pop-upul de prosti
+                await PopupNavigation.Instance.PushAsync(new LoginErrorPopup());
             }
             else
             {

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace SevenSlots.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OtherPage : ContentPage
+    public partial class LoginErrorPopup : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public OtherPage()
+        public LoginErrorPopup()
         {
             InitializeComponent();
         }
