@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SevenSlots.View.BlackjackView"
+             BackgroundColor="#400213"
+             Title="Blackjack">
+    <StackLayout>
+        <RelativeLayout Margin="6, 20, 0, 0">
+            <Image Source="blackjack_11_club.png" Margin="0, 0, 0, 0"/>
+            <Image Source="blackjack_2_spade.png" Margin="40, 0, 0, 0"/>
+            <Image Source="blackjack_3_club.png" Margin="80, 0, 0, 0"/>
+            <Image Source="blackjack_9_heart.png" Margin="120, 0, 0, 0"/>
+            <Image Source="blackjack_5_diamond.png" Margin="160, 0, 0, 0"/>
+            <Image Source="blackjack_12_heart.png" Margin="200, 0, 0, 0"/>
+            <Image Source="blackjack_7_heart.png" Margin="240, 0, 0, 0"/>
+            <Image Source="blackjack_8_club.png" Margin="280, 0, 0, 0"/>
+        </RelativeLayout>
+
+        <Image Source="blackjack_card_back.png" Margin="0, 0, 5, 50" HorizontalOptions="End"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 0, 0, 5">
+            <Button Text="HIT" Style="{StaticResource BlackjackButton}"/>
+            <Button Text="STAND" Style="{StaticResource BlackjackButton}"/>
+            <Button Text="DEAL" Style="{StaticResource BlackjackButton}"/>
+        </StackLayout>
+        
+        <RelativeLayout Margin="6, 0, 0, 0">
+            <Image Source="blackjack_11_club.png" Margin="0, 0, 0, 0"/>
+            <Image Source="blackjack_2_spade.png" Margin="40, 0, 0, 0"/>
+            <Image Source="blackjack_1_club.png" Margin="80, 0, 0, 0"/>
+            <Image Source="blackjack_4_heart.png" Margin="120, 0, 0, 0"/>
+            <Image Source="blackjack_13_diamond.png" Margin="160, 0, 0, 0"/>
+            <Image Source="blackjack_6_spade.png" Margin="200, 0, 0, 0"/>
+            <Image Source="blackjack_7_club.png" Margin="240, 0, 0, 0"/>
+            <Image Source="blackjack_12_diamond.png" Margin="280, 0, 0, 0"/>
+        </RelativeLayout>
+
+        <Grid HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Total Bet:" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Bet Modifier:" Style="{StaticResource BlackjackLabel}"/>
+            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
+                <Button Text="-" Style="{StaticResource AddAndSubstractButton}"/>
+                <Button Text="+" Style="{StaticResource AddAndSubstractButton}"/>
+            </StackLayout>
+
+            <Label Grid.Row="0" Grid.Column="3" Text="Bankroll:" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="0" Grid.Column="4" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+
+            <Label Grid.Row="1" Grid.Column="3" Text="Total Win:" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="1" Grid.Column="4" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
