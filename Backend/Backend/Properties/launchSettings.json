@@ -16,6 +16,7 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7116;http://localhost:5116",
       "environmentVariables": {
+        "ConnectionString": "mongodb+srv://sorin:lemmegetmyslots2@dam.w1uadly.mongodb.net/?retryWrites=true&w=majority",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -24,6 +25,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
+        "ConnectionString": "mongodb+srv://sorin:lemmegetmyslots2@dam.w1uadly.mongodb.net/?retryWrites=true&w=majority",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
