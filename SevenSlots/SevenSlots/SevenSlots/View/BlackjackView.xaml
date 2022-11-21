@@ -4,7 +4,6 @@
              x:Class="SevenSlots.View.BlackjackView"
              BackgroundColor="#400213"
              Title="Blackjack">
-
     <StackLayout>
         <RelativeLayout Margin="6, 20, 0, 0">
             <Image Source="blackjack_11_club.png" Margin="0, 0, 0, 0"/>
