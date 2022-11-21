@@ -9,29 +9,35 @@ using Xamarin.Android.Net;
 
 namespace SevenSlots.Services
 {
-    public class DatabaseService:IDatabaseService
+    public class DatabaseService: IDatabaseService
     {
         HttpClientHandler httpClientHandler = new HttpClientHandler();
         HttpClient client;
         private const string baseUrl = "https://7slotsapi.azurewebsites.net/";
 
-         public async Task getAllUsers()
+        public async Task<List<User>> getAllUsers()
         {
             try
             {
                 client = new HttpClient(httpClientHandler, true);
-                Console.WriteLine(await client.GetAsync(baseUrl));
-               // response.EnsureSuccessStatusCode();
-                //string responseBody = await response.Content.ReadAsStringAsync();
-                // Above three lines can be replaced with new helper method below
-                // string responseBody = await client.GetStringAsync(uri);
+                HttpResponseMessage response = await client.GetAsync(baseUrl + "/User");
 
-               // Console.WriteLine(responseBody);
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Fetching the users failed: {0}", response.Content.ReadAsStringAsync());
+                    return null;
+                }
+
+                string content = await response.Content.ReadAsStringAsync();
+                List<User> Users = JsonSerializer.Deserialize<List<User>>(content,
+                    new JsonSerializerOptions() { PropertyNameCaseInsensitive = true});
+
+                return Users;
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                throw;
             }
         }
 
@@ -40,9 +46,9 @@ namespace SevenSlots.Services
             try
             {
                 client = new HttpClient(httpClientHandler, true);
+
                 string json = JsonSerializer.Serialize<User>(newUser);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
                 HttpResponseMessage response = await client.PostAsync(baseUrl + "/User", content);
 
                 if (!response.IsSuccessStatusCode)

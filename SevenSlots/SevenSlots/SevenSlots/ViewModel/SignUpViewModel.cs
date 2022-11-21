@@ -9,7 +9,7 @@ namespace SevenSlots.ViewModel
 {
     internal class SignUpViewModel
     {
-        User user= new User();
+        User user = new User();
         public ICommand RegisterCommand { get; }
 
         public User User { get { return user; } set { user = value; } }

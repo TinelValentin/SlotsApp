@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:sevenslots1="clr-namespace:SevenSlots.View" 
-             x:DataType="sevenslots1:SignInView"
+             xmlns:sevenslots1="clr-namespace:SevenSlots.View"
+             x:DataType="vm:SignInViewModel"
              x:Class="SevenSlots.View.SignInView"
              xmlns:controls="clr-namespace:SevenSlots.Controls;assembly=SevenSlots"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             >
+             xmlns:vm="clr-namespace:SevenSlots.ViewModel">
+    <ContentPage.BindingContext>
+        <vm:SignInViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
             <GradientStop Color="#802525" Offset="0.0"/>
@@ -64,37 +67,65 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Image Source ="user.png" WidthRequest="100" HorizontalOptions="Center" Grid.Row="0" Margin="0, -50, 0, 0"/>
+                <Image Source="user.png"
+                       WidthRequest="100"
+                       HorizontalOptions="Center"
+                       Grid.Row="0"
+                       Margin="0, -50, 0, 0"/>
                 <Frame Grid.Row="1" Style="{StaticResource InputFrame}"
                        xct:ShadowEffect.Color="White"
                        xct:ShadowEffect.Radius="10"
-                       x:Name="SSNFrame">
+                       x:Name="UsernameFrame">
                     <controls:CustomInputBox
+                        TextColor="Black"
                         HeightRequest="55"
                         WidthRequest="300"
-                        x:Name="SSNInput" VerticalOptions="FillAndExpand"
+                        x:Name="UsernameInput" 
+                        VerticalOptions="FillAndExpand"
                         Placeholder="Username"
-                        PlaceholderColor="DarkGray">
+                        PlaceholderColor="DarkGray"
+                        Text="{Binding User.Username, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
                 <Frame Grid.Row="2" Style="{StaticResource InputFrame}"
                        x:Name="PasswordFrame" xct:ShadowEffect.Color="White"
                        xct:ShadowEffect.Radius="10">
                     <controls:CustomInputBox
+                        TextColor="Black"
                         HeightRequest="55"
                         WidthRequest="300"
                         x:Name="PasswordInput" VerticalOptions="FillAndExpand"
                         Placeholder="Password"
-                        PlaceholderColor="DarkGray" >
+                        PlaceholderColor="DarkGray"
+                        Text="{Binding User.Password, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
             </Grid>
         </Frame>
-        <Button  WidthRequest="180" HeightRequest="50" Margin="0, -40, 0, 0" HorizontalOptions="Center"
-                CornerRadius="30" Text="Login" FontSize="20" FontAttributes="Bold" xct:ShadowEffect.Color="Black"
-                xct:ShadowEffect.Radius="10" Background="#3d1313" TextColor="White"/>
-        <Button WidthRequest="200" HeightRequest="50" Margin="0, 0, 0, 0" HorizontalOptions="Center"
-                CornerRadius="30" Text="Forgot Password" FontSize="15" FontAttributes="Bold" Background="Transparent" TextColor="White"/>
+        <Button  WidthRequest="180"
+                 HeightRequest="50"
+                 Margin="0, -40, 0, 0"
+                 HorizontalOptions="Center"
+                 CornerRadius="30"
+                 Text="Login"
+                 FontSize="20"
+                 FontAttributes="Bold"
+                 xct:ShadowEffect.Color="Black"
+                 xct:ShadowEffect.Radius="10"
+                 Background="#3d1313"
+                 TextColor="White"
+                 CommandParameter="{Binding User}"
+                 Command="{Binding LoginCommand}"/>
+        <Button WidthRequest="200"
+                HeightRequest="50"
+                Margin="0, 0, 0, 0"
+                HorizontalOptions="Center"
+                CornerRadius="30"
+                Text="Forgot Password"
+                FontSize="15"
+                FontAttributes="Bold"
+                Background="Transparent"
+                TextColor="White"/>
         </StackLayout>
    </StackLayout>
 </ContentPage>

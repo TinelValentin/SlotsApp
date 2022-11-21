@@ -8,7 +8,7 @@ namespace SevenSlots.Services
 {
     internal interface IDatabaseService
     {
-        Task getAllUsers();
+        Task<List<User>> getAllUsers();
 
         Task addUser(User newUser);
     }
