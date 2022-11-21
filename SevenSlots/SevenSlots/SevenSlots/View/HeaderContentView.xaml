@@ -17,7 +17,6 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="Auto"/>
-
             </Grid.RowDefinitions>
 
             <Image Aspect="AspectFill" 
@@ -32,7 +31,6 @@
                    Grid.Row="1" 
                    HorizontalOptions="Start" 
                    VerticalOptions="End"/>
-
             <StackLayout VerticalOptions="CenterAndExpand" 
                          Grid.Row="1" 
                          Margin="10,0,0,0" 
@@ -43,7 +41,6 @@
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
                        Text="Zanussy"/>
-
                 <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
