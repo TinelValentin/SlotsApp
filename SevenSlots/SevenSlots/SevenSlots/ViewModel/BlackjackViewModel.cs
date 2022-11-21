@@ -9,6 +9,7 @@ namespace SevenSlots.ViewModel
     public class BlackjackViewModel : ViewModelBase
     {
         #region Constructors...
+
         public BlackjackViewModel()
         {
             TotalBet = 0;
@@ -16,9 +17,11 @@ namespace SevenSlots.ViewModel
             TotalWin = 0;
             InitializeCommands();
         }
+
         #endregion
 
         #region Private Fields...
+
         private int _totalBet;
         private int _ownedMoney;
         private int _totalWin;
@@ -26,6 +29,7 @@ namespace SevenSlots.ViewModel
         #endregion
 
         #region Public Fields and Commands...
+
         public int TotalBet
         {
             get { return _totalBet; }
@@ -44,9 +48,11 @@ namespace SevenSlots.ViewModel
 
         public ICommand BetIncreaseCommand { get; set; }
         public ICommand BetDecreaseCommand { get; set; }
+
         #endregion
 
         #region Private Methods...
+
         private void InitializeCommands()
         {
             BetIncreaseCommand = new Command(BetIncrease);
@@ -62,6 +68,7 @@ namespace SevenSlots.ViewModel
             TotalBet -= 10;
             OwnedMoney += 10;
         }
+
         #endregion
     }
 }
