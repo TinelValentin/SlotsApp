@@ -11,10 +11,10 @@ namespace Backend.Services
 
         public UserService(IMongoDBSettings settings)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            var client = new MongoClient("mongodb+srv://sorin:lemmegetmyslots2@dam.w1uadly.mongodb.net/?retryWrites=true&w=majority");
+            var database = client.GetDatabase("slots");
 
-            _users = database.GetCollection<User>(settings.SlotsCollectionName);
+            _users = database.GetCollection<User>("users");
         }
 
         public async Task<List<User>> GetAll()
