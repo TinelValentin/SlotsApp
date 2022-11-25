@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SevenSlots.Services
 {
-    internal interface IDatabaseService
+    internal interface IDatabaseRepository
     {
         Task<List<User>> getAllUsers();
 

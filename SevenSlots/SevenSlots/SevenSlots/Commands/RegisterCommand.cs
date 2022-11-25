@@ -11,10 +11,10 @@ namespace SevenSlots.Commands
 {
     internal class RegisterCommand : ICommand
     {
-        IDatabaseService IDatabaseService;
+        IDatabaseRepository IDatabaseService;
         public RegisterCommand()
         {
-            this.IDatabaseService = DependencyService.Get<IDatabaseService>();
+            this.IDatabaseService = DependencyService.Get<IDatabaseRepository>();
         }
         public event EventHandler CanExecuteChanged;
 

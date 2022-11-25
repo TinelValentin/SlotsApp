@@ -14,11 +14,11 @@ namespace SevenSlots.Commands
     internal class LoginCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        IDatabaseService databaseService;
+        IDatabaseRepository databaseService;
 
         public LoginCommand()
         {
-            databaseService = DependencyService.Get<IDatabaseService>();
+            databaseService = DependencyService.Get<IDatabaseRepository>();
         }
 
         public bool CanExecute(object parameter)
