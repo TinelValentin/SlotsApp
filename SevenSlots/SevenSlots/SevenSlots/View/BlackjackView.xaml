@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SevenSlots.View.BlackjackView"
+             xmlns:viewmodel="clr-namespace:SevenSlots.ViewModel;assembly=SevenSlots" 
+             x:DataType="viewmodel:BlackjackViewModel"
              BackgroundColor="#400213"
              Title="Blackjack">
     <StackLayout>
@@ -23,7 +25,7 @@
             <Button Text="STAND" Style="{StaticResource BlackjackButton}"/>
             <Button Text="DEAL" Style="{StaticResource BlackjackButton}"/>
         </StackLayout>
-        
+
         <RelativeLayout Margin="6, 0, 0, 0">
             <Image Source="blackjack_11_club.png" Margin="0, 0, 0, 0"/>
             <Image Source="blackjack_2_spade.png" Margin="40, 0, 0, 0"/>
@@ -48,19 +50,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Text="Total Bet:" Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" Grid.Column="1" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalBet}" Style="{StaticResource BlackjackLabel}"/>
 
             <Label Grid.Row="1" Grid.Column="0" Text="Bet Modifier:" Style="{StaticResource BlackjackLabel}"/>
             <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
-                <Button Text="-" Style="{StaticResource AddAndSubstractButton}"/>
-                <Button Text="+" Style="{StaticResource AddAndSubstractButton}"/>
+                <Button Text="-" Style="{StaticResource AddAndSubstractButton}" Command="{Binding BetDecreaseCommand}"/>
+                <Button Text="+" Style="{StaticResource AddAndSubstractButton}" Command="{Binding BetIncreaseCommand}"/>
             </StackLayout>
 
             <Label Grid.Row="0" Grid.Column="3" Text="Bankroll:" Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" Grid.Column="4" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="0" Grid.Column="4" Text="{Binding OwnedMoney}" Style="{StaticResource BlackjackLabel}"/>
 
             <Label Grid.Row="1" Grid.Column="3" Text="Total Win:" Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="1" Grid.Column="4" Text="0.00" Style="{StaticResource BlackjackLabel}"/>
+            <Label Grid.Row="1" Grid.Column="4" Text="{Binding TotalWin}" Style="{StaticResource BlackjackLabel}"/>
         </Grid>
     </StackLayout>
 </ContentPage>
