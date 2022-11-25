@@ -9,7 +9,7 @@ using Xamarin.Android.Net;
 
 namespace SevenSlots.Services
 {
-    public class DatabaseRepository: IDatabaseRepository
+    public class UserRepository: IUserRepository
     {
         HttpClientHandler httpClientHandler = new HttpClientHandler();
         HttpClient client;

@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Android.Provider;
+using SevenSlots.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SevenSlots.Helpers;
 
 namespace SevenSlots.View
 {
@@ -15,6 +19,11 @@ namespace SevenSlots.View
         public HeaderContentView()
         {
             InitializeComponent();
+            if (Session.GeneralSettings != "")
+            {
+                User user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                lol.Text = user.Username;
+            }
         }
     }
 }

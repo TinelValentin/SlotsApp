@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenSlots.Android", "Seven
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenSlots.iOS", "SevenSlots\SevenSlots.iOS\SevenSlots.iOS.csproj", "{BFD72F7B-449B-4CC4-84D0-E2F6EFB63E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenSlots", "SevenSlots\SevenSlots\SevenSlots.csproj", "{C8440596-6A0B-4409-98D8-6426DC1CCF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SevenSlots", "SevenSlots\SevenSlots\SevenSlots.csproj", "{C8440596-6A0B-4409-98D8-6426DC1CCF1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

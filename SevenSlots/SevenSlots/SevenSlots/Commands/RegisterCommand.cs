@@ -1,5 +1,6 @@
 ﻿using SevenSlots.Model;
 using SevenSlots.Services;
+using SevenSlots.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +12,10 @@ namespace SevenSlots.Commands
 {
     internal class RegisterCommand : ICommand
     {
-        IDatabaseRepository IDatabaseService;
+        IUserService userService;
         public RegisterCommand()
         {
-            this.IDatabaseService = DependencyService.Get<IDatabaseRepository>();
+            userService = DependencyService.Get<IUserService>();
         }
         public event EventHandler CanExecuteChanged;
 
@@ -25,7 +26,8 @@ namespace SevenSlots.Commands
 
         public void Execute(object parameter)
         {
-            IDatabaseService.addUser(parameter as User);
+            userService.register(parameter as User);
+            Application.Current.MainPage = new AppShell();
         }
     }
 }

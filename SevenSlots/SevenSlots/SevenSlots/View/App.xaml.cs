@@ -10,7 +10,8 @@ namespace SevenSlots
     {
         public App()
         {
-            DependencyService.Register<IDatabaseRepository,DatabaseRepository>();
+            DependencyService.Register<IUserRepository, UserRepository>();
+            DependencyService.Register<IUserService, UserService>();
             InitializeComponent();
 
             MainPage = new AppShell();

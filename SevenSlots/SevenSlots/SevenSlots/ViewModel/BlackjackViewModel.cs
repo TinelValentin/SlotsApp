@@ -105,80 +105,80 @@ namespace SevenSlots.ViewModel
             return (playerCards, dealerCards);
         }
 
-        private void Deal()
-        {
-            _canBet = false;
-            OnPropertyChanged(nameof(CanBet));
+        //private void Deal()
+        //{
+        //    _canBet = false;
+        //    OnPropertyChanged(nameof(CanBet));
 
-            _canClick = _gameBoard.Clickable();
-            OnPropertyChanged(nameof(CanClick));
+        //    _canClick = _gameBoard.Clickable();
+        //    OnPropertyChanged(nameof(CanClick));
 
-            var value = _gameBoard.DealInitalCards();
-            _dealer.Card.Add("../Images/Cards/b1fv.bmp");
-            _dealer.HiddenCard = ("../Images/Cards/" + value.dCards[0] + ".bmp");
-            _dealer.Card.Add("../Images/Cards/" + value.dCards[1] + ".bmp");
+        //    var value = _gameBoard.DealInitalCards();
+        //    _dealer.Card.Add("../Images/Cards/b1fv.bmp");
+        //    _dealer.HiddenCard = ("../Images/Cards/" + value.dCards[0] + ".bmp");
+        //    _dealer.Card.Add("../Images/Cards/" + value.dCards[1] + ".bmp");
 
-            _player.Card.Add("../Images/Cards/" + value.pCards[0] + ".bmp");
-            _player.Card.Add("../Images/Cards/" + value.pCards[1] + ".bmp");
+        //    _player.Card.Add("../Images/Cards/" + value.pCards[0] + ".bmp");
+        //    _player.Card.Add("../Images/Cards/" + value.pCards[1] + ".bmp");
 
-            int.TryParse(value.dCards[0].Substring(1).TrimStart('0'), out int dCardValue1);
-            int.TryParse(value.dCards[1].Substring(1).TrimStart('0'), out int dCardValue2);
+        //    int.TryParse(value.dCards[0].Substring(1).TrimStart('0'), out int dCardValue1);
+        //    int.TryParse(value.dCards[1].Substring(1).TrimStart('0'), out int dCardValue2);
 
-            int.TryParse(value.pCards[0].Substring(1).TrimStart('0'), out int cardValue1);
-            int.TryParse(value.pCards[1].Substring(1).TrimStart('0'), out int cardValue2);
+        //    int.TryParse(value.pCards[0].Substring(1).TrimStart('0'), out int cardValue1);
+        //    int.TryParse(value.pCards[1].Substring(1).TrimStart('0'), out int cardValue2);
 
-            if (cardValue1 >= 10)
-            {
-                cardValue1 = 10;
-            }
+        //    if (cardValue1 >= 10)
+        //    {
+        //        cardValue1 = 10;
+        //    }
 
-            if (cardValue2 >= 10)
-            {
-                cardValue2 = 10;
-            }
+        //    if (cardValue2 >= 10)
+        //    {
+        //        cardValue2 = 10;
+        //    }
 
-            if (cardValue1 == 1 && cardValue2 <= 10)
-            {
-                cardValue1 = 11;
-            }
+        //    if (cardValue1 == 1 && cardValue2 <= 10)
+        //    {
+        //        cardValue1 = 11;
+        //    }
 
-            if (cardValue2 == 1 && cardValue1 <= 10)
-            {
-                cardValue2 = 11;
-            }
+        //    if (cardValue2 == 1 && cardValue1 <= 10)
+        //    {
+        //        cardValue2 = 11;
+        //    }
 
-            if (dCardValue1 >= 10)
-            {
-                dCardValue1 = 10;
-            }
+        //    if (dCardValue1 >= 10)
+        //    {
+        //        dCardValue1 = 10;
+        //    }
 
-            if (dCardValue2 >= 10)
-            {
-                dCardValue2 = 10;
-            }
+        //    if (dCardValue2 >= 10)
+        //    {
+        //        dCardValue2 = 10;
+        //    }
 
-            if (dCardValue1 == 1 && dCardValue2 <= 10)
-            {
-                dCardValue1 = 11;
-            }
+        //    if (dCardValue1 == 1 && dCardValue2 <= 10)
+        //    {
+        //        dCardValue1 = 11;
+        //    }
 
-            if (dCardValue2 == 1 && dCardValue1 <= 10)
-            {
-                dCardValue2 = 11;
-            }
+        //    if (dCardValue2 == 1 && dCardValue1 <= 10)
+        //    {
+        //        dCardValue2 = 11;
+        //    }
 
-            _player.CardTotal = cardValue1 + cardValue2;
-            _dealer.HiddenCardTotal = dCardValue1 + dCardValue2;
-            IsDealVisible = false;
-            OnPropertyChanged(nameof(IsDealVisible));
-            OnPropertyChanged(nameof(Dealer));
-            OnPropertyChanged(nameof(Player));
+        //    _player.CardTotal = cardValue1 + cardValue2;
+        //    _dealer.HiddenCardTotal = dCardValue1 + dCardValue2;
+        //    IsDealVisible = false;
+        //    OnPropertyChanged(nameof(IsDealVisible));
+        //    OnPropertyChanged(nameof(Dealer));
+        //    OnPropertyChanged(nameof(Player));
 
-            if (_player.CardTotal == 21)
-            {
-                PlayerBlackJack();
-            }
-        }
+        //    if (_player.CardTotal == 21)
+        //    {
+        //        PlayerBlackJack();
+        //    }
+        //}
         #endregion
     }
 }
