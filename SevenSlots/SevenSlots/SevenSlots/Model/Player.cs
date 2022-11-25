@@ -7,7 +7,7 @@ namespace SevenSlots.Model
 {
     public class Player : ViewModelBase
     {
-        #region BackingFields
+        #region BackingFields...
 
         private string _name;
         private int _bankRoll;
@@ -19,7 +19,7 @@ namespace SevenSlots.Model
 
         #endregion
 
-        #region Properties
+        #region Properties...
         public string Name
         {
             get => _name;
@@ -70,7 +70,6 @@ namespace SevenSlots.Model
             }
         }
 
-
         public List<string> Card
         {
             get => _card;
@@ -93,13 +92,13 @@ namespace SevenSlots.Model
 
         #endregion
 
-        #region Constructor
-        public Player(string name, int bankroll, int totalbet = 0, int totalwin = 0, int betAmount = 0)
+        #region Constructor...
+        public Player(string name, int bankRoll, int totalBet = 0, int totalWin = 0, int betAmount = 0)
         {
             _name = name;
-            _bankRoll = bankroll;
-            _totalBet = totalbet;
-            _totalWinnings = totalwin;
+            _bankRoll = bankRoll;
+            _totalBet = totalBet;
+            _totalWinnings = totalWin;
             _betAmount = betAmount;
             this.Card = new List<string>();
         }

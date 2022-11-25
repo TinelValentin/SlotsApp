@@ -27,10 +27,13 @@ namespace SevenSlots.ViewModel
         private int _totalWin;
         List<string> _cards = new List<string>()
         {
-             "c01", "c02", "c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11", "c12", "d13", "d01", "d02", "d03", "d04", "d05", "d06", "d07", "d08", "d09", "d10", "d11", "d12", "d13", "h01", "h02", "h03", "h04", "h05", "h06", "h07", "h08", "h09", "h10", "h11", "h12", "h13", "s01", "s02", "s03", "s04", "s05", "s06", "s07", "s08", "s09", "s10", "s11", "s12", "s13"
+             "c01", "c02", "c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11", "c12", "c13", 
+             "d01", "d02", "d03", "d04", "d05", "d06", "d07", "d08", "d09", "d10", "d11", "d12", "d13", 
+             "h01", "h02", "h03", "h04", "h05", "h06", "h07", "h08", "h09", "h10", "h11", "h12", "h13", 
+             "s01", "s02", "s03", "s04", "s05", "s06", "s07", "s08", "s09", "s10", "s11", "s12", "s13"
         };
         List<string> selectedCards = new List<string>();
-        private const int INITIALDEAL = 2;
+        private const int _initialDeal = 2;
 
         #endregion
 
@@ -83,7 +86,7 @@ namespace SevenSlots.ViewModel
 
             //reshuffleCards();
 
-            for (int i = 0; i < INITIALDEAL; i++)
+            for (int i = 0; i < _initialDeal; i++)
             {
                 int r1 = random.Next(1, _cards.Count);
                 dealerCards.Add(_cards[r1]);
@@ -91,7 +94,7 @@ namespace SevenSlots.ViewModel
                 _cards.Remove(dealerCards[i]);
             }
 
-            for (int i = 0; i < INITIALDEAL; i++)
+            for (int i = 0; i < _initialDeal; i++)
             {
                 int r1 = random.Next(1, _cards.Count);
                 playerCards.Add(_cards[r1]);
@@ -121,7 +124,6 @@ namespace SevenSlots.ViewModel
             int.TryParse(value.dCards[0].Substring(1).TrimStart('0'), out int dCardValue1);
             int.TryParse(value.dCards[1].Substring(1).TrimStart('0'), out int dCardValue2);
 
-
             int.TryParse(value.pCards[0].Substring(1).TrimStart('0'), out int cardValue1);
             int.TryParse(value.pCards[1].Substring(1).TrimStart('0'), out int cardValue2);
 
@@ -144,7 +146,6 @@ namespace SevenSlots.ViewModel
             {
                 cardValue2 = 11;
             }
-
 
             if (dCardValue1 >= 10)
             {
