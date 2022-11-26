@@ -4,9 +4,11 @@ using SevenSlots.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using SevenSlots.Helpers;
 
 namespace SevenSlots.Commands
 {
@@ -27,6 +29,8 @@ namespace SevenSlots.Commands
         public void Execute(object parameter)
         {
             userService.register(parameter as User);
+            string userString = JsonSerializer.Serialize(parameter as User);
+            Session.GeneralSettings = userString;
             Application.Current.MainPage = new AppShell();
         }
     }

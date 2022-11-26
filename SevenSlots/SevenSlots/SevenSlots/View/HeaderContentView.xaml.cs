@@ -19,11 +19,6 @@ namespace SevenSlots.View
         public HeaderContentView()
         {
             InitializeComponent();
-            if (Session.GeneralSettings != "")
-            {
-                User user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
-                lol.Text = user.Username;
-            }
         }
     }
 }

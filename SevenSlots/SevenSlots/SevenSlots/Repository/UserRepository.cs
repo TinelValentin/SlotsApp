@@ -37,8 +37,9 @@ namespace SevenSlots.Services
             catch (HttpRequestException e)
             {
                 Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
-                throw;
             }
+
+            return null;
         }
 
         public async Task addUser(User newUser)

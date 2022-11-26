@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:SevenSlots.ViewModel"
              x:Class="SevenSlots.View.HeaderContentView"
              HeightRequest="170">
+    <ContentView.BindingContext>
+        <vm:HeaderContentViewModel/>
+    </ContentView.BindingContext>
     <ContentView.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -43,12 +47,12 @@
                 <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
-                       x:Name="lol"/>
+                       Text="{Binding User.Username}"/>
                 
                 <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
-                       Text="amugus@sussybakka.org"/>
+                       Text="{Binding User.Email}"/>
                 
             </StackLayout>
         </Grid>
