@@ -3,15 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SevenSlots.View.HomePage"
              BackgroundColor="#400213"
-             BindingContext="SevenSlots.ViewModel.HomePageViewModel" Title="SevenSlots">
+             BindingContext="SevenSlots.ViewModel.HomePageViewModel"
+             Title="SevenSlots">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="home.jpg">
                 <Image.Clip>
-                    <EllipseGeometry                                
-                    Center="100, 120"
-                    RadiusX="220"
-                    RadiusY="140"/>
+                    <EllipseGeometry Center="100, 120" RadiusX="220" RadiusY="140"/>
                 </Image.Clip>
             </Image>
             <StackLayout BackgroundColor="#c53b23" >
@@ -34,7 +32,7 @@
                         Text="{Binding AccordionText}"
                         Command="{Binding AccordionAnimationCommand}"
                         x:Name="accordionButton"
-                        CommandParameter="{Binding  Source={x:Reference accordionButton}}"/>
+                        CommandParameter="{Binding Source={x:Reference accordionButton}}"/>
             </StackLayout>
             <Label Text="Welcome Bonus" FontSize="40" TextColor="White" 
                    HorizontalOptions="Center" Margin="0, 40, 0, 0" 

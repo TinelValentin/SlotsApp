@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SevenSlots.View.LoginErrorPopup">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Red" 
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center" 
+                     Margin="20" 
+                     Spacing="0">
+            <Label Text="Wrong credentials!"
+                   HorizontalOptions="Center" 
+                   Margin="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</popup:PopupPage>

@@ -9,7 +9,7 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="#470204  "/>
+                <Setter Property="Shell.BackgroundColor" Value="#470204"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
@@ -18,9 +18,7 @@
     <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
         <ShellContent Title="Blackjack" IsTabStop="True" ContentTemplate="{DataTemplate views:BlackjackView}"/>
-        <ShellContent Title="Other" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
         <ShellContent Title="Sign In" IsTabStop="True" ContentTemplate="{DataTemplate views:SignInView}"/>
         <ShellContent Title="Sign Up" IsTabStop="True" ContentTemplate="{DataTemplate views:SignUpView}"/>
     </FlyoutItem>
-    <ShellContent Title="About" ContentTemplate="{DataTemplate views:OtherPage}"/>
 </Shell>

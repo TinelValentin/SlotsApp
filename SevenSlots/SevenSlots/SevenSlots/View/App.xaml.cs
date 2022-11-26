@@ -1,4 +1,5 @@
-﻿using SevenSlots.View;
+﻿using SevenSlots.Services;
+using SevenSlots.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,8 @@ namespace SevenSlots
     {
         public App()
         {
+            DependencyService.Register<IUserRepository, UserRepository>();
+            DependencyService.Register<IUserService, UserService>();
             InitializeComponent();
 
             MainPage = new AppShell();

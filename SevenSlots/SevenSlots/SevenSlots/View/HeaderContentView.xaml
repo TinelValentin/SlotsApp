@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:SevenSlots.ViewModel"
              x:Class="SevenSlots.View.HeaderContentView"
              HeightRequest="170">
+    <ContentView.BindingContext>
+        <vm:HeaderContentViewModel/>
+    </ContentView.BindingContext>
     <ContentView.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -17,14 +21,14 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="Auto"/>
-
             </Grid.RowDefinitions>
 
             <Image Aspect="AspectFill" 
                    Source="gradient.jpg" 
                    Grid.ColumnSpan="5" 
                    Grid.RowSpan="4" 
-                   Opacity="0.6" />
+                   Opacity="0.6"/>
+            
             <Image Source="user.png" 
                    HeightRequest="80" 
                    WidthRequest="80" 
@@ -32,22 +36,24 @@
                    Grid.Row="1" 
                    HorizontalOptions="Start" 
                    VerticalOptions="End"/>
-
+            
             <StackLayout VerticalOptions="CenterAndExpand" 
                          Grid.Row="1" 
-                         Margin="10,0,0,0" 
+                         Margin="10, 0, 0, 0" 
                          Grid.Column="2" 
                          Grid.ColumnSpan="3" 
                          Orientation="Vertical">
+                
                 <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
-                       Text="Zanussy"/>
-
+                       Text="{Binding User.Username}"/>
+                
                 <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
-                       Text="amugus@sussybakka.org"/>
+                       Text="{Binding User.Email}"/>
+                
             </StackLayout>
         </Grid>
     </ContentView.Content>
