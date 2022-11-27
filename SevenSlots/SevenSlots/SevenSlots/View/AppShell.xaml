@@ -20,10 +20,6 @@
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:HomePage}"
                       Route="Home"/>
-        <ShellContent Title="Blackjack" 
-                      IsTabStop="True" 
-                      ContentTemplate="{DataTemplate views:BlackjackView}"
-                      Route="Blackjack"/>
         <ShellContent Title="Sign In" 
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:SignInView}"
@@ -32,5 +28,13 @@
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:SignUpView}"
                       Route="Sign Up"/>
+        <ShellContent Title="Blackjack" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:BlackjackView}"
+                      Route="Blackjack"/>
+        <ShellContent Title="Slot Machine" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SlotMachineView}"
+                      Route="Slot Machine"/>
     </FlyoutItem>
 </Shell>
