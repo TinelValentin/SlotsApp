@@ -12,33 +12,38 @@
                     <EllipseGeometry Center="100, 120" RadiusX="220" RadiusY="140"/>
                 </Image.Clip>
             </Image>
-            <StackLayout BackgroundColor="#c53b23" >
+            <StackLayout BackgroundColor="#c53b23">
                 <StackLayout.Background>
-                    <LinearGradientBrush StartPoint="0, 0"
-                             EndPoint="1, 2">
-                        <GradientStop Color="#e36f6f" 
-                          Offset="0.0"/>
-                        <GradientStop Color="#69100f"
-                          Offset="0.3"/>
-                        <GradientStop Color="#a62523"
-                          Offset="0.7"/>
-                        <GradientStop Color="#e36f6f"
-                          Offset="1.0"/>
+                    <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
+                        <GradientStop Color="#e36f6f" Offset="0.0"/>
+                        <GradientStop Color="#69100f" Offset="0.3"/>
+                        <GradientStop Color="#a62523" Offset="0.7"/>
+                        <GradientStop Color="#e36f6f" Offset="1.0"/>
                     </LinearGradientBrush>
                 </StackLayout.Background>
-                <Button TextColor="#fcd9b3" BackgroundColor= "Transparent"
-                        FontSize="20" FontAttributes="Bold" HeightRequest="50"                
-                        WidthRequest="150" HorizontalOptions="Start"
+                <Button TextColor="#fcd9b3"
+                        BackgroundColor= "Transparent"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        HorizontalOptions="Start"
                         Text="{Binding AccordionText}"
                         Command="{Binding AccordionAnimationCommand}"
                         x:Name="accordionButton"
                         CommandParameter="{Binding Source={x:Reference accordionButton}}"/>
             </StackLayout>
-            <Label Text="Welcome Bonus" FontSize="40" TextColor="White" 
-                   HorizontalOptions="Center" Margin="0, 40, 0, 0" 
-                   FontAttributes="Bold"/>
-            <Label Text="Up to 500 Ron" TextColor="White" FontSize="20" 
-                   LineBreakMode="WordWrap" WidthRequest="250" 
+            <Label Text="Welcome Bonus"
+                   FontSize="40"
+                   TextColor="White" 
+                   Margin="0, 40, 0, 0" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <Label Text="Up to 500 Ron"
+                   TextColor="White"
+                   FontSize="20" 
+                   LineBreakMode="WordWrap"
+                   WidthRequest="250" 
                    HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal" Margin="0, 40, 0, 0">
                 <StackLayout.Resources>
@@ -46,16 +51,11 @@
                         <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0, 0"
-                                                        EndPoint="1, 1">
-                                        <GradientStop Color="#e36f6f" 
-                                                            Offset="0.0"/>
-                                        <GradientStop Color="#69100f"
-                                                            Offset="0.3"/>
-                                        <GradientStop Color="#a62523"
-                                                            Offset="0.7"/>
-                                        <GradientStop Color="#e36f6f"
-                                                            Offset="1.0"/>
+                                    <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                                        <GradientStop Color="#e36f6f" Offset="0.0"/>
+                                        <GradientStop Color="#69100f" Offset="0.3"/>
+                                        <GradientStop Color="#a62523" Offset="0.7"/>
+                                        <GradientStop Color="#e36f6f" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -81,19 +81,26 @@
                 </Frame>
                 <Frame Style="{StaticResource FrameStyle}">
                     <StackLayout>
-                        <Label Text="Deposit"  Style="{StaticResource FrameLabel}"/>
+                        <Label Text="Deposit" Style="{StaticResource FrameLabel}"/>
                         <Image Source="creditCard.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameStyle}">
                     <StackLayout>
-                        <Label Text="Free Spins"  Style="{StaticResource FrameLabel}"/>
+                        <Label Text="Free Spins" Style="{StaticResource FrameLabel}"/>
                         <Image Source="gift.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <Button Text="Register now!" WidthRequest="200" 
-                    HeightRequest="50" Margin="0, 40, 0, 0" Style="{StaticResource SignButton}">
+            <Button Text="Register now!"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Margin="0, 40, 0, 0"
+                    Style="{StaticResource SignButton}"
+                    CommandParameter="{Binding SignUpView}"
+                    Command="{Binding PushPageCommand}"
+                    IsVisible="{Binding IsRegisterVisible}"
+                    >
             </Button>
         </StackLayout>
     </ContentPage.Content>
