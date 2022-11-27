@@ -284,7 +284,8 @@
                     <Button Text="Cancel"
                         WidthRequest="200"
                         HorizontalOptions="Center"
-                        Style="{StaticResource SignButton}"/>
+                        Style="{StaticResource SignButton}"
+                        Command="{Binding RegisterCancelCommand}"/>
                 </StackLayout>
             </StackLayout>
         </Frame>

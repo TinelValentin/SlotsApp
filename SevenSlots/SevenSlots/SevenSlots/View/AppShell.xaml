@@ -16,9 +16,21 @@
         </ResourceDictionary>
     </Shell.Resources>
     <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
-        <ShellContent Title="Blackjack" IsTabStop="True" ContentTemplate="{DataTemplate views:BlackjackView}"/>
-        <ShellContent Title="Sign In" IsTabStop="True" ContentTemplate="{DataTemplate views:SignInView}"/>
-        <ShellContent Title="Sign Up" IsTabStop="True" ContentTemplate="{DataTemplate views:SignUpView}"/>
+        <ShellContent Title="Home" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:HomePage}"
+                      Route="Home"/>
+        <ShellContent Title="Blackjack" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:BlackjackView}"
+                      Route="Blackjack"/>
+        <ShellContent Title="Sign In" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SignInView}"
+                      Route="Sign In"/>
+        <ShellContent Title="Sign Up" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SignUpView}"
+                      Route="Sign Up"/>
     </FlyoutItem>
 </Shell>
