@@ -99,8 +99,7 @@
                     Style="{StaticResource SignButton}"
                     CommandParameter="{Binding SignUpView}"
                     Command="{Binding PushPageCommand}"
-                    IsVisible="{Binding IsRegisterVisible}"
-                    >
+                    IsVisible="{Binding IsRegisterVisible}">
             </Button>
         </StackLayout>
     </ContentPage.Content>

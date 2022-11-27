@@ -35,7 +35,6 @@ namespace SevenSlots.ViewModel
                 isRegisterVisible = value;
                 OnPropertyChanged(nameof(IsRegisterVisible));
             } 
-        
         }
         public HomePageViewModel()
         {
