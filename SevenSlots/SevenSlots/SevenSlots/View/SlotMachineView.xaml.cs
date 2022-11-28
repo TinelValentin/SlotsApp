@@ -1,4 +1,5 @@
 ﻿using Android.Content.PM;
+using SevenSlots.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,17 +32,77 @@ namespace SevenSlots.View
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
         }
-
+        string numberToImageSource(int nr)
+        {
+            if(nr < 3)
+            {
+                return "CherrySlot.png";
+            }
+            else if(nr < 6)
+            {
+                return "GrapeSlot.png";
+            }else if(nr < 9)
+            {
+                return "LemonSlot.png";
+            }else if (nr < 12) 
+            {
+                return "OrangeSlot.png";
+            }else if(nr < 14)
+            {
+                return "SevenSlot.png";
+            }
+            return "SpecialSlot.png";
+        }
         void move(Object sender, EventArgs e)
         {
-            imagineZburatoare.TranslationY += 50;
+            (sender as Button).IsEnabled = false;
+            Random rnd = new Random();
+
+            int randomSlot1 = rnd.Next(0, 15);
+            int randomSlot2 = rnd.Next(0, 15);
+            int randomSlot3 = rnd.Next(0, 15);
+
+            slot1.IsVisible = false;
+            slot2.IsVisible = false;
+            slot3.IsVisible = false;
+
+            spinSlot1.IsVisible = true;
+            spinSlot2.IsVisible = true;
+            spinSlot3.IsVisible = true;
+
+            slot1.Source = numberToImageSource(randomSlot1);
+            slot2.Source = numberToImageSource(randomSlot2);
+            slot3.Source = numberToImageSource(randomSlot3);
+
+            int counter = 0;
+            double initialY = spinSlot1.TranslationY;
             Device.StartTimer(new TimeSpan(100), () =>
             {
-                // do something every 60 seconds
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    imagineZburatoare.TranslationY += 20;
+                    spinSlot1.TranslationY += 20;
+                    spinSlot2.TranslationY += 20;
+                    spinSlot3.TranslationY += 20;
+                    counter += 1;
                 });
+
+                if(counter == 150)
+                {
+                    spinSlot1.IsVisible = false;
+                    spinSlot2.IsVisible = false;
+                    spinSlot3.IsVisible = false;
+
+                    slot1.IsVisible = true;
+                    slot2.IsVisible = true;
+                    slot3.IsVisible = true;
+
+                    spinSlot1.TranslationY = initialY;
+                    spinSlot2.TranslationY = initialY;
+                    spinSlot3.TranslationY = initialY;
+
+                    (sender as Button).IsEnabled = true;    
+                    return false;
+                }
                 return true; // runs again, or false to stop
             });
         }

@@ -9,7 +9,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <RelativeLayout>
-            <Image Source="LongOrangeSlot.png" x:Name="imagineZburatoare"
+            <Image IsVisible="Hidden" Source="SpinningSlot.png" x:Name="spinSlot1"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                                                 Property=Width, Factor=0}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
@@ -17,9 +17,26 @@
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                                                     Property=Width, Factor=0.25}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                     Property=Width, Factor=5}"
-                   />
-            <Image Source="LemonSlot.png"
+                                                     Property=Width, Factor=5}"/>
+            <Image Source="SevenSlot.png" x:Name="slot1"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width, Factor=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,         
+                                                Property=Height, Factor=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.25}"/>
+            <Image IsVisible="Hidden" Source="SpinningSlot.png" x:Name="spinSlot2"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width, Factor=0.25}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height, Factor=-12.82}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                    Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                     Property=Width, Factor=5}"/>
+            <Image Source="SevenSlot.png" x:Name="slot2"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                                                 Property=Width, Factor=0.25}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,         
@@ -28,7 +45,16 @@
                                                 Property=Width, Factor=0.25}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Width, Factor=0.25}"/>
-            <Image Source="GrapeSlot.png"
+            <Image IsVisible="Hidden" Source="SpinningSlot.png" x:Name="spinSlot3"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width, Factor=0.5}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height, Factor=-12.82}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                    Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                     Property=Width, Factor=5}"/>
+            <Image Source="SevenSlot.png" x:Name="slot3"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Width, Factor=0.5}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
@@ -55,7 +81,7 @@
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                        Property=Width, Factor=0.3}" 
                      Color="#400213"/>
-            <Label Text="Wallet" 
+            <Label Text="{Binding WalletLabel, Mode=OneWay}"
                    Grid.Row="1" 
                    Style="{StaticResource BlackjackLabel}" 
                    FontSize="30"
