@@ -32,7 +32,7 @@ namespace SevenSlots.View
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
         }
-        string numberToImageSource(int nr)
+        private string numberToImageSource(int nr)
         {
             if(nr < 3)
             {
@@ -53,11 +53,56 @@ namespace SevenSlots.View
             }
             return "SpecialSlot.png";
         }
+
+        private double getWin(string img1, string img2, string img3)
+        {
+            double bet = (BindingContext as SlotMachineViewModel).Bet;
+
+            if (img1 == "File: SpecialSlot.png" && img1 == img2 && img1 == img3)
+            {
+                return bet * 150;
+            }
+
+            if (img1 == "File: SevenSlot.png" && img1 == img2 && img1 == img3)
+            {
+                return bet * 60;
+            }
+
+            if((img1 == "File: SevenSlot.png" || img1 == "File: SpecialSlot.png") &&
+               (img2 == "File: SevenSlot.png" || img2 == "File: SpecialSlot.png") ||
+               (img1 == "File: SevenSlot.png" || img1 == "File: SpecialSlot.png") &&
+               (img3 == "File: SevenSlot.png" || img3 == "File: SpecialSlot.png") ||
+               (img2 == "File: SevenSlot.png" || img2 == "File: SpecialSlot.png") &&
+               (img3 == "File: SevenSlot.png" || img3 == "File: SpecialSlot.png"))
+            {
+                return bet * 30;
+            }
+
+            if(img1 == img2 && (img3 == "File: SevenSlot.png" || img3 == "File: SpecialSlot.png") ||
+                img1 == img3 && (img2 == "File: SevenSlot.png" || img2 == "File: SpecialSlot.png") ||
+                img2 == img3 && (img1 == "File: SevenSlot.png" || img1 == "File: SpecialSlot.png"))
+            {
+                return bet * 30;
+            }
+
+            if(img1 == img2 && img2 == img3)
+            {
+                return bet * 30;
+            }
+
+            return 0;
+        }
+
         void move(Object sender, EventArgs e)
         {
             (sender as Button).IsEnabled = false;
-            Random rnd = new Random();
 
+            SlotMachineViewModel bc = BindingContext as SlotMachineViewModel;
+
+            bc.Wallet -= bc.Bet;
+            bc.User.Wallet -= bc.Bet;
+
+            Random rnd = new Random();
             int randomSlot1 = rnd.Next(0, 15);
             int randomSlot2 = rnd.Next(0, 15);
             int randomSlot3 = rnd.Next(0, 15);
@@ -74,8 +119,14 @@ namespace SevenSlots.View
             slot2.Source = numberToImageSource(randomSlot2);
             slot3.Source = numberToImageSource(randomSlot3);
 
+            double win = getWin(slot1.Source.ToString(),
+                                slot2.Source.ToString(),
+                                slot3.Source.ToString());
+
+
             int counter = 0;
             double initialY = spinSlot1.TranslationY;
+
             Device.StartTimer(new TimeSpan(100), () =>
             {
                 Device.BeginInvokeOnMainThread(() =>
@@ -99,6 +150,10 @@ namespace SevenSlots.View
                     spinSlot1.TranslationY = initialY;
                     spinSlot2.TranslationY = initialY;
                     spinSlot3.TranslationY = initialY;
+
+                    bc.Win = win;
+                    bc.Wallet += win;
+                    bc.User.Wallet += win;
 
                     (sender as Button).IsEnabled = true;    
                     return false;

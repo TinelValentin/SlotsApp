@@ -82,16 +82,13 @@
                                                        Property=Width, Factor=0.3}" 
                      Color="#400213"/>
             <Label Text="{Binding WalletLabel, Mode=OneWay}"
-                   Grid.Row="1" 
                    Style="{StaticResource BlackjackLabel}" 
                    FontSize="30"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Width, Factor=0}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Height, Factor=0.65}"/>
-            <Label Text="Bet" 
-                   Grid.Row="1" 
-                   Grid.Column="1" 
+            <Label Text="{Binding BetLabel, Mode=OneWay}" 
                    Style="{StaticResource BlackjackLabel}" 
                    FontSize="30"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
@@ -109,12 +106,14 @@
                          Orientation="Horizontal">
                 <Button Text="-"
                         WidthRequest="50"
-                        Style="{StaticResource AddAndSubstractButton}"/>
+                        Style="{StaticResource AddAndSubstractButton}"
+                        Command="{Binding BetDecreaseCommand}"/>
                 <Button Text="+"
                         WidthRequest="50"
-                        Style="{StaticResource AddAndSubstractButton}"/>
+                        Style="{StaticResource AddAndSubstractButton}"
+                        Command="{Binding BetIncreaseCommand}"/>
             </StackLayout>
-            <Label Text="Win"
+            <Label Text="{Binding WinLabel, Mode=OneWay}"
                    Style="{StaticResource BlackjackLabel}"
                    FontSize="30"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
@@ -122,9 +121,9 @@
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Height, Factor=0.65}"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
-                                                    Property=Width, Factor=0.125}"
+                                                    Property=Width, Factor=0.3}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
-                                                     Property=Width, Factor=0.06}"/>
+                                                     Property=Width, Factor=0.5}"/>
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
