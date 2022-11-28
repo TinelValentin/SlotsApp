@@ -8,7 +8,7 @@
              Title="Blackjack">
     <StackLayout>
         <RelativeLayout Margin="6, 20, 0, 0">
-            <Image Source="blackjack_11_club.png" Margin="0, 0, 0, 0"/>
+            <Image Source="c11.png" Margin="0, 0, 0, 0"/>
             <Image Source="blackjack_2_spade.png" Margin="40, 0, 0, 0"/>
             <Image Source="blackjack_3_club.png" Margin="80, 0, 0, 0"/>
             <Image Source="blackjack_9_heart.png" Margin="120, 0, 0, 0"/>

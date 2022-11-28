@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -29,6 +30,20 @@ namespace SevenSlots.View
         {
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
+        }
+
+        void move(Object sender, EventArgs e)
+        {
+            imagineZburatoare.TranslationY += 50;
+            Device.StartTimer(new TimeSpan(100), () =>
+            {
+                // do something every 60 seconds
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    imagineZburatoare.TranslationY += 20;
+                });
+                return true; // runs again, or false to stop
+            });
         }
     }
 }

@@ -2,15 +2,103 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:SevenSlots.ViewModel"
-             x:Class="SevenSlots.View.SlotMachineView">
+             x:Class="SevenSlots.View.SlotMachineView"
+             BackgroundColor="#400213">
     <ContentPage.BindingContext>
         <vm:SlotMachineViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RelativeLayout>
+            <Image Source="LongOrangeSlot.png" x:Name="imagineZburatoare"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width, Factor=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height, Factor=-12.87}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                    Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                     Property=Width, Factor=5}"
+                   />
+            <Image Source="LemonSlot.png"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width, Factor=0.25}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,         
+                                                Property=Height, Factor=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.25}"/>
+            <Image Source="GrapeSlot.png"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.5}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Height, Factor=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                    Property=Width, Factor=0.25}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                     Property=Width, Factor=0.25}"/>
+            <Button Text="xd" FontSize="100" Clicked="move"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                 Property=Width, Factor=0.75}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                 Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                     Property=Width, Factor=0.25}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                      Property=Width, Factor=0.25}"/>
+            <BoxView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                  Property=Width, Factor=0}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                  Property=Height, Factor=0.68}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                      Property=Width, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                       Property=Width, Factor=0.3}" 
+                     Color="#400213"/>
+            <Label Text="Wallet" 
+                   Grid.Row="1" 
+                   Style="{StaticResource BlackjackLabel}" 
+                   FontSize="30"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Height, Factor=0.65}"/>
+            <Label Text="Bet" 
+                   Grid.Row="1" 
+                   Grid.Column="1" 
+                   Style="{StaticResource BlackjackLabel}" 
+                   FontSize="30"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.25}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Height, Factor=0.65}"/>
+            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                      Property=Width, Factor=0.25}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                      Property=Height, Factor=0.80}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                          Property=Width, Factor=0.125}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                           Property=Width, Factor=0.06}"
+                         Orientation="Horizontal">
+                <Button Text="-"
+                        WidthRequest="50"
+                        Style="{StaticResource AddAndSubstractButton}"/>
+                <Button Text="+"
+                        WidthRequest="50"
+                        Style="{StaticResource AddAndSubstractButton}"/>
+            </StackLayout>
+            <Label Text="Win"
+                   Style="{StaticResource BlackjackLabel}"
+                   FontSize="30"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Width, Factor=0.75}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                Property=Height, Factor=0.65}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                    Property=Width, Factor=0.125}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+                                                     Property=Width, Factor=0.06}"/>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
