@@ -30,7 +30,8 @@ namespace SevenSlots.Services
 
         public async Task register(User user)
         {
-            user.Wallet = 500;
+            double defaultWalletValue = 500;
+            user.Wallet = defaultWalletValue;
             await userRepository.addUser(user);
         }
 
