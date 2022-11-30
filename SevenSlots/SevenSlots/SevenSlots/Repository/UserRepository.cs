@@ -36,7 +36,7 @@ namespace SevenSlots.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                Console.WriteLine("Exception caught while retrieving the users! Message :{0} ", e.Message);
             }
 
             return null;
@@ -59,7 +59,7 @@ namespace SevenSlots.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                Console.WriteLine("Exception caught while adding the user! Message :{0} ", e.Message);
             }
         }
 
@@ -81,7 +81,7 @@ namespace SevenSlots.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                Console.WriteLine("Exception caught while updating the wallet! Message :{0} ", e.Message);
             }
         }
     }

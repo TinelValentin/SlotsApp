@@ -30,11 +30,11 @@ namespace SevenSlots.View
         }
 
         //during page close setting back to portrait
-        protected override void OnDisappearing()
+        protected override async void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
-            (BindingContext as SlotMachineViewModel).UpdateWallet();
+            await (BindingContext as SlotMachineViewModel).UpdateWallet();
 
             //Save the wallet locally as well
             string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
@@ -65,15 +65,16 @@ namespace SevenSlots.View
         private double getWin(string img1, string img2, string img3)
         {
             double bet = (BindingContext as SlotMachineViewModel).Bet;
+            double baseWin = 30;
 
             if (img1 == "File: SpecialSlot.png" && img1 == img2 && img1 == img3)
             {
-                return bet * 150;
+                return bet * baseWin * 5;
             }
 
             if (img1 == "File: SevenSlot.png" && img1 == img2 && img1 == img3)
             {
-                return bet * 60;
+                return bet * baseWin * 2;
             }
 
             if((img1 == "File: SevenSlot.png" || img1 == "File: SpecialSlot.png") &&
@@ -83,25 +84,53 @@ namespace SevenSlots.View
                (img2 == "File: SevenSlot.png" || img2 == "File: SpecialSlot.png") &&
                (img3 == "File: SevenSlot.png" || img3 == "File: SpecialSlot.png"))
             {
-                return bet * 30;
+                return bet * baseWin;
             }
 
             if(img1 == img2 && (img3 == "File: SevenSlot.png" || img3 == "File: SpecialSlot.png") ||
                 img1 == img3 && (img2 == "File: SevenSlot.png" || img2 == "File: SpecialSlot.png") ||
                 img2 == img3 && (img1 == "File: SevenSlot.png" || img1 == "File: SpecialSlot.png"))
             {
-                return bet * 30;
+                return bet * baseWin;
             }
 
             if(img1 == img2 && img2 == img3)
             {
-                return bet * 30;
+                return bet * baseWin;
             }
 
             return 0;
         }
 
-        void move(Object sender, EventArgs e)
+        private void changeSlotsVisibility(bool isVisibile)
+        {
+            slot1.IsVisible = isVisibile;
+            slot2.IsVisible = isVisibile;
+            slot3.IsVisible = isVisibile;
+        }
+
+        private void changeSpinSlotsVisibility(bool isVisibile)
+        {
+            spinSlot1.IsVisible = isVisibile;
+            spinSlot2.IsVisible = isVisibile;
+            spinSlot3.IsVisible = isVisibile;
+        }
+
+        private void spinSlots(double value)
+        {
+            spinSlot1.TranslationY += value;
+            spinSlot2.TranslationY += value;
+            spinSlot3.TranslationY += value;
+        }
+
+        private void resetSpinSlots(double initialPosition)
+        {
+            spinSlot1.TranslationY = initialPosition;
+            spinSlot2.TranslationY = initialPosition;
+            spinSlot3.TranslationY = initialPosition;
+        }
+
+        async void play(Object sender, EventArgs e)
         {
             (sender as Button).IsEnabled = false;
 
@@ -115,13 +144,9 @@ namespace SevenSlots.View
             int randomSlot2 = rnd.Next(0, 15);
             int randomSlot3 = rnd.Next(0, 15);
 
-            slot1.IsVisible = false;
-            slot2.IsVisible = false;
-            slot3.IsVisible = false;
+            changeSlotsVisibility(false);
 
-            spinSlot1.IsVisible = true;
-            spinSlot2.IsVisible = true;
-            spinSlot3.IsVisible = true;
+            changeSpinSlotsVisibility(true);
 
             slot1.Source = numberToImageSource(randomSlot1);
             slot2.Source = numberToImageSource(randomSlot2);
@@ -139,39 +164,34 @@ namespace SevenSlots.View
             {
                 Device.BeginInvokeOnMainThread( () =>
                 {
-                    spinSlot1.TranslationY += 20;
-                    spinSlot2.TranslationY += 20;
-                    spinSlot3.TranslationY += 20;
+                    spinSlots(20);
                     counter += 1;
                 });
 
                 if(counter == 150)
                 {
-                    spinSlot1.IsVisible = false;
-                    spinSlot2.IsVisible = false;
-                    spinSlot3.IsVisible = false;
+                    changeSpinSlotsVisibility(false);
 
-                    slot1.IsVisible = true;
-                    slot2.IsVisible = true;
-                    slot3.IsVisible = true;
+                    changeSlotsVisibility(true);
 
-                    spinSlot1.TranslationY = initialY;
-                    spinSlot2.TranslationY = initialY;
-                    spinSlot3.TranslationY = initialY;
+                    resetSpinSlots(initialY);
 
                     bc.Win = win;
                     bc.Wallet += win;
                     bc.User.Wallet += win;
-                    bc.UpdateWallet();
 
                     (sender as Button).IsEnabled = true;    
+
                     return false;
                 }
 
                 return true; // runs again, or false to stop
             });
 
-            bc.UpdateWallet();
+            await bc.UpdateWallet();
+
+            string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
+            Session.GeneralSettings = userString;
         }
     }
 }

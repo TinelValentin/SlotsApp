@@ -65,21 +65,23 @@ namespace SevenSlots.ViewModel
         
         public string WinLabel { get => "Win: " + win.ToString(); }
 
+        private int betChangeValue = 10;
+
         private void BetIncrease(object param)
         {
-            Bet += 10;
+            Bet += betChangeValue;
         }
 
         private void BetDecrease(object param)
         {
-            if (Bet >= 10) { 
-                Bet -= 10;
+            if (Bet >= betChangeValue) { 
+                Bet -= betChangeValue;
             }
         }
 
         private IUserService userService;
 
-        public async void UpdateWallet()
+        public async Task UpdateWallet()
         {
             await userService.patchWallet(user.Id, user.Wallet);
         }
@@ -94,8 +96,9 @@ namespace SevenSlots.ViewModel
             {
                 BetIncreaseCommand = new Command(BetIncrease);
                 BetDecreaseCommand = new Command(BetDecrease);
-                Wallet = user.Wallet;
                 userService = DependencyService.Get<IUserService>();
+
+                Wallet = user.Wallet;
             }
             else
             {

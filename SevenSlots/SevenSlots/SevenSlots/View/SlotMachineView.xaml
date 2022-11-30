@@ -63,7 +63,7 @@
                                                     Property=Width, Factor=0.25}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                      Property=Width, Factor=0.25}"/>
-            <Button Text="xd" FontSize="100" Clicked="move"
+            <Button Text="xd" FontSize="100" Clicked="play"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                  Property=Width, Factor=0.75}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
