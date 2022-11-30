@@ -1,14 +1,17 @@
 ﻿using Android.Content.PM;
+using SevenSlots.Model;
 using SevenSlots.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SevenSlots.Helpers;
 
 namespace SevenSlots.View
 {
@@ -31,6 +34,11 @@ namespace SevenSlots.View
         {
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
+            (BindingContext as SlotMachineViewModel).UpdateWallet();
+
+            //Save the wallet locally as well
+            string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
+            Session.GeneralSettings = userString;
         }
         private string numberToImageSource(int nr)
         {
@@ -129,7 +137,7 @@ namespace SevenSlots.View
 
             Device.StartTimer(new TimeSpan(100), () =>
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread( () =>
                 {
                     spinSlot1.TranslationY += 20;
                     spinSlot2.TranslationY += 20;
@@ -154,12 +162,16 @@ namespace SevenSlots.View
                     bc.Win = win;
                     bc.Wallet += win;
                     bc.User.Wallet += win;
+                    bc.UpdateWallet();
 
                     (sender as Button).IsEnabled = true;    
                     return false;
                 }
+
                 return true; // runs again, or false to stop
             });
+
+            bc.UpdateWallet();
         }
     }
 }

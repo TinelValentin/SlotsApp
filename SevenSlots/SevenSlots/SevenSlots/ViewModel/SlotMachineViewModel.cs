@@ -1,9 +1,11 @@
 ﻿using SevenSlots.Helpers;
 using SevenSlots.Model;
+using SevenSlots.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -75,17 +77,25 @@ namespace SevenSlots.ViewModel
             }
         }
 
+        private IUserService userService;
+
+        public async void UpdateWallet()
+        {
+            await userService.patchWallet(user.Id, user.Wallet);
+        }
+
         public SlotMachineViewModel()
         {
             if (Session.GeneralSettings != "")
             {
                 user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
             }
-            if (user.Id != null)
+            if (user.Id != Guid.Empty)
             {
                 BetIncreaseCommand = new Command(BetIncrease);
                 BetDecreaseCommand = new Command(BetDecrease);
                 Wallet = user.Wallet;
+                userService = DependencyService.Get<IUserService>();
             }
             else
             {

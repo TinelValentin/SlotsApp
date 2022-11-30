@@ -33,5 +33,10 @@ namespace SevenSlots.Services
             user.Wallet = 500;
             await userRepository.addUser(user);
         }
+
+        public async Task patchWallet(Guid id, double wallet)
+        {
+            await userRepository.updateWallet(id, wallet);
+        }
     }
 }

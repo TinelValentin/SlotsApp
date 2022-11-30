@@ -62,5 +62,27 @@ namespace SevenSlots.Services
                 Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
             }
         }
+
+        public async Task updateWallet(Guid id, double wallet)
+        {
+            try
+            {
+                client = new HttpClient(httpClientHandler, true);
+                HttpResponseMessage response = await client.SendAsync(
+                    new HttpRequestMessage(
+                        new HttpMethod("PATCH"),
+                        baseUrl + "/User?id=" + id.ToString() + "&wallet=" + wallet.ToString()
+                        )
+                );
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Adding the user failed: {0}", response.Content.ReadAsStringAsync());
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+            }
+        }
     }
 }
