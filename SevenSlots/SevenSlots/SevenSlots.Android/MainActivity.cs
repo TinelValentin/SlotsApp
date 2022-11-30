@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Xamarin.Forms;
+using SevenSlots.View;
 
 namespace SevenSlots.Droid
 {
@@ -14,7 +16,20 @@ namespace SevenSlots.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 166, 5, 0));
+
+            MessagingCenter.Subscribe<SlotMachineView>(this, "AllowLandscape", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Landscape;
+            });
+
+            //during page close setting back to portrait
+            MessagingCenter.Subscribe<SlotMachineView>(this, "PreventLandscape", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Portrait;
+            });
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -24,6 +39,11 @@ namespace SevenSlots.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override void OnBackPressed()
+        {
+            Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
         }
     }
 }

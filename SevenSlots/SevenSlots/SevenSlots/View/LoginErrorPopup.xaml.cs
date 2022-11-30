@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Pages;
 
 namespace SevenSlots.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OtherPage : ContentPage
+    public partial class LoginErrorPopup : PopupPage
     {
-        public OtherPage()
+        public LoginErrorPopup()
         {
             InitializeComponent();
         }

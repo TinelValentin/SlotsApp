@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="SevenSlots.View.SignUpView"
-             xmlns:controls="clr-namespace:SevenSlots.Controls;assembly=SevenSlots">
+             xmlns:controls="clr-namespace:SevenSlots.Controls;assembly=SevenSlots" 
+             xmlns:viewmodel="clr-namespace:SevenSlots.ViewModel" 
+             x:DataType="viewmodel:SignUpViewModel">
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
             <GradientStop Color="#e36f6f"  Offset="0.0"/>
@@ -51,22 +53,23 @@
                        x:Name="usernameFrame"
                         />
                             <controls:CustomInputBox
-                             HeightRequest="45"
-                             WidthRequest="300"
-                             x:Name="usernameInput" VerticalOptions="FillAndExpand"
-                             Placeholder="Username"
-                             Text="{Binding Text,Mode=TwoWay}"
-                             Margin="10,0,0,0" >
+                                TextColor="Black"
+                                HeightRequest="45"
+                                WidthRequest="300"
+                                x:Name="usernameInput" VerticalOptions="FillAndExpand"
+                                Placeholder="Username"
+                                Text="{Binding User.Username,Mode=TwoWay}"
+                                Margin="10, 0, 0, 0" >
                                 <Entry.Behaviors>
                                     <xct:MultiValidationBehavior 
                                          InvalidStyle="{StaticResource InvalidStyle}">
-                                         <xct:CharactersValidationBehavior 
+                                        <xct:CharactersValidationBehavior 
                                          CharacterType="NonAlphanumericSymbol" 
                                          MaximumCharacterCount="0" />
-                                         <xct:CharactersValidationBehavior 
+                                        <xct:CharactersValidationBehavior 
                                          CharacterType="Whitespace" 
                                          MaximumCharacterCount="0" />
-                                          <xct:CharactersValidationBehavior 
+                                        <xct:CharactersValidationBehavior 
                                          CharacterType="Digit"
                                          MaximumCharacterCount="0" />
                                     </xct:MultiValidationBehavior>
@@ -81,31 +84,32 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="passwordFrame"/>
-                        <controls:CustomInputBox
-                        HeightRequest="45"
-                        WidthRequest="300"
-                        x:Name="passwordInput" IsPassword="True" VerticalOptions="FillAndExpand"
-                        Placeholder="Password"
-                        Text="{Binding Text,Mode=TwoWay}"
-                        Margin="10,0,0,0">
+                        <controls:CustomInputBox 
+                            TextColor="Black"
+                            HeightRequest="45"
+                            WidthRequest="300"
+                            x:Name="passwordInput" IsPassword="True" VerticalOptions="FillAndExpand"
+                            Placeholder="Password"
+                            Text="{Binding User.Password, Mode=TwoWay}"
+                            Margin="10, 0, 0, 0">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                  InvalidStyle="{StaticResource InvalidStyle}">
-                                 <xct:TextValidationBehavior
+                                    <xct:TextValidationBehavior
                                  MinimumLength="6" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                  CharacterType="Digit"
                                  MinimumCharacterCount="1" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                  CharacterType="LowercaseLetter" 
                                  MinimumCharacterCount="1" />
-                                 <xct:CharactersValidationBehavior
+                                    <xct:CharactersValidationBehavior
                                  CharacterType="UppercaseLetter" 
                                  MinimumCharacterCount="1" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                  CharacterType="NonAlphanumericSymbol" 
                                  MinimumCharacterCount="1" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                  CharacterType="Whitespace" 
                                  MaximumCharacterCount="0" />
                                 </xct:MultiValidationBehavior>
@@ -117,19 +121,20 @@
                 <StackLayout Style="{StaticResource InputStackLayout}">
                     <Image Source="email.png" WidthRequest="30"/>
                     <Grid>
-                        <Frame Style="{StaticResource InputFrame}"
-                       x:Name="emailFrame"/>
+                        <Frame Style="{StaticResource InputFrame}" 
+                               x:Name="emailFrame"/>
                         <controls:CustomInputBox
-                        HeightRequest="45"
-                        WidthRequest="300"
-                        x:Name="emailInput" VerticalOptions="FillAndExpand"
-                        Placeholder="E-mail"
-                        Text="{Binding Text,Mode=TwoWay}"
-                        Margin="10,0,0,0">
+                            TextColor="Black"
+                            HeightRequest="45"
+                            WidthRequest="300"
+                            x:Name="emailInput" VerticalOptions="FillAndExpand"
+                            Placeholder="E-mail"
+                            Text="{Binding User.Email, Mode=TwoWay}"
+                            Margin="10,0,0,0">
                             <Entry.Behaviors>
-                                <xct:EmailValidationBehavior
-                                DecorationFlags="Trim"
-                                InvalidStyle="{StaticResource InvalidStyle}" />
+                                <xct:EmailValidationBehavior 
+                                    DecorationFlags="Trim"
+                                    InvalidStyle="{StaticResource InvalidStyle}" />
                             </Entry.Behaviors>
                         </controls:CustomInputBox>
                     </Grid>
@@ -139,26 +144,24 @@
                     <Image Source="name.png" WidthRequest="30"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
-                       x:Name="firstNameFrame"/>
+                               x:Name="firstNameFrame"/>
                         <controls:CustomInputBox
-                        HeightRequest="45"
-                        WidthRequest="300"
-                        x:Name="firstNameInput" VerticalOptions="FillAndExpand"
-                        Placeholder="First Name"
-                        Text="{Binding Text,Mode=TwoWay}"
-                        Margin="10,0,0,0">
+                            TextColor="Black"
+                            HeightRequest="45"
+                            WidthRequest="300"
+                            x:Name="firstNameInput" 
+                            VerticalOptions="FillAndExpand"
+                            Placeholder="First Name"
+                            Text="{Binding User.FirstName, Mode=TwoWay}"
+                            Margin="10, 0, 0, 0">
                             <Entry.Behaviors>
-                                <xct:MultiValidationBehavior 
-                                InvalidStyle="{StaticResource InvalidStyle}">
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="NonAlphanumericSymbol" 
-                                MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Whitespace" 
-                                MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Digit"
-                                MaximumCharacterCount="0" />
+                                <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
+                                    <xct:CharactersValidationBehavior CharacterType="NonAlphanumericSymbol" 
+                                                                      MaximumCharacterCount="0" />
+                                    <xct:CharactersValidationBehavior CharacterType="Whitespace" 
+                                                                      MaximumCharacterCount="0" />
+                                    <xct:CharactersValidationBehavior CharacterType="Digit"
+                                                                      MaximumCharacterCount="0" />
                                 </xct:MultiValidationBehavior>
                             </Entry.Behaviors>
                         </controls:CustomInputBox>
@@ -171,22 +174,23 @@
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="lastNameFrame"/>
                         <controls:CustomInputBox
+                        TextColor="Black"
                         HeightRequest="45"
                         WidthRequest="300"
                         x:Name="lastNameInput" VerticalOptions="FillAndExpand"
                         Placeholder="Last Name"
-                        Text="{Binding Text,Mode=TwoWay}"
+                        Text="{Binding User.LastName, Mode=TwoWay}"
                         Margin="10,0,0,0">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="NonAlphanumericSymbol" 
                                 MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Whitespace" 
                                 MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Digit"
                                 MaximumCharacterCount="0" />
                                 </xct:MultiValidationBehavior>
@@ -201,28 +205,29 @@
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="phoneFrame"/>
                         <controls:CustomInputBox
+                         TextColor="Black"
                          HeightRequest="45"
                          WidthRequest="300"
                          x:Name="phoneInput" VerticalOptions="FillAndExpand"
                          Placeholder="Phone Number"
-                         Text="{Binding Text,Mode=TwoWay}"
+                         Text="{Binding User.Phone, Mode=TwoWay}"
                          Margin="10,0,0,0">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Digit"
                                 MinimumCharacterCount="10" />
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Digit"
                                 MaximumCharacterCount="10" />
-                                <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Whitespace" 
                                 MaximumCharacterCount="0" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="Letter"
                                 MaximumCharacterCount="0" />
-                                 <xct:CharactersValidationBehavior 
+                                    <xct:CharactersValidationBehavior 
                                 CharacterType="NonAlphanumericSymbol" 
                                 MaximumCharacterCount="0" />
                                 </xct:MultiValidationBehavior>
@@ -234,34 +239,34 @@
                 <StackLayout Style="{StaticResource InputStackLayout}">
                     <Image Source="ssn.png" WidthRequest="30"/>
                     <Grid>
-                        <Frame Style="{StaticResource InputFrame}"
-                       x:Name="SSNFrame"/>
+                        <Frame Style="{StaticResource InputFrame}" x:Name="SSNFrame"/>
                         <controls:CustomInputBox
-                        HeightRequest="45"
-                        WidthRequest="300"
-                        x:Name="SSNInput" VerticalOptions="FillAndExpand"
-                        Placeholder="Social Security Number"
-                        PlaceholderColor="DarkGray"
-                        Text="{Binding Text,Mode=TwoWay}"
-                        Margin="10,0,0,0">
+                            TextColor="Black"
+                            HeightRequest="45"
+                            WidthRequest="300"
+                            x:Name="SSNInput" 
+                            VerticalOptions="FillAndExpand"
+                            Placeholder="Social Security Number"
+                            PlaceholderColor="DarkGray"
+                            Text="{Binding User.SSN, Mode=TwoWay}"
+                            Margin="10, 0, 0, 0">
                             <Entry.Behaviors>
-                                <xct:MultiValidationBehavior 
-                                InvalidStyle="{StaticResource InvalidStyle}">
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Digit"
-                                MinimumCharacterCount="13" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Digit"
-                                MaximumCharacterCount="13" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Whitespace" 
-                                MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="Letter"
-                                MaximumCharacterCount="0" />
-                                <xct:CharactersValidationBehavior 
-                                CharacterType="NonAlphanumericSymbol" 
-                                MaximumCharacterCount="0" />
+                                <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
+                                    <xct:CharactersValidationBehavior 
+                                        CharacterType="Digit"
+                                        MinimumCharacterCount="13" />
+                                    <xct:CharactersValidationBehavior 
+                                        CharacterType="Digit"
+                                        MaximumCharacterCount="13" />
+                                    <xct:CharactersValidationBehavior 
+                                        CharacterType="Whitespace" 
+                                        MaximumCharacterCount="0" />
+                                    <xct:CharactersValidationBehavior 
+                                        CharacterType="Letter"
+                                        MaximumCharacterCount="0" />
+                                    <xct:CharactersValidationBehavior 
+                                        CharacterType="NonAlphanumericSymbol" 
+                                        MaximumCharacterCount="0" />
                                 </xct:MultiValidationBehavior>
                             </Entry.Behaviors>
                         </controls:CustomInputBox>
@@ -270,14 +275,17 @@
                 <BoxView HeightRequest="10"/>
                 <StackLayout>
                     <Button Text="Sign Up"
-                WidthRequest="200"
-                HeightRequest="50"
-                HorizontalOptions="Center"
-                Style="{StaticResource SignButton}"/>
+                        WidthRequest="200"
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        CommandParameter="{Binding User}"
+                        Command="{Binding RegisterCommand}"
+                        Style="{StaticResource SignButton}"/>
                     <Button Text="Cancel"
-                WidthRequest="200"
-                HorizontalOptions="Center"
-                Style="{StaticResource SignButton}"/>
+                        WidthRequest="200"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource SignButton}"
+                        Command="{Binding RegisterCancelCommand}"/>
                 </StackLayout>
             </StackLayout>
         </Frame>

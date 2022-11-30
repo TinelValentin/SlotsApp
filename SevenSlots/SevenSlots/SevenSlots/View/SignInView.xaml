@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:sevenslots1="clr-namespace:SevenSlots.View" 
-             x:DataType="sevenslots1:SignInView"
+             xmlns:sevenslots1="clr-namespace:SevenSlots.View"
+             x:DataType="vm:SignInViewModel"
              x:Class="SevenSlots.View.SignInView"
              xmlns:controls="clr-namespace:SevenSlots.Controls;assembly=SevenSlots"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             >
+             xmlns:vm="clr-namespace:SevenSlots.ViewModel">
+    <ContentPage.BindingContext>
+        <vm:SignInViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
-            <GradientStop Color="#802525"  Offset="0.0"/>
-            <GradientStop Color="#5e1919"  Offset="0.1"/>
+            <GradientStop Color="#802525" Offset="0.0"/>
+            <GradientStop Color="#5e1919" Offset="0.1"/>
             <GradientStop Color="#8f2727" Offset="0.3"/>
             <GradientStop Color="#591111" Offset="0.5"/>
             <GradientStop Color="#8f2727" Offset="0.7"/>
-            <GradientStop Color="#3d1313"  Offset="1.0"/>
+            <GradientStop Color="#3d1313" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Resources>
@@ -29,10 +32,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-        <Image Source="casinoBackground4.jpg" WidthRequest="400" Margin="-10,0,0,0" Opacity="0.6">
+        <Image Source="casinoBackground4.jpg" WidthRequest="400" Margin="-10 ,0, 0, 0" Opacity="0.6">
             <Image.Clip>
                 <EllipseGeometry                                
-                    Center="205,0"
+                    Center="205, 0"
                     RadiusX="180"
                     RadiusY="200"/>
             </Image.Clip>
@@ -44,57 +47,85 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="1, 0"
-                                                        EndPoint="1, 1">
+                             EndPoint="1, 1">
                                 <GradientStop Color="#4f0a0a" 
-                                                            Offset="0.0"/>
+                                 Offset="0.0"/>
                                 <GradientStop Color="#802121"
-                                                            Offset="0.3"/>
+                                 Offset="0.3"/>
                                 <GradientStop Color="#b04343"
-                                                            Offset="0.7"/>
+                                 Offset="0.7"/>
                                 <GradientStop Color="#e36f6f"
-                                                            Offset="1.0"/>
+                                 Offset="1.0"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Frame.Resources>
-            <Grid HeightRequest="380" WidthRequest="340" >
+            <Grid HeightRequest="380" WidthRequest="340">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Image Source ="user.png" WidthRequest="100" HorizontalOptions="Center" Grid.Row="0" Margin="0,-50,0,0"/>
+                <Image Source="user.png"
+                       WidthRequest="100"
+                       HorizontalOptions="Center"
+                       Grid.Row="0"
+                       Margin="0, -50, 0, 0"/>
                 <Frame Grid.Row="1" Style="{StaticResource InputFrame}"
                        xct:ShadowEffect.Color="White"
                        xct:ShadowEffect.Radius="10"
-                       x:Name="SSNFrame">
+                       x:Name="UsernameFrame">
                     <controls:CustomInputBox
+                        TextColor="Black"
                         HeightRequest="55"
                         WidthRequest="300"
-                        x:Name="SSNInput" VerticalOptions="FillAndExpand"
+                        x:Name="UsernameInput" 
+                        VerticalOptions="FillAndExpand"
                         Placeholder="Username"
-                        PlaceholderColor="DarkGray" >
+                        PlaceholderColor="DarkGray"
+                        Text="{Binding User.Username, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
                 <Frame Grid.Row="2" Style="{StaticResource InputFrame}"
                        x:Name="PasswordFrame" xct:ShadowEffect.Color="White"
                        xct:ShadowEffect.Radius="10">
                     <controls:CustomInputBox
+                        TextColor="Black"
                         HeightRequest="55"
                         WidthRequest="300"
                         x:Name="PasswordInput" VerticalOptions="FillAndExpand"
                         Placeholder="Password"
-                        PlaceholderColor="DarkGray" >
+                        PlaceholderColor="DarkGray"
+                        Text="{Binding User.Password, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
             </Grid>
         </Frame>
-        <Button  WidthRequest="180" HeightRequest="50" Margin="0,-40,0,0" HorizontalOptions="Center"
-                CornerRadius="30" Text="Login" FontSize="20" FontAttributes="Bold" xct:ShadowEffect.Color="Black"
-                xct:ShadowEffect.Radius="10" Background="#3d1313" TextColor="White"/>
-        <Button WidthRequest="200" HeightRequest="50" Margin="0,0,0,0" HorizontalOptions="Center"
-                CornerRadius="30" Text="Forgot Password" FontSize="15" FontAttributes="Bold" Background="Transparent" TextColor="White"/>
-    </StackLayout>
-    </StackLayout>
+        <Button  WidthRequest="180"
+                 HeightRequest="50"
+                 Margin="0, -40, 0, 0"
+                 HorizontalOptions="Center"
+                 CornerRadius="30"
+                 Text="Login"
+                 FontSize="20"
+                 FontAttributes="Bold"
+                 xct:ShadowEffect.Color="Black"
+                 xct:ShadowEffect.Radius="10"
+                 Background="#3d1313"
+                 TextColor="White"
+                 CommandParameter="{Binding User}"
+                 Command="{Binding LoginCommand}"/>
+        <Button WidthRequest="200"
+                HeightRequest="50"
+                Margin="0, 0, 0, 0"
+                HorizontalOptions="Center"
+                CornerRadius="30"
+                Text="Forgot Password"
+                FontSize="15"
+                FontAttributes="Bold"
+                Background="Transparent"
+                TextColor="White"/>
+        </StackLayout>
+   </StackLayout>
 </ContentPage>

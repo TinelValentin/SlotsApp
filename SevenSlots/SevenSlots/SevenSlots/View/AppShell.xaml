@@ -9,18 +9,32 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="#470204  "/>
+                <Setter Property="Shell.BackgroundColor" Value="#470204"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
         </ResourceDictionary>
     </Shell.Resources>
     <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Home" IsTabStop="True" ContentTemplate="{DataTemplate views:HomePage}"/>
-        <ShellContent Title="Blackjack" IsTabStop="True" ContentTemplate="{DataTemplate views:BlackjackView}"/>
-        <ShellContent Title="Other" IsTabStop="True" ContentTemplate="{DataTemplate views:OtherPage}"/>
-        <ShellContent Title="Sign In" IsTabStop="True" ContentTemplate="{DataTemplate views:SignInView}"/>
-        <ShellContent Title="Sign Up" IsTabStop="True" ContentTemplate="{DataTemplate views:SignUpView}"/>
+        <ShellContent Title="Home" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:HomePage}"
+                      Route="Home"/>
+        <ShellContent Title="Sign In" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SignInView}"
+                      Route="Sign In"/>
+        <ShellContent Title="Sign Up" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SignUpView}"
+                      Route="Sign Up"/>
+        <ShellContent Title="Blackjack" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:BlackjackView}"
+                      Route="Blackjack"/>
+        <ShellContent Title="Slot Machine" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:SlotMachineView}"
+                      Route="Slot Machine"/>
     </FlyoutItem>
-    <ShellContent Title="About" ContentTemplate="{DataTemplate views:OtherPage}"/>
 </Shell>
