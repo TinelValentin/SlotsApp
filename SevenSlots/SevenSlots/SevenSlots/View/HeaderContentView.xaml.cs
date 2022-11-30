@@ -1,4 +1,4 @@
-﻿using Android.Provider;
+﻿//using Android.Provider;
 using SevenSlots.Model;
 using System;
 using System.Collections.Generic;
