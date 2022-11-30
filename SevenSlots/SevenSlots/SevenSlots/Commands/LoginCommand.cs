@@ -1,5 +1,4 @@
-﻿//using Android.Content;
-using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Services;
 using SevenSlots.Helpers;
 using SevenSlots.Model;
 using SevenSlots.Services;
