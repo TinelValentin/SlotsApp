@@ -15,5 +15,7 @@ namespace Backend.Interfaces
         Task<bool> Update(Guid id, User user);
 
         Task<bool> Delete(Guid id);
+
+        Task<bool> PatchWallet(Guid id, double wallet);
     }
 }

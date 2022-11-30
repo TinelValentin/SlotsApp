@@ -36,7 +36,7 @@ namespace SevenSlots.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                Console.WriteLine("Exception caught while retrieving the users! Message :{0} ", e.Message);
             }
 
             return null;
@@ -59,7 +59,29 @@ namespace SevenSlots.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Exception Caught! Message :{0} ", e.Message);
+                Console.WriteLine("Exception caught while adding the user! Message :{0} ", e.Message);
+            }
+        }
+
+        public async Task updateWallet(Guid id, double wallet)
+        {
+            try
+            {
+                client = new HttpClient(httpClientHandler, true);
+                HttpResponseMessage response = await client.SendAsync(
+                    new HttpRequestMessage(
+                        new HttpMethod("PATCH"),
+                        baseUrl + "/User?id=" + id.ToString() + "&wallet=" + wallet.ToString()
+                        )
+                );
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Adding the user failed: {0}", response.Content.ReadAsStringAsync());
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Exception caught while updating the wallet! Message :{0} ", e.Message);
             }
         }
     }
