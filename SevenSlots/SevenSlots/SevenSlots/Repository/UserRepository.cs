@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Xamarin.Android.Net;
 
 namespace SevenSlots.Services
 {
