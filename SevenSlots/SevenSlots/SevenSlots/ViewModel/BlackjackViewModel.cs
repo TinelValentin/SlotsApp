@@ -67,6 +67,7 @@ namespace SevenSlots.ViewModel
         private bool _isDealVisible;
         private bool _isNextRoundVisible;
         private const int _aceAdjustment = 10;
+        private const int _betModifier = 10;
 
         #endregion
 
@@ -374,13 +375,13 @@ namespace SevenSlots.ViewModel
         }
         private void BetIncrease(object param)
         {
-            Player.TotalBet += 10;
-            OwnedMoney -= 10;
+            Player.TotalBet += _betModifier;
+            OwnedMoney -= _betModifier;
         }
         private void BetDecrease(object param)
         {
-            Player.TotalBet -= 10;
-            OwnedMoney += 10;
+            Player.TotalBet -= _betModifier;
+            OwnedMoney += _betModifier;
         }
 
         #endregion
