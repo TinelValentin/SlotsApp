@@ -89,5 +89,18 @@ namespace Backend.Services
             return false;
 
         }
+
+        public async Task<bool> PatchWallet(Guid id, double wallet)
+        {
+            var result = await _users.UpdateOneAsync(u => u.Id == id, 
+                          Builders<User>.Update.Set(u => u.Wallet, wallet));
+
+            if (!result.IsAcknowledged)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

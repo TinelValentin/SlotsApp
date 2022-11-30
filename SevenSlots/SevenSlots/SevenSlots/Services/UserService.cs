@@ -13,6 +13,9 @@ namespace SevenSlots.Services
     internal class UserService : IUserService
     {
         IUserRepository userRepository;
+
+        const double defaultWalletValue = 500;
+
         public UserService()
         {
             userRepository = DependencyService.Get<IUserRepository>();
@@ -30,7 +33,13 @@ namespace SevenSlots.Services
 
         public async Task register(User user)
         {
+            user.Wallet = defaultWalletValue;
             await userRepository.addUser(user);
+        }
+
+        public async Task patchWallet(Guid id, double wallet)
+        {
+            await userRepository.updateWallet(id, wallet);
         }
     }
 }

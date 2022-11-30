@@ -11,5 +11,7 @@ namespace SevenSlots.Services
         Task<User> login(string username, string password);
 
         Task register(User user);
+
+        Task patchWallet(Guid id, double wallet);
     }
 }
