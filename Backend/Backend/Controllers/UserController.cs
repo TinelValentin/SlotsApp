@@ -71,5 +71,16 @@ namespace Backend.Controllers
 
             return BadRequest("No user found with that id");
         }
+
+        [HttpPatch]
+        public async Task<IActionResult> PatchWallet([FromQuery] Guid id, [FromQuery] double wallet)
+        {
+            if (await _userService.PatchWallet(id, wallet))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }
