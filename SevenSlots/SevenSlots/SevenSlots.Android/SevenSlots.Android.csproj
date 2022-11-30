@@ -320,5 +320,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\blackjack_13_spade.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable\crashGraph.png" />
+    <AndroidResource Include="Resources\drawable\graph.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

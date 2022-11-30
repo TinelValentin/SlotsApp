@@ -11,7 +11,7 @@ namespace SevenSlots
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new CrashView();
         }
 
         protected override void OnStart()
