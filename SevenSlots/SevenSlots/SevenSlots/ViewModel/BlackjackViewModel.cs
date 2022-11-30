@@ -36,7 +36,7 @@ namespace SevenSlots.ViewModel
         public BlackjackViewModel()
         {
             TotalBet = 0;
-            OwnedMoney = 12345;
+            OwnedMoney = 500;
             TotalWin = 0;
             InitializeCommands();
             InitializeGame();
@@ -374,12 +374,12 @@ namespace SevenSlots.ViewModel
         }
         private void BetIncrease(object param)
         {
-            TotalBet += 10;
+            Player.TotalBet += 10;
             OwnedMoney -= 10;
         }
         private void BetDecrease(object param)
         {
-            TotalBet -= 10;
+            Player.TotalBet -= 10;
             OwnedMoney += 10;
         }
 
