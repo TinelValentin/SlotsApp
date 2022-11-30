@@ -8,18 +8,22 @@
              Title="Blackjack">
     <StackLayout>
         <RelativeLayout Margin="6, 20, 0, 0">
-            <Image Source="h11.png" Margin="0, 0, 0, 0"/>
-            <Image Source="s02.png" Margin="40, 0, 0, 0"/>
-            <Image Source="c03.png" Margin="80, 0, 0, 0"/>
-            <Image Source="h09.png" Margin="120, 0, 0, 0"/>
-            <Image Source="d05.png" Margin="160, 0, 0, 0"/>
-            <Image Source="h12.png" Margin="200, 0, 0, 0"/>
-            <Image Source="h07.png" Margin="240, 0, 0, 0"/>
-            <Image Source="c08.png" Margin="280, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[0]}" Margin="0, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[1]}" Margin="40, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[2]}" Margin="80, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[3]}" Margin="120, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[4]}" Margin="160, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[5]}" Margin="200, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[6]}" Margin="240, 0, 0, 0"/>
+            <Image Source="{Binding Dealer.Card[7]}" Margin="280, 0, 0, 0"/>
         </RelativeLayout>
 
-        <Image Source="b1fv.png" Margin="0, 0, 5, 50" HorizontalOptions="End"/>
+        <Label Text="{Binding Dealer.CardTotal}" Style="{StaticResource BlackjackLabel}" Margin="10, 0, 0, 50"/>
 
+        <Image Source="b1fv.png" Margin="0, 0, 10, 30" HorizontalOptions="End"/>
+
+        <Label Text="{Binding Player.CardTotal}" Style="{StaticResource BlackjackLabel}" Margin="10, 0, 0, 0"/>
+        
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 0, 0, 5">
             <Button Text="HIT" Style="{StaticResource BlackjackButton}" Command="{Binding HitCommand}" IsEnabled="{Binding CanClick}"/>
             <Button Text="STAND" Style="{StaticResource BlackjackButton}" Command="{Binding StandCommand}" IsEnabled="{Binding CanClick}"/>
@@ -28,14 +32,14 @@
         </StackLayout>
 
         <RelativeLayout Margin="6, 0, 0, 0">
-            <Image Source="c11.png" Margin="0, 0, 0, 0"/>
-            <Image Source="c02.png" Margin="40, 0, 0, 0"/>
-            <Image Source="c01.png" Margin="80, 0, 0, 0"/>
-            <Image Source="h04.png" Margin="120, 0, 0, 0"/>
-            <Image Source="d13.png" Margin="160, 0, 0, 0"/>
-            <Image Source="s06.png" Margin="200, 0, 0, 0"/>
-            <Image Source="c07.png" Margin="240, 0, 0, 0"/>
-            <Image Source="d12.png" Margin="280, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[0]}" Margin="0, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[1]}" Margin="40, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[2]}" Margin="80, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[3]}" Margin="120, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[4]}" Margin="160, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[5]}" Margin="200, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[6]}" Margin="240, 0, 0, 0"/>
+            <Image Source="{Binding Player.Card[7]}" Margin="280, 0, 0, 0"/>
         </RelativeLayout>
 
         <Grid HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 10">

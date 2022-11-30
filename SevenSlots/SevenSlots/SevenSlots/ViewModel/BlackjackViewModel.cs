@@ -72,6 +72,16 @@ namespace SevenSlots.ViewModel
 
         #region Public Fields and Commands...
 
+        public Dealer Dealer
+        {
+            get { return _dealer; }
+            set { _dealer = value; OnPropertyChanged(); }
+        }
+        public Player Player
+        {
+            get { return _player; }
+            set { _player = value; OnPropertyChanged(); }
+        }
         public int TotalBet
         {
             get { return _totalBet; }
@@ -133,7 +143,8 @@ namespace SevenSlots.ViewModel
         private void InitializeGame()
         {
             //_currentPlayer = _gameBusiness.GetPlayer(_gameBusiness.UserName);
-            _currentPlayer.Name = "John";
+            _currentPlayer = new Player("John", OwnedMoney);
+            //_currentPlayer.Name = "John";
 
             _player = _currentPlayer;
             _dealer = new Dealer("Mark");
