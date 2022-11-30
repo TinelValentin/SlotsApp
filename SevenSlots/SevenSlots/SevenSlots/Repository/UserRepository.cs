@@ -44,6 +44,9 @@ namespace SevenSlots.Services
 
         public async Task addUser(User newUser)
         {
+            double defaultWalletValue = 500;
+            newUser.Wallet = defaultWalletValue;
+
             try
             {
                 client = new HttpClient(httpClientHandler, true);
