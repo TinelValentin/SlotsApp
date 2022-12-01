@@ -19,5 +19,18 @@ namespace SevenSlots.View
         {
             InitializeComponent();
         }
+
+        private async void logout(object sender, EventArgs e)
+        {
+            bool answer = await App.Current.MainPage.DisplayAlert("Log out",
+                                              "Are you sure you want to log out?",
+                                              "Yes",
+                                              "No");
+            if (answer)
+            {
+                Session.GeneralSettings = "";
+                App.Current.MainPage = new AppShell();
+            }
+        }
     }
 }
