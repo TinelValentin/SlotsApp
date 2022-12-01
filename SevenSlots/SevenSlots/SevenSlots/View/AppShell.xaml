@@ -15,7 +15,9 @@
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
         </ResourceDictionary>
     </Shell.Resources>
-    <FlyoutItem Title="MyTabApp" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem Title="MyTabApp" 
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home" 
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:HomePage}"
@@ -36,5 +38,6 @@
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:SlotMachineView}"
                       Route="Slot Machine"/>
+        
     </FlyoutItem>
 </Shell>
