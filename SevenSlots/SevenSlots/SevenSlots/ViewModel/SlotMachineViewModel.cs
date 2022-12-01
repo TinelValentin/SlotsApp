@@ -34,9 +34,9 @@ namespace SevenSlots.ViewModel
             }
         }
 
-        public string WalletLabel{ get => "Wallet: " + wallet.ToString(); }
+        public string WalletLabel { get => "Wallet: " + wallet.ToString(); }
 
-        private double bet = 0;
+        private double bet = 5;
         public double Bet
         {
             get => bet;
@@ -62,10 +62,10 @@ namespace SevenSlots.ViewModel
                 OnPropertyChanged(nameof(WinLabel));
             }
         }
-        
+
         public string WinLabel { get => "Win: " + win.ToString(); }
 
-        private int betChangeValue = 10;
+        private int betChangeValue = 5;
 
         private void BetIncrease(object param)
         {
@@ -74,7 +74,8 @@ namespace SevenSlots.ViewModel
 
         private void BetDecrease(object param)
         {
-            if (Bet >= betChangeValue) { 
+            if (Bet - betChangeValue > 0)
+            {
                 Bet -= betChangeValue;
             }
         }
@@ -85,24 +86,35 @@ namespace SevenSlots.ViewModel
         {
             await userService.patchWallet(user.Id, user.Wallet);
         }
+        private bool isLoggedIn;
 
+        public bool IsLoggedIn
+        {
+            get { return isLoggedIn; }
+            set
+            {
+                isLoggedIn = value;
+                OnPropertyChanged(nameof(IsLoggedIn));
+            }
+        }
         public SlotMachineViewModel()
         {
             if (Session.GeneralSettings != "")
             {
+                isLoggedIn = true;
+
                 user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
-            }
-            if (user.Id != Guid.Empty)
-            {
+
                 BetIncreaseCommand = new Command(BetIncrease);
                 BetDecreaseCommand = new Command(BetDecrease);
+
                 userService = DependencyService.Get<IUserService>();
 
                 Wallet = user.Wallet;
             }
             else
             {
-                wallet = 0;
+                isLoggedIn= false;
             }
         }
     }
