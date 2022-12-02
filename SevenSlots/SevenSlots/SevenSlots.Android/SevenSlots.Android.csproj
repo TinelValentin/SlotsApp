@@ -352,5 +352,8 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\audio\PlaySlot.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\audio\WinSlot.mp3" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

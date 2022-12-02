@@ -141,6 +141,16 @@ namespace SevenSlots.View
             player.Prepare();
         }
 
+        void winSfx()
+        {
+            MediaPlayer player = new MediaPlayer();
+            player.Reset();
+            var fd = Android.App.Application.Context.Assets.OpenFd("audio/WinSlot.mp3");
+            player.SetDataSource(fd.FileDescriptor, fd.StartOffset, fd.Length);
+            player.Prepared += (s, e) => { player.Start(); };
+            player.Prepare();
+        }
+
         async void play(Object sender, EventArgs e)
         {
             SlotMachineViewModel bc = BindingContext as SlotMachineViewModel;
@@ -177,7 +187,6 @@ namespace SevenSlots.View
                                 slot2.Source.ToString(),
                                 slot3.Source.ToString());
 
-
             int counter = 0;
             double initialY = spinSlot1.TranslationY;
 
@@ -191,6 +200,11 @@ namespace SevenSlots.View
 
                 if(counter == 150)
                 {
+                    if(win > 0)
+                    {
+                        winSfx();
+                    }
+
                     changeSpinSlotsVisibility(false);
 
                     changeSlotsVisibility(true);
