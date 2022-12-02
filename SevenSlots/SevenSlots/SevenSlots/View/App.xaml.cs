@@ -13,8 +13,10 @@ namespace SevenSlots
             DependencyService.Register<IUserRepository, UserRepository>();
             DependencyService.Register<IUserService, UserService>();
             InitializeComponent();
+           
 
-            MainPage = new CrashView();
+
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()
