@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SevenSlots.Helpers;
+using Android.Media;
 
 namespace SevenSlots.View
 {
@@ -130,17 +131,29 @@ namespace SevenSlots.View
             spinSlot3.TranslationY = initialPosition;
         }
 
+        void playSfx()
+        {
+            MediaPlayer player = new MediaPlayer();
+            player.Reset();
+            var fd = Android.App.Application.Context.Assets.OpenFd("audio/PlaySlot.wav");
+            player.SetDataSource(fd.FileDescriptor, fd.StartOffset, fd.Length);
+            player.Prepared += (s, e) => { player.Start(); };
+            player.Prepare();
+        }
+
         async void play(Object sender, EventArgs e)
         {
             SlotMachineViewModel bc = BindingContext as SlotMachineViewModel;
 
-            if(bc.Bet > bc.Wallet)
+            if (bc.Bet > bc.Wallet)
             {
                 await App.Current.MainPage.DisplayAlert("Poor alert",
                                   "You don't have enough money for that bet",
                                   "Ok");
                 return;
             }
+
+            playSfx();
 
             (sender as Button).IsEnabled = false;
 
