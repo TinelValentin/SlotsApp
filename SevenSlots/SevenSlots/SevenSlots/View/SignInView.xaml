@@ -93,6 +93,7 @@
                     <controls:CustomInputBox
                         TextColor="Black"
                         HeightRequest="55"
+                        IsPassword="True"
                         WidthRequest="300"
                         x:Name="PasswordInput" VerticalOptions="FillAndExpand"
                         Placeholder="Password"
