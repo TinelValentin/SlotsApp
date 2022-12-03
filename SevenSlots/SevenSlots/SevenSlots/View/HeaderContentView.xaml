@@ -37,23 +37,32 @@
                    HorizontalOptions="Start" 
                    VerticalOptions="End"/>
             
-            <StackLayout VerticalOptions="CenterAndExpand" 
+            <StackLayout Orientation="Horizontal"
                          Grid.Row="1" 
                          Margin="10, 0, 0, 0" 
                          Grid.Column="2" 
-                         Grid.ColumnSpan="3" 
-                         Orientation="Vertical">
-                
-                <Label HorizontalTextAlignment="Start" 
+                         Grid.ColumnSpan="3">
+                <StackLayout VerticalOptions="CenterAndExpand" 
+                             Orientation="Vertical">
+                    <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
                        Text="{Binding User.Username}"/>
-                
-                <Label HorizontalTextAlignment="Start" 
+
+                    <Label HorizontalTextAlignment="Start" 
                        VerticalTextAlignment="Center" 
                        TextColor="White" 
                        Text="{Binding User.Email}"/>
-                
+                </StackLayout>
+                <Image IsVisible="{Binding LogoutIsVisible, Mode=OneWay}"
+                       Source="Logout.png" 
+                       Margin="20, 20, 20 ,20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="logout"
+                                              NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
             </StackLayout>
         </Grid>
     </ContentView.Content>

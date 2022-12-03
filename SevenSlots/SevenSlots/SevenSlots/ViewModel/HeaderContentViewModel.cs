@@ -15,7 +15,18 @@ namespace SevenSlots.ViewModel
         {
             get { return user; }
             set { user = value;
-                OnPropertyChanged("User");
+                OnPropertyChanged(nameof(User));
+            }
+        }
+
+        private bool logoutIsVisible;
+        public bool LogoutIsVisible
+        {
+            get { return logoutIsVisible; }
+            set
+            {
+                logoutIsVisible = value;
+                OnPropertyChanged(nameof(LogoutIsVisible));
             }
         }
         public HeaderContentViewModel()
@@ -23,6 +34,11 @@ namespace SevenSlots.ViewModel
             if (Session.GeneralSettings != "")
             {
                 user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                logoutIsVisible = true;
+            }
+            else
+            {
+                logoutIsVisible = false;
             }
         }
     }

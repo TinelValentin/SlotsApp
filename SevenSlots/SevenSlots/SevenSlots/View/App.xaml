@@ -44,6 +44,15 @@
                 <Setter Property="FontSize" Value="17"/>
                 <Setter Property="TextColor" Value="#710824"/>
             </Style>
+            <Style x:Key="SlotMachineButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="FontSize" Value="60"/>
+                <Setter Property="TextColor" Value="#a62523"/>
+                <Setter Property="Background" Value="#710824"/>
+                <Setter Property="CornerRadius" Value="100"/>
+                <Setter Property="BorderColor" Value="#a62523"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

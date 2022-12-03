@@ -65,7 +65,7 @@ namespace SevenSlots.View
         private double getWin(string img1, string img2, string img3)
         {
             double bet = (BindingContext as SlotMachineViewModel).Bet;
-            double baseWin = 30;
+            double baseWin = 15;
 
             if (img1 == "File: SpecialSlot.png" && img1 == img2 && img1 == img3)
             {
@@ -132,9 +132,17 @@ namespace SevenSlots.View
 
         async void play(Object sender, EventArgs e)
         {
-            (sender as Button).IsEnabled = false;
-
             SlotMachineViewModel bc = BindingContext as SlotMachineViewModel;
+
+            if(bc.Bet > bc.Wallet)
+            {
+                await App.Current.MainPage.DisplayAlert("Poor alert",
+                                  "You don't have enough money for that bet",
+                                  "Ok");
+                return;
+            }
+
+            (sender as Button).IsEnabled = false;
 
             bc.Wallet -= bc.Bet;
             bc.User.Wallet -= bc.Bet;
