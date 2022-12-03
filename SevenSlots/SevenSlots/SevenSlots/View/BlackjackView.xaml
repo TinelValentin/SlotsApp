@@ -96,7 +96,7 @@
                    Style="{StaticResource BlackjackLabel}"/>
             <Label Grid.Row="0" 
                    Grid.Column="4"
-                   Text="{Binding OwnedMoney, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                   Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
 
@@ -106,7 +106,7 @@
                    Style="{StaticResource BlackjackLabel}"/>
             <Label Grid.Row="1" 
                    Grid.Column="4" 
-                   Text="{Binding TotalWin, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                   Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
         </Grid>
     </StackLayout>

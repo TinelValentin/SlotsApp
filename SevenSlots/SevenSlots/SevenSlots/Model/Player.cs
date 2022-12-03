@@ -10,7 +10,7 @@ namespace SevenSlots.Model
         #region BackingFields...
 
         private string _name;
-        private int _bankRoll;
+        private double _bankRoll;
         private int _totalBet;
         private int _totalWinnings;
         private int? _cardTotal;
@@ -23,77 +23,43 @@ namespace SevenSlots.Model
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
+            set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
-
-        public int BankRoll
+        public double BankRoll
         {
             get => _bankRoll;
-            set
-            {
-                _bankRoll = value;
-                OnPropertyChanged(nameof(BankRoll));
-            }
+            set { _bankRoll = value; OnPropertyChanged(nameof(BankRoll)); }
         }
-
         public int TotalBet
         {
             get => _totalBet;
-            set
-            {
-                _totalBet = value;
-                OnPropertyChanged(nameof(TotalBet));
-            }
+            set { _totalBet = value; OnPropertyChanged(nameof(TotalBet)); }
         }
-
         public int TotalWinnings
         {
             get => _totalWinnings;
-            set
-            {
-                _totalWinnings = value;
-                OnPropertyChanged(nameof(TotalWinnings));
-            }
+            set { _totalWinnings = value; OnPropertyChanged(nameof(TotalWinnings)); }
         }
-
         public int? CardTotal
         {
             get => _cardTotal;
-            set
-            {
-                _cardTotal = value;
-                OnPropertyChanged(nameof(CardTotal));
-            }
+            set { _cardTotal = value; OnPropertyChanged(nameof(CardTotal)); }
         }
-
         public List<string> Card
         {
             get => _card;
-            set
-            {
-                _card = value;
-                OnPropertyChanged(nameof(Card));
-            }
+            set { _card = value; OnPropertyChanged(nameof(Card)); }
         }
-
         public int BetAmount
         {
             get => _betAmount;
-            set
-            {
-                _betAmount = value;
-                OnPropertyChanged(nameof(BetAmount));
-            }
+            set { _betAmount = value; OnPropertyChanged(nameof(BetAmount)); }
         }
 
         #endregion
 
         #region Constructor...
-        public Player(string name, int bankRoll, int totalBet = 0, int totalWin = 0, int betAmount = 0)
+        public Player(string name, double bankRoll, int totalBet = 0, int totalWin = 0, int betAmount = 0)
         {
             _name = name;
             _bankRoll = bankRoll;
