@@ -464,6 +464,7 @@ namespace SevenSlots.ViewModel
         private void PlayerBust()
         {
             _currentGameState = GameState.PlayerBust;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Lost! You Got Over 21!", "Awesome");
 
             CanClick = Clickable();
             IsNextRoundVisible = Visible();
@@ -474,6 +475,7 @@ namespace SevenSlots.ViewModel
         private void DealerBust()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Won! Dealer Got Over 21!", "Awesome");
 
             _player.TotalWinnings = _player.TotalBet * 2;
             _player.BankRoll += _player.TotalWinnings;
@@ -501,6 +503,7 @@ namespace SevenSlots.ViewModel
         private void DealerBlackJack()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Backjack!", "OK");
 
             _player.TotalWinnings = 0;
             _player.TotalBet = 0;
@@ -509,6 +512,7 @@ namespace SevenSlots.ViewModel
         private void PlayerWin()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Won!", "Awesome");
 
             _player.TotalWinnings = _player.TotalBet * 2;
             _player.BankRoll += _player.TotalWinnings;
@@ -518,6 +522,7 @@ namespace SevenSlots.ViewModel
         private void DealerWin()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Won!", "OK");
 
             _player.TotalWinnings = 0;
             _player.TotalBet = 0;
@@ -526,6 +531,7 @@ namespace SevenSlots.ViewModel
         private void DrawGame()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "It's Draw!", "Awesome");
 
             _player.TotalWinnings = _player.TotalBet;
             _player.BankRoll += _player.TotalWinnings;
