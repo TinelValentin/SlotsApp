@@ -60,10 +60,11 @@
                             <Frame Style="{StaticResource InputFrame}"
                                     x:Name="usernameFrame"/>
                             <controls:CustomInputBox
+                                Style="{StaticResource CustomInputStyle}"
                                 x:Name="usernameInput"
                                 Placeholder="Username"
                                 Text="{Binding User.Username,Mode=TwoWay}"
-                                Style="{StaticResource CustomInputStyle}" >
+                                >
                                 <Entry.Behaviors>
                                     <xct:MultiValidationBehavior 
                                          InvalidStyle="{StaticResource InvalidStyle}">
@@ -89,10 +90,10 @@
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="passwordFrame"/>
                         <controls:CustomInputBox 
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="passwordInput" IsPassword="True"
                             Placeholder="Password"
-                            Text="{Binding User.Password, Mode=TwoWay}"
-                            Style="{StaticResource CustomInputStyle}">
+                            Text="{Binding User.Password, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                  InvalidStyle="{StaticResource InvalidStyle}">
@@ -125,10 +126,10 @@
                         <Frame Style="{StaticResource InputFrame}" 
                                x:Name="emailFrame"/>
                         <controls:CustomInputBox
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="emailInput"
                             Placeholder="E-mail"
-                            Text="{Binding User.Email, Mode=TwoWay}"
-                            Style="{StaticResource CustomInputStyle}">
+                            Text="{Binding User.Email, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:EmailValidationBehavior 
                                     DecorationFlags="Trim"
@@ -144,10 +145,10 @@
                         <Frame Style="{StaticResource InputFrame}"
                                x:Name="firstNameFrame"/>
                         <controls:CustomInputBox
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="firstNameInput" 
                             Placeholder="First Name"
-                            Text="{Binding User.FirstName, Mode=TwoWay}"
-                            Style="{StaticResource CustomInputStyle}">
+                            Text="{Binding User.FirstName, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
                                     <xct:CharactersValidationBehavior CharacterType="NonAlphanumericSymbol" 
@@ -166,12 +167,12 @@
                     <Image Source="name.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
-                       x:Name="lastNameFrame"/>
+                               x:Name="lastNameFrame"/>
                         <controls:CustomInputBox
-                        x:Name="lastNameInput"
-                        Placeholder="Last Name"
-                        Text="{Binding User.LastName, Mode=TwoWay}"
-                        Style="{StaticResource CustomInputStyle}">
+                               Style="{StaticResource CustomInputStyle}"
+                               x:Name="lastNameInput"
+                               Placeholder="Last Name"
+                               Text="{Binding User.LastName, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
@@ -196,10 +197,10 @@
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="phoneFrame"/>
                         <controls:CustomInputBox
-                         x:Name="phoneInput"
-                         Placeholder="Phone Number"
-                         Text="{Binding User.Phone, Mode=TwoWay}"
-                         Style="{StaticResource CustomInputStyle}">
+                            Style="{StaticResource CustomInputStyle}"
+                            x:Name="phoneInput"
+                             Placeholder="Phone Number"
+                             Text="{Binding User.Phone, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
@@ -229,10 +230,10 @@
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}" x:Name="SSNFrame"/>
                         <controls:CustomInputBox
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="SSNInput" 
                             Placeholder="Social Security Number"
-                            Text="{Binding User.SSN, Mode=TwoWay}"
-                            Style="{StaticResource CustomInputStyle}">
+                            Text="{Binding User.SSN, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
                                     <xct:CharactersValidationBehavior 
