@@ -265,7 +265,7 @@ namespace SevenSlots.ViewModel
         private void NextRound()
         {
             _currentGameState = GameState.PlayerBet;
-            CanClick = Clickable();
+            CanClick = false;
 
             if (_player.BankRoll == 0)
             {
