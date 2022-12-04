@@ -70,7 +70,9 @@ namespace SevenSlots.ViewModel
         private const int _initialDeal = 2;
         public GameState _currentGameState { get; set; }
         private bool _canClick;
-        private bool _canBet;
+        //private bool _canBet;
+        private bool _canIncreaseBet;
+        private bool _canDecreaseBet;
         private bool _isDealVisible;
         private bool _isNextRoundVisible;
         private const int _aceAdjustment = 10;
@@ -97,10 +99,21 @@ namespace SevenSlots.ViewModel
             get { return _canClick; }
             set { _canClick = value; OnPropertyChanged(); }
         }
-        public bool CanBet
+        //public bool CanBet
+        //{
+        //    get { return _canBet; }
+        //    set { _canBet = value; OnPropertyChanged(); }
+        //}
+        public bool CanIncreaseBet
         {
-            get { return _canBet; }
-            set { _canBet = value; OnPropertyChanged(); }
+            get { return _canIncreaseBet; }
+            set { _canIncreaseBet = value; }
+        }
+
+        public bool CanDecreaseBet
+        {
+            get { return _canDecreaseBet; }
+            set { _canDecreaseBet = value; }
         }
         public bool IsDealVisible
         {
@@ -140,7 +153,8 @@ namespace SevenSlots.ViewModel
             _dealer = new Dealer("Mark");
             _currentGameState = GameState.PlayerBet;
 
-            CanBet = true;
+            CanIncreaseBet = CanDecreaseBet = true;
+            //CanBet = true;
             IsDealVisible = true;
             IsNextRoundVisible = false;
         }
@@ -194,7 +208,8 @@ namespace SevenSlots.ViewModel
                 return;
             }
 
-            CanBet = false;
+            CanIncreaseBet = CanDecreaseBet = false;
+            //CanBet = false;
             CanClick = Clickable();
 
             var value = DealInitalCards();
@@ -362,13 +377,27 @@ namespace SevenSlots.ViewModel
         }
         private void BetIncrease(object param)
         {
-            Player.TotalBet += _betModifier;
-            Player.BankRoll -= _betModifier;
+            if(Player.BankRoll <= 0)
+            {
+                CanIncreaseBet = false;
+            }
+            else
+            {
+                Player.TotalBet += _betModifier;
+                Player.BankRoll -= _betModifier;
+            }
         }
         private void BetDecrease(object param)
         {
-            Player.TotalBet -= _betModifier;
-            Player.BankRoll += _betModifier;
+            if(Player.TotalBet <= 0)
+            {
+                CanDecreaseBet = false;
+            }
+            else
+            {
+                Player.TotalBet -= _betModifier;
+                Player.BankRoll += _betModifier;
+            }
         }
 
         #endregion

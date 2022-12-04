@@ -83,11 +83,11 @@
                 <Button Text="-" 
                         Style="{StaticResource AddAndSubstractButton}" 
                         Command="{Binding BetDecreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
+                        IsEnabled="{Binding CanDecreaseBet}"/>
                 <Button Text="+" 
                         Style="{StaticResource AddAndSubstractButton}" 
                         Command="{Binding BetIncreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
+                        IsEnabled="{Binding CanIncreaseBet}"/>
             </StackLayout>
 
             <Label Grid.Row="0" 
