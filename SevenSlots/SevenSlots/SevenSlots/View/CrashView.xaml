@@ -100,11 +100,7 @@
                    Grid.Column="1" 
                    Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
-                    <Label Grid.Row="1" 
-                   Grid.Column="0" 
-                   Text="Bet Modifier:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-                <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
+                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
                     <Button Text="-" 
                         Style="{StaticResource AddAndSubstractButton}" 
                         Command="{Binding BetDecreaseCommand}" 
