@@ -106,11 +106,11 @@
                    IsVisible="{Binding IsLoggedIn, Mode=OneWay}"
                    FontSize="30"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
-                                                Property=Width, Factor=0.25}"
+                                                Property=Width, Factor=0.40}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                 Property=Height, Factor=0.65}"/>
             <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
-                                                      Property=Width, Factor=0.25}"
+                                                      Property=Width, Factor=0.40}"
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
                                                       Property=Height, Factor=0.80}"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 

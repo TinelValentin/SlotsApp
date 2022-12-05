@@ -349,9 +349,16 @@
   <ItemGroup>
     <Content Include="Resources\drawable\crashGraph.png" />
     <AndroidResource Include="Resources\drawable\graph.png" />
+    <AndroidResource Include="Resources\drawable\Logout.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\audio\PlaySlot.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\audio\WinSlot.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
