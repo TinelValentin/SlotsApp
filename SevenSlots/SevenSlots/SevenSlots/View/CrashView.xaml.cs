@@ -1,5 +1,4 @@
-﻿using Android.Locations;
-using SevenSlots.Model;
+﻿using SevenSlots.Model;
 using SevenSlots.ViewModel;
 using System;
 using System.Collections.Generic;
