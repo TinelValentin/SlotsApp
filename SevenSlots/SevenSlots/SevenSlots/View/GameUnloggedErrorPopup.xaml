@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="SevenSlots.View.GameUnloggedErrorPopup">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White" 
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center" 
+                     Margin="20"
+                     Spacing="0" HeightRequest="180" 
+                     xct:CornerRadiusEffect.CornerRadius = "30">
+            <Image Source="warning.png" WidthRequest="60" HorizontalOptions="Center"/>
+            <Label Text="You must be logged in to play this game!"
+                   HorizontalOptions="Center"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   Margin="20"/>
+            <Label Text="Please log in!"
+                   FontSize="15"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</popup:PopupPage>

@@ -1,6 +1,8 @@
-﻿using SevenSlots.Helpers;
+﻿using Rg.Plugins.Popup.Services;
+using SevenSlots.Helpers;
 using SevenSlots.Model;
 using SevenSlots.Services;
+using SevenSlots.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,6 +46,10 @@ namespace SevenSlots.ViewModel
             {
                 User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
                 _userService = DependencyService.Get<IUserService>();
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new GameUnloggedErrorPopup());
             }
             _currentPlayer = new Player("John", User.Wallet);
             _player = _currentPlayer;

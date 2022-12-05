@@ -80,21 +80,21 @@
                     </ResourceDictionary>
                 </Grid.Resources>
                 <Frame Grid.Column="0" HeightRequest="50" Style="{StaticResource FrameStyle}">
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="Center">
                         <Label Text="Sign in" Style="{StaticResource FrameLabel}"/>
                         <Image Source="form.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Column="1" Style="{StaticResource FrameStyle}">
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="Center">
                         <Label Text="Play" Style="{StaticResource FrameLabel}"/>
-                        <Image Source="creditCard.png" Style="{StaticResource FrameIcon}"/>
+                        <Image Source="play.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Column="2" Style="{StaticResource FrameStyle}">
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="Center">
                         <Label Text="Profit" Style="{StaticResource FrameLabel}"/>
-                        <Image Source="gift.png" Style="{StaticResource FrameIcon}"/>
+                        <Image Source="profit.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
             </Grid>

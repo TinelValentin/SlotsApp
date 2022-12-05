@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace SevenSlots.View
 {
@@ -129,6 +130,10 @@ namespace SevenSlots.View
                 userService = DependencyService.Get<IUserService>();
 
                 OwnedMoney = (int)_user.Wallet;
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new GameUnloggedErrorPopup());
             }
 
             CanBet = false;
