@@ -1,12 +1,15 @@
 ﻿using Android.Locations;
 using SevenSlots.Model;
+using SevenSlots.Services;
 using SevenSlots.ViewModel;
 using System;
+using SevenSlots.Helpers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -25,6 +28,7 @@ namespace SevenSlots.View
         decimal multiplierExponent = 0.01m;
         private int _countdown = 10;
         private Player _player;
+        private User _user;
         private bool _canBet;
         private bool canCashOut = false;
         private int _ownedMoney;
@@ -41,9 +45,8 @@ namespace SevenSlots.View
         {
             0, 1, 2
         };
-
-
         const int _betModifier = 10;
+        private IUserService userService;
         #endregion
 
         #region properties
@@ -81,6 +84,12 @@ namespace SevenSlots.View
             set { _player = value; OnPropertyChanged(nameof(Player)); }
         }
 
+        public User CurrentUser
+        {
+            get { return _user; }
+            set { _user = value; OnPropertyChanged(nameof(User)); }
+        }
+
         public bool CanBet
         {
             get { return _canBet; }
@@ -112,14 +121,27 @@ namespace SevenSlots.View
 
         public CrashView()
         {
+            if (Session.GeneralSettings != "")
+            {
+                _user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+
+                userService = DependencyService.Get<IUserService>();
+
+                OwnedMoney = (int)_user.Wallet;
+            }
+            else
+            {
+                Application.Current.MainPage.Navigation.PushModalAsync(new AppShell(), true);
+            }
+
             CanBet = false;
             BetIncreaseCommand = new Command(BetIncrease);
             BetDecreaseCommand = new Command(BetDecrease);
             InitializeComponent();
             BindingContext = this;
-            OwnedMoney = 500;
+            OwnedMoney = (int)_user.Wallet;
             LastWin = 0;
-            Player = new Player("Wiz", OwnedMoney);
+            Player = new Player(_user.FirstName, OwnedMoney);
             StartCrashAsync().GetAwaiter();
         }
 
@@ -138,6 +160,10 @@ namespace SevenSlots.View
 
         private async Task RestartCrashAsync()
         {
+            _user.Wallet = OwnedMoney;
+            string userString = JsonSerializer.Serialize(CurrentUser);
+            Session.GeneralSettings = userString;
+            await UpdateWallet();
             LastResults.Insert(0, decimal.Round(multiplier, 2));
             OnPropertyChanged(nameof(LastResults));
             Player.TotalBet = 0;
@@ -280,7 +306,12 @@ namespace SevenSlots.View
             LastWin = (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
             Player.TotalBet = 0;
         }
-    }
 
-    #endregion
+        public async Task UpdateWallet()
+        {
+            await userService.patchWallet(_user.Id, _user.Wallet);
+        }
+
+        #endregion
+    }
 }

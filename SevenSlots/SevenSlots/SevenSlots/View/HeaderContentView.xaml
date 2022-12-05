@@ -58,7 +58,7 @@
                        Source="Logout.png" 
                        Margin="20, 20, 20 ,20">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="logout"
+                        <TapGestureRecognizer Tapped="Logout"
                                               NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
                 </Image>
