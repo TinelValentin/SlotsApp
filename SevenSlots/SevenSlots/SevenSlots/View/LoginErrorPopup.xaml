@@ -12,12 +12,12 @@
                      Spacing="0" HeightRequest="180" 
                      xct:CornerRadiusEffect.CornerRadius = "30">
             <Image Source="warning.png" WidthRequest="60" HorizontalOptions="Center"/>
-            <Label Text="The creditentials introduced are invalid!"
+            <Label Text="The creditentials introduced are invalid!" TextColor="Black"
                    HorizontalOptions="Center"
                    FontSize="16"
                    FontAttributes="Bold"
                    Margin="20"/>
-            <Label Text="Please try again"
+            <Label Text="Please try again" TextColor="Black"
                    FontSize="15"
                    HorizontalOptions="Center"/>
         </StackLayout>
