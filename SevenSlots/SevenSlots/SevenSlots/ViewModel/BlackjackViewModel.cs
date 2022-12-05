@@ -70,7 +70,6 @@ namespace SevenSlots.ViewModel
         private const int _initialDeal = 2;
         public GameState _currentGameState { get; set; }
         private bool _canClick;
-        //private bool _canBet;
         private bool _canIncreaseBet;
         private bool _canDecreaseBet;
         private bool _isDealVisible;
@@ -99,11 +98,6 @@ namespace SevenSlots.ViewModel
             get { return _canClick; }
             set { _canClick = value; OnPropertyChanged(); }
         }
-        //public bool CanBet
-        //{
-        //    get { return _canBet; }
-        //    set { _canBet = value; OnPropertyChanged(); }
-        //}
         public bool CanIncreaseBet
         {
             get { return _canIncreaseBet; }
@@ -154,7 +148,6 @@ namespace SevenSlots.ViewModel
             _currentGameState = GameState.PlayerBet;
 
             CanIncreaseBet = CanDecreaseBet = true;
-            //CanBet = true;
             IsDealVisible = true;
             IsNextRoundVisible = false;
         }
@@ -209,7 +202,6 @@ namespace SevenSlots.ViewModel
             }
 
             CanIncreaseBet = CanDecreaseBet = false;
-            //CanBet = false;
             CanClick = Clickable();
 
             var value = DealInitalCards();
