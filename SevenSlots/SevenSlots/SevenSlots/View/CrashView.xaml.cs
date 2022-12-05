@@ -31,15 +31,15 @@ namespace SevenSlots.View
         private int _lastWin;
         private ObservableCollection<decimal> lastResults = new ObservableCollection<decimal>()
         {
-            1.26m,1.25m
+            1.26m, 1.25m
         };
         private List<int> multiplierLabelValues = new List<int>()
         {
-            1,2,4
+            1, 2, 4
         };
         private List<int> secondsPassedValues = new List<int>()
         {
-            0,1,2
+            0, 1, 2
         };
 
 

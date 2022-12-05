@@ -27,7 +27,6 @@
                             <GradientStop Color="#e36f6f" Offset="0.0"/>
                             <GradientStop Color="#a62523" Offset="0.3"/>
                             <GradientStop Color="#69100f" Offset="0.5"/>
-
                             <GradientStop Color="#69100f" Offset="0.6"/>
                             <GradientStop Color="#a62523" Offset="0.7"/>
                             <GradientStop Color="#e36f6f" Offset="1.0"/>
@@ -56,20 +55,20 @@
                            HorizontalOptions="Start" />
                     </Frame>
                     <Label Margin="180, -280, 0, 0" FontSize="35" FontAttributes="Bold" TextColor="White" Text="{Binding MultiplierValue, StringFormat='{0}x'}"></Label>
-                    <Image Source="graph.png" Margin="40,-60,0,0" WidthRequest="380"/>
-                    <Image Source="seven.jpg" Margin="-220,-80,0,0" WidthRequest="40" Rotation="40" x:Name="rocket"/>
-                    <StackLayout Spacing="90" Margin="10,-220,0,0">
+                    <Image Source="graph.png" Margin="40, -60, 0, 0" WidthRequest="380"/>
+                    <Image Source="seven.jpg" Margin="-220, -80, 0, 0" WidthRequest="40" Rotation="40" x:Name="rocket"/>
+                    <StackLayout Spacing="90" Margin="10, -220, 0, 0">
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding MultiplierLabelValues[2], StringFormat='{0}.0x'}"></Label>
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding MultiplierLabelValues[1], StringFormat='{0}.0x'}"></Label>
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding MultiplierLabelValues[0], StringFormat='{0}.0x'}"></Label>
                     </StackLayout>
-                    <StackLayout Spacing="130" Margin="50,-10,0,0" Orientation="Horizontal">
+                    <StackLayout Spacing="130" Margin="50, -10, 0, 0" Orientation="Horizontal">
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding SecondsPassedValues[0], StringFormat='{0}s'}"></Label>
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding SecondsPassedValues[1], StringFormat='{0}s'}"></Label>
                         <Label Style="{StaticResource MultiplierLabel}" Text="{Binding SecondsPassedValues[2], StringFormat='{0}s'}"></Label>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout x:Name="PlaneCrashedText" IsVisible="false" Margin="20,-200,0,0">
+                <StackLayout x:Name="PlaneCrashedText" IsVisible="false" Margin="20, -200, 0, 0">
                     <Label FontSize="40"  HorizontalOptions="Center" 
                              TextColor="White" FontAttributes="Bold">The plane crashed</Label>
                     <Label FontSize="30" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"
@@ -97,12 +96,11 @@
                    Grid.Column="0" 
                    Text="Total Bet:" 
                    Style="{StaticResource BlackjackLabel}"/>
-                <Label Grid.Row="0" 
+                    <Label Grid.Row="0" 
                    Grid.Column="1" 
                    Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
-
-                <Label Grid.Row="1" 
+                    <Label Grid.Row="1" 
                    Grid.Column="0" 
                    Text="Bet Modifier:" 
                    Style="{StaticResource BlackjackLabel}"/>
