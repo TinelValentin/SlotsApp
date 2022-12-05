@@ -3,7 +3,7 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="SevenSlots.View.LoginErrorPopup">
+             x:Class="SevenSlots.View.GameUnloggedErrorPopup">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White" 
                      HorizontalOptions="Center"
@@ -12,12 +12,12 @@
                      Spacing="0" HeightRequest="180" 
                      xct:CornerRadiusEffect.CornerRadius = "30">
             <Image Source="warning.png" WidthRequest="60" HorizontalOptions="Center"/>
-            <Label Text="The creditentials introduced are invalid!" TextColor="Black"
-                   HorizontalOptions="Center"
+            <Label Text="You must be logged in to play this game!"
+                   HorizontalOptions="Center" TextColor="Black"
                    FontSize="16"
                    FontAttributes="Bold"
                    Margin="20"/>
-            <Label Text="Please try again" TextColor="Black"
+            <Label Text="Please log in!" TextColor="Black"
                    FontSize="15"
                    HorizontalOptions="Center"/>
         </StackLayout>

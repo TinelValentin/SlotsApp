@@ -348,6 +348,8 @@
     <AndroidResource Include="Resources\drawable\graph.png" />
     <AndroidResource Include="Resources\drawable\Logout.png" />
     <AndroidResource Include="Resources\drawable\home.jpg" />
+    <AndroidResource Include="Resources\drawable\play.png" />
+    <AndroidResource Include="Resources\drawable\profit.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />
