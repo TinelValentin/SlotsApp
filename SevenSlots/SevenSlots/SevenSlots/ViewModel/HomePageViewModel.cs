@@ -46,7 +46,7 @@ namespace SevenSlots.ViewModel
 
         public HomePageViewModel()
         {
-            AccordionText = "TestValue";
+            AccordionText = "";
             AccordionAnimationCommand = new AccordionAnimationCommand();
             PushPageCommand = new PushPageCommand();
             RedirectToLoginCommand = new Command(RedirectToLogin);

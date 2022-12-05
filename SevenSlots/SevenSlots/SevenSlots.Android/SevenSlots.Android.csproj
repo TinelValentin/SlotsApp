@@ -113,9 +113,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +347,7 @@
     <Content Include="Resources\drawable\crashGraph.png" />
     <AndroidResource Include="Resources\drawable\graph.png" />
     <AndroidResource Include="Resources\drawable\Logout.png" />
+    <AndroidResource Include="Resources\drawable\home.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />

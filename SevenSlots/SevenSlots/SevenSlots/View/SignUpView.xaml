@@ -62,7 +62,7 @@
                             <controls:CustomInputBox
                                 Style="{StaticResource CustomInputStyle}"
                                 WidthRequest="300"
-                                TextColor="Black"
+                                PlaceholderColor="Gray"
                                 x:Name="usernameInput"
                                 Placeholder="Username"
                                 Text="{Binding User.Username,Mode=TwoWay}">
@@ -93,7 +93,7 @@
                         <controls:CustomInputBox 
                             Style="{StaticResource CustomInputStyle}"
                             WidthRequest="300"
-                            TextColor="Black"
+                            PlaceholderColor="Gray"
                             x:Name="passwordInput" IsPassword="True"
                             Placeholder="Password"
                             Text="{Binding User.Password, Mode=TwoWay}">
@@ -131,7 +131,7 @@
                         <controls:CustomInputBox
                             Style="{StaticResource CustomInputStyle}"
                             WidthRequest="300"
-                            TextColor="Black"
+                            PlaceholderColor="Gray"
                             x:Name="emailInput"
                             Placeholder="E-mail"
                             Text="{Binding User.Email, Mode=TwoWay}">
@@ -152,7 +152,7 @@
                         <controls:CustomInputBox
                             Style="{StaticResource CustomInputStyle}"
                             WidthRequest="300"
-                            TextColor="Black"
+                            PlaceholderColor="Gray"
                             x:Name="firstNameInput" 
                             Placeholder="First Name"
                             Text="{Binding User.FirstName, Mode=TwoWay}">
@@ -178,7 +178,7 @@
                         <controls:CustomInputBox
                                Style="{StaticResource CustomInputStyle}"
                                WidthRequest="300"
-                               TextColor="Black"
+                               PlaceholderColor="Gray"
                                x:Name="lastNameInput"
                                Placeholder="Last Name"
                                Text="{Binding User.LastName, Mode=TwoWay}">
@@ -208,7 +208,7 @@
                         <controls:CustomInputBox
                             Style="{StaticResource CustomInputStyle}"
                             WidthRequest="300"
-                            TextColor="Black"
+                            PlaceholderColor="Gray"
                             x:Name="phoneInput"
                              Placeholder="Phone Number"
                              Text="{Binding User.Phone, Mode=TwoWay}">
@@ -243,7 +243,7 @@
                         <controls:CustomInputBox
                             Style="{StaticResource CustomInputStyle}"
                             WidthRequest="300"
-                            TextColor="Black"
+                            PlaceholderColor="Gray"
                             x:Name="SSNInput" 
                             Placeholder="Social Security Number"
                             Text="{Binding User.SSN, Mode=TwoWay}">
