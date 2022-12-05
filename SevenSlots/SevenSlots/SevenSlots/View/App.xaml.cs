@@ -14,8 +14,6 @@ namespace SevenSlots
             DependencyService.Register<IUserService, UserService>();
             InitializeComponent();
            
-
-
             MainPage = new AppShell();
         }
 

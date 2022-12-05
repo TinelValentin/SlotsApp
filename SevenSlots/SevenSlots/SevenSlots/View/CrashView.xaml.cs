@@ -138,7 +138,7 @@ namespace SevenSlots.View
 
         private async Task RestartCrashAsync()
         {
-            LastResults.Insert(0,decimal.Round(multiplier, 2));
+            LastResults.Insert(0, decimal.Round(multiplier, 2));
             OnPropertyChanged(nameof(LastResults));
             Player.TotalBet = 0;
             canCashOut = false;
@@ -162,15 +162,14 @@ namespace SevenSlots.View
 
         private void UpdateMultiplierLabels()
         {
-           
-            Device.StartTimer(new TimeSpan(0, 0, 0,0,500), () =>
+            Device.StartTimer(new TimeSpan(0, 0, 0, 0, 500), () =>
             {
-                if(MultiplierValue>4)
+                if (MultiplierValue > 4)
                 {
                     for (int i = 0; i < MultiplierLabelValues.Count; i++)
                     {
-                        var power = MultiplierLabelValues.Count - i-1;
-                        var value = (int)MultiplierValue - (int)Math.Pow(2,power)+1;
+                        var power = MultiplierLabelValues.Count - i - 1;
+                        var value = (int)MultiplierValue - (int)Math.Pow(2, power) + 1;
                         MultiplierLabelValues[i] = value;
                         OnPropertyChanged(nameof(MultiplierLabelValues));
 
@@ -184,15 +183,13 @@ namespace SevenSlots.View
                         }
                     }
                 }
-                
+
                 return true;
             });
-
         }
 
         private void UpdateSecondsLabels()
         {
-
             Device.StartTimer(new TimeSpan(0, 0, 2), () =>
             {
                 for (int i = 0; i < SecondsPassedValues.Count; i++)
@@ -211,7 +208,6 @@ namespace SevenSlots.View
                 }
                 return true;
             });
-
         }
 
         public Task StartCrashAsync()
@@ -221,7 +217,7 @@ namespace SevenSlots.View
             bool stopThread = false;
 #pragma warning disable CS4014 // This call is not awaited because we want the animation to run while the multiplier increases
             Fly();
-#pragma warning restore CS4014 
+#pragma warning restore CS4014
             Random rnd = new Random();
             Device.StartTimer(new TimeSpan(0, 0, 0, 0, 50), () =>
             {
@@ -244,19 +240,20 @@ namespace SevenSlots.View
             });
             return Task.CompletedTask;
         }
+
         private void BetIncrease(object param)
         {
             Player.TotalBet += _betModifier;
             OwnedMoney -= _betModifier;
             OnPropertyChanged(nameof(Player.TotalBet));
         }
+
         private void BetDecrease(object param)
         {
             if (Player.TotalBet <= 0)
             {
                 return;
             }
-
             Player.TotalBet -= _betModifier;
             OwnedMoney += _betModifier;
             OnPropertyChanged(nameof(Player.TotalBet));
@@ -284,6 +281,6 @@ namespace SevenSlots.View
             Player.TotalBet = 0;
         }
     }
-    #endregion
 
+    #endregion
 }
