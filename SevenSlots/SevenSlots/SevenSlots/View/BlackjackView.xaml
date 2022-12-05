@@ -8,6 +8,7 @@
              Title="Blackjack">
     <StackLayout>
         <AbsoluteLayout Margin="5, 5, 0, 0">
+            <BoxView HeightRequest="150" Color="#400213" Margin="10, 0, 0, 0"/>
             <Image Source="{Binding Dealer.Card[0]}" Margin="0, 0, 0, 0"/>
             <Image Source="{Binding Dealer.Card[1]}" Margin="40, 0, 0, 0"/>
             <Image Source="{Binding Dealer.Card[2]}" Margin="80, 0, 0, 0"/>
@@ -17,7 +18,6 @@
             <Image Source="{Binding Dealer.Card[6]}" Margin="240, 0, 0, 0"/>
             <Image Source="{Binding Dealer.Card[7]}" Margin="280, 0, 0, 0"/>
         </AbsoluteLayout>
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -27,12 +27,25 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Dealer.CardTotal}" Style="{StaticResource BlackjackLabel}" FontSize="40"/>
-            <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="b1fv.png" HorizontalOptions="End"/>
-            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Player.CardTotal}" Style="{StaticResource BlackjackLabel}" FontSize="40"/>
+            <Label Grid.Row="0" 
+                   Grid.Column="0" 
+                   Text="{Binding Dealer.CardTotal}" 
+                   Style="{StaticResource BlackjackLabel}" 
+                   FontSize="40"
+                   Margin="5, 0, 0, 0"/>
+            <Image Grid.Row="0" 
+                   Grid.RowSpan="2" 
+                   Grid.Column="1" 
+                   Source="b1fv.png" 
+                   HorizontalOptions="End"
+                   Margin="0, 0, 5, 0"/>
+            <Label Grid.Row="1" 
+                   Grid.Column="0" 
+                   Text="{Binding Player.CardTotal}" 
+                   Style="{StaticResource BlackjackLabel}" 
+                   FontSize="40"
+                   Margin="5, 0, 0, 0"/>
         </Grid>
-
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 0, 0, 5">
             <Button Text="HIT" 
                     Style="{StaticResource BlackjackButton}" 
@@ -51,8 +64,8 @@
                     Command="{Binding NextRoundCommand}" 
                     IsVisible="{Binding IsNextRoundVisible}"/>
         </StackLayout>
-
         <AbsoluteLayout Margin="5, 0, 0, 0">
+            <BoxView HeightRequest="150" Color="#400213" Margin="10, 0, 0, 0"/>
             <Image Source="{Binding Player.Card[0]}" Margin="0, 0, 0, 0"/>
             <Image Source="{Binding Player.Card[1]}" Margin="40, 0, 0, 0"/>
             <Image Source="{Binding Player.Card[2]}" Margin="80, 0, 0, 0"/>
@@ -62,102 +75,34 @@
             <Image Source="{Binding Player.Card[6]}" Margin="240, 0, 0, 0"/>
             <Image Source="{Binding Player.Card[7]}" Margin="280, 0, 0, 0"/>
         </AbsoluteLayout>
-
-
-        <!--<AbsoluteLayout>
-            <Label Grid.Row="0" 
-                   Grid.Column="0" 
-                   Text="Total Bet:" 
+        <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+            <Label Text="Bet Modifier:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" 
-                   Grid.Column="1" 
-                   Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="0" 
-                   Text="Bet Modifier:" 
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+            <Button Text="-" 
+                    Style="{StaticResource AddAndSubstractButton}" 
+                    Command="{Binding BetDecreaseCommand}" 
+                    IsEnabled="{Binding CanDecreaseBet}"/>
+            <Button Text="+" 
+                    Style="{StaticResource AddAndSubstractButton}" 
+                    Command="{Binding BetIncreaseCommand}" 
+                    IsEnabled="{Binding CanIncreaseBet}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+            <Label Text="Bankroll:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
-                <Button Text="-" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetDecreaseCommand}" 
-                        IsEnabled="{Binding CanDecreaseBet}"/>
-                <Button Text="+" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetIncreaseCommand}" 
-                        IsEnabled="{Binding CanIncreaseBet}"/>
-            </StackLayout>
-            <Label Grid.Row="0" 
-                   Grid.Column="3" 
-                   Text="Bankroll:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" 
-                   Grid.Column="4"
-                   Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="3" 
-                   Text="Total Win:" 
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+            <Label Text="Total Win:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="4" 
-                   Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
-        </AbsoluteLayout>-->
-
-        <Grid HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <Label Grid.Row="0" 
-                   Grid.Column="0" 
-                   Text="Total Bet:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" 
-                   Grid.Column="1" 
-                   Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="0" 
-                   Text="Bet Modifier:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
-                <Button Text="-" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetDecreaseCommand}" 
-                        IsEnabled="{Binding CanDecreaseBet}"/>
-                <Button Text="+" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetIncreaseCommand}" 
-                        IsEnabled="{Binding CanIncreaseBet}"/>
-            </StackLayout>
-            <Label Grid.Row="0" 
-                   Grid.Column="3" 
-                   Text="Bankroll:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="0" 
-                   Grid.Column="4"
-                   Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
-                   Style="{StaticResource BlackjackLabel}" 
-                   Margin="0, 0, 0, 0"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="3" 
-                   Text="Total Win:" 
-                   Style="{StaticResource BlackjackLabel}"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="4" 
-                   Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
-                   Style="{StaticResource BlackjackLabel}"/>
-        </Grid>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
