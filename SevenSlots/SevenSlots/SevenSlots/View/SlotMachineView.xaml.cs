@@ -34,7 +34,12 @@ namespace SevenSlots.View
         {
             base.OnDisappearing();
             MessagingCenter.Send(this, "PreventLandscape");
-            await (BindingContext as SlotMachineViewModel).UpdateWallet();
+
+            var bc = BindingContext as SlotMachineViewModel;
+            if (bc.User.Username != null)
+            {
+                await (BindingContext as SlotMachineViewModel).UpdateWallet();
+            }
 
             //Save the wallet locally as well
             string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
