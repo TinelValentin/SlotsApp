@@ -1,7 +1,10 @@
-﻿using SevenSlots.Model;
+﻿using SevenSlots.Helpers;
+using SevenSlots.Model;
+using SevenSlots.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -35,9 +38,16 @@ namespace SevenSlots.ViewModel
 
         public BlackjackViewModel()
         {
-            TotalBet = 0;
-            OwnedMoney = 500;
-            TotalWin = 0;
+            User = new User();
+
+            if (Session.GeneralSettings != "")
+            {
+                User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                _userService = DependencyService.Get<IUserService>();
+            }
+            _currentPlayer = new Player("John", User.Wallet);
+            _player = _currentPlayer;
+
             InitializeCommands();
             InitializeGame();
         }
@@ -49,9 +59,6 @@ namespace SevenSlots.ViewModel
         private Player _player;
         private Player _currentPlayer;
         private Dealer _dealer;
-        private int _totalBet;
-        private int _ownedMoney;
-        private int _totalWin;
         List<string> _cards = new List<string>()
         {
              "c01", "c02", "c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11", "c12", "c13",
@@ -63,16 +70,19 @@ namespace SevenSlots.ViewModel
         private const int _initialDeal = 2;
         public GameState _currentGameState { get; set; }
         private bool _canClick;
-        private bool _canBet;
+        private bool _canIncreaseBet;
+        private bool _canDecreaseBet;
         private bool _isDealVisible;
         private bool _isNextRoundVisible;
         private const int _aceAdjustment = 10;
         private const int _betModifier = 10;
+        private IUserService _userService;
 
         #endregion
 
         #region Public Fields and Commands...
 
+        public User User { get; set; }
         public Dealer Dealer
         {
             get { return _dealer; }
@@ -83,30 +93,21 @@ namespace SevenSlots.ViewModel
             get { return _player; }
             set { _player = value; OnPropertyChanged(); }
         }
-        public int TotalBet
-        {
-            get { return _totalBet; }
-            set { _totalBet = value; OnPropertyChanged(); }
-        }
-        public int OwnedMoney
-        {
-            get { return _ownedMoney; }
-            set { _ownedMoney = value; OnPropertyChanged(); }
-        }
-        public int TotalWin
-        {
-            get { return _totalWin; }
-            set { _totalWin = value; OnPropertyChanged(); }
-        }
         public bool CanClick
         {
             get { return _canClick; }
             set { _canClick = value; OnPropertyChanged(); }
         }
-        public bool CanBet
+        public bool CanIncreaseBet
         {
-            get { return _canBet; }
-            set { _canBet = value; OnPropertyChanged(); }
+            get { return _canIncreaseBet; }
+            set { _canIncreaseBet = value; }
+        }
+
+        public bool CanDecreaseBet
+        {
+            get { return _canDecreaseBet; }
+            set { _canDecreaseBet = value; }
         }
         public bool IsDealVisible
         {
@@ -141,18 +142,13 @@ namespace SevenSlots.ViewModel
             DealCommand = new Command(Deal);
             NextRoundCommand = new Command(NextRound);
         }
+
         private void InitializeGame()
         {
-            //_currentPlayer = _gameBusiness.GetPlayer(_gameBusiness.UserName);
-            _currentPlayer = new Player("John", OwnedMoney);
-            //_currentPlayer.Name = "John";
-
-            _player = _currentPlayer;
             _dealer = new Dealer("Mark");
-
             _currentGameState = GameState.PlayerBet;
 
-            CanBet = true;
+            CanIncreaseBet = CanDecreaseBet = true;
             IsDealVisible = true;
             IsNextRoundVisible = false;
         }
@@ -184,6 +180,7 @@ namespace SevenSlots.ViewModel
                 App.Current.MainPage.DisplayAlert("Alert!", "You Must First Place A Bet!", "OK");
             }
         }
+
         private void Stand()
         {
             if (_player.TotalBet >= 1)
@@ -198,6 +195,7 @@ namespace SevenSlots.ViewModel
                 App.Current.MainPage.DisplayAlert("Alert!", "You Cannot Stand Without Betting First! Place A Bet!", "OK");
             }
         }
+
         private void Deal()
         {
             if (_player.TotalBet < 1)
@@ -206,7 +204,7 @@ namespace SevenSlots.ViewModel
                 return;
             }
 
-            CanBet = false;
+            CanIncreaseBet = CanDecreaseBet = false;
             CanClick = Clickable();
 
             var value = DealInitalCards();
@@ -274,10 +272,11 @@ namespace SevenSlots.ViewModel
                 PlayerBlackJack();
             }
         }
+
         private void NextRound()
         {
             _currentGameState = GameState.PlayerBet;
-            CanClick = Clickable();
+            CanClick = false;
 
             if (_player.BankRoll == 0)
             {
@@ -286,7 +285,6 @@ namespace SevenSlots.ViewModel
             else
             {
                 ResetBoard();
-                _player.BankRoll = 1000;
                 _player.TotalBet = 0;
                 OnPropertyChanged(nameof(Player));
                 OnPropertyChanged(nameof(Dealer));
@@ -324,6 +322,7 @@ namespace SevenSlots.ViewModel
 
             return (playerCards, dealerCards);
         }
+
         private string DealCard()
         {
             ReshuffleCards();
@@ -336,6 +335,7 @@ namespace SevenSlots.ViewModel
 
             return dealtCard;
         }
+
         private void DealerDeal()
         {
             _currentGameState = GameState.DealerDraw;
@@ -361,6 +361,7 @@ namespace SevenSlots.ViewModel
             OnPropertyChanged(nameof(Player));
             CheckGameWinCondition();
         }
+
         private void ReshuffleCards()
         {
             if (_cards.Count <= 4)
@@ -373,15 +374,31 @@ namespace SevenSlots.ViewModel
                 _selectedCards.Clear();
             }
         }
+
         private void BetIncrease(object param)
         {
-            Player.TotalBet += _betModifier;
-            OwnedMoney -= _betModifier;
+            if(Player.BankRoll <= 0)
+            {
+                CanIncreaseBet = false;
+            }
+            else
+            {
+                Player.TotalBet += _betModifier;
+                Player.BankRoll -= _betModifier;
+            }
         }
+
         private void BetDecrease(object param)
         {
-            Player.TotalBet -= _betModifier;
-            OwnedMoney += _betModifier;
+            if(Player.TotalBet <= 0)
+            {
+                CanDecreaseBet = false;
+            }
+            else
+            {
+                Player.TotalBet -= _betModifier;
+                Player.BankRoll += _betModifier;
+            }
         }
 
         #endregion
@@ -411,6 +428,7 @@ namespace SevenSlots.ViewModel
                 PlayerBlackJack();
             }
         }
+
         private void CheckDealerWinCondition()
         {
             if (_dealer.CardTotal >= 21)
@@ -424,6 +442,7 @@ namespace SevenSlots.ViewModel
                 }
             }
         }
+
         private void CheckGameWinCondition()
         {
             if (_dealer.CardTotal > 21)
@@ -464,31 +483,34 @@ namespace SevenSlots.ViewModel
         private void PlayerBust()
         {
             _currentGameState = GameState.PlayerBust;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Lost! You Got Over 21!", "OK");
 
             CanClick = Clickable();
             IsNextRoundVisible = Visible();
-            _player.TotalWinnings = 0;
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DealerBust()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Won! Dealer Got Over 21!", "OK");
 
-            _player.TotalWinnings = _player.TotalBet * 2;
-            _player.BankRoll += _player.TotalWinnings;
+            _player.TotalWinnings += _player.TotalBet * 2;
+            _player.BankRoll += _player.TotalBet * 2;
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void PlayerBlackJack()
         {
             if (_player.CardTotal == 21)
             {
                 _currentGameState = GameState.PlayerBlackJack;
-                App.Current.MainPage.DisplayAlert("Alert!", "Player Backjack!", "Awesome");
+                App.Current.MainPage.DisplayAlert("Alert!", "Player Blackjack!", "OK");
 
-                _player.TotalWinnings = _player.TotalBet * 2;
-                _player.BankRoll += _player.TotalWinnings;
+                _player.TotalWinnings += _player.TotalBet * 2;
+                _player.BankRoll += _player.TotalBet * 2;
                 _player.TotalBet = 0;
 
                 IsNextRoundVisible = Visible();
@@ -498,37 +520,42 @@ namespace SevenSlots.ViewModel
                 OnPropertyChanged(nameof(Player));
             }
         }
+
         private void DealerBlackJack()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Blackjack!", "OK");
 
-            _player.TotalWinnings = 0;
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void PlayerWin()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "You Won!", "OK");
 
-            _player.TotalWinnings = _player.TotalBet * 2;
-            _player.BankRoll += _player.TotalWinnings;
+            _player.TotalWinnings += _player.TotalBet * 2;
+            _player.BankRoll += _player.TotalBet * 2;
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DealerWin()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Won!", "OK");
 
-            _player.TotalWinnings = 0;
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DrawGame()
         {
             _currentGameState = GameState.RoundOver;
+            App.Current.MainPage.DisplayAlert("Alert!", "It's A Draw!", "OK");
 
-            _player.TotalWinnings = _player.TotalBet;
-            _player.BankRoll += _player.TotalWinnings;
+            _player.BankRoll += _player.TotalBet;
             _player.TotalBet = 0;
             SaveData();
         }
@@ -552,6 +579,7 @@ namespace SevenSlots.ViewModel
                 return true;
             }
         }
+
         public bool Visible()
         {
             if (_currentGameState == GameState.RoundOver || _currentGameState == GameState.PlayerBlackJack || _currentGameState == GameState.PlayerBust)
@@ -563,22 +591,22 @@ namespace SevenSlots.ViewModel
                 return false;
             }
         }
+
         private void ResetBoard()
         {
             _player.Card.Clear();
             InitializeGame();
         }
+
         public void GameOver()
         {
             App.Current.MainPage.DisplayAlert("Alert!", "Game Over!", "OK");
         }
+
         public void SaveData()
         {
-            _player.BankRoll += _player.TotalBet;
-            _player.TotalBet = 0;
-            //_playerData.Add(_player);
-            //_gameBusiness.SavePlayer(_playerData, _player.Name);
-            //_playerData.Clear();
+            User.Wallet = _player.BankRoll;
+            _userService.patchWallet(User.Id, User.Wallet);
         }
 
         #endregion

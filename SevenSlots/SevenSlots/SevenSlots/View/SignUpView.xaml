@@ -30,6 +30,16 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="Padding" Value="4"/>
             </Style>
+            <Style x:Key="CustomInputStyle" TargetType="controls:CustomInputBox">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="10, 0, 0, 0"/>
+            </Style>
+            <Style x:Key="Icon" TargetType="Image">
+                <Setter Property="WidthRequest" Value="30"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="Center" >
@@ -43,23 +53,17 @@
         <BoxView HeightRequest="30"></BoxView>
         <Frame  Padding="6" CornerRadius="10" BackgroundColor="#a62523">
             <StackLayout Padding="10" Background="#400213" xct:CornerRadiusEffect.CornerRadius="10">
-
-
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="userField.png" WidthRequest="30"/>
+                    <Image Source="userField.png" Style="{StaticResource Icon}"/>
                     <StackLayout>
                         <Grid>
                             <Frame Style="{StaticResource InputFrame}"
-                       x:Name="usernameFrame"
-                        />
+                                    x:Name="usernameFrame"/>
                             <controls:CustomInputBox
-                                TextColor="Black"
-                                HeightRequest="45"
-                                WidthRequest="300"
-                                x:Name="usernameInput" VerticalOptions="FillAndExpand"
+                                Style="{StaticResource CustomInputStyle}"
+                                x:Name="usernameInput"
                                 Placeholder="Username"
-                                Text="{Binding User.Username,Mode=TwoWay}"
-                                Margin="10, 0, 0, 0" >
+                                Text="{Binding User.Username,Mode=TwoWay}">
                                 <Entry.Behaviors>
                                     <xct:MultiValidationBehavior 
                                          InvalidStyle="{StaticResource InvalidStyle}">
@@ -80,18 +84,15 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="password.png"  WidthRequest="30"/>
+                    <Image Source="password.png"  Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="passwordFrame"/>
                         <controls:CustomInputBox 
-                            TextColor="Black"
-                            HeightRequest="45"
-                            WidthRequest="300"
-                            x:Name="passwordInput" IsPassword="True" VerticalOptions="FillAndExpand"
+                            Style="{StaticResource CustomInputStyle}"
+                            x:Name="passwordInput" IsPassword="True"
                             Placeholder="Password"
-                            Text="{Binding User.Password, Mode=TwoWay}"
-                            Margin="10, 0, 0, 0">
+                            Text="{Binding User.Password, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                  InvalidStyle="{StaticResource InvalidStyle}">
@@ -119,18 +120,15 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="email.png" WidthRequest="30"/>
+                    <Image Source="email.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}" 
                                x:Name="emailFrame"/>
                         <controls:CustomInputBox
-                            TextColor="Black"
-                            HeightRequest="45"
-                            WidthRequest="300"
-                            x:Name="emailInput" VerticalOptions="FillAndExpand"
+                            Style="{StaticResource CustomInputStyle}"
+                            x:Name="emailInput"
                             Placeholder="E-mail"
-                            Text="{Binding User.Email, Mode=TwoWay}"
-                            Margin="10,0,0,0">
+                            Text="{Binding User.Email, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:EmailValidationBehavior 
                                     DecorationFlags="Trim"
@@ -141,19 +139,15 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="name.png" WidthRequest="30"/>
+                    <Image Source="name.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                                x:Name="firstNameFrame"/>
                         <controls:CustomInputBox
-                            TextColor="Black"
-                            HeightRequest="45"
-                            WidthRequest="300"
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="firstNameInput" 
-                            VerticalOptions="FillAndExpand"
                             Placeholder="First Name"
-                            Text="{Binding User.FirstName, Mode=TwoWay}"
-                            Margin="10, 0, 0, 0">
+                            Text="{Binding User.FirstName, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
                                     <xct:CharactersValidationBehavior CharacterType="NonAlphanumericSymbol" 
@@ -169,18 +163,15 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="name.png" WidthRequest="30"/>
+                    <Image Source="name.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
-                       x:Name="lastNameFrame"/>
+                               x:Name="lastNameFrame"/>
                         <controls:CustomInputBox
-                        TextColor="Black"
-                        HeightRequest="45"
-                        WidthRequest="300"
-                        x:Name="lastNameInput" VerticalOptions="FillAndExpand"
-                        Placeholder="Last Name"
-                        Text="{Binding User.LastName, Mode=TwoWay}"
-                        Margin="10,0,0,0">
+                               Style="{StaticResource CustomInputStyle}"
+                               x:Name="lastNameInput"
+                               Placeholder="Last Name"
+                               Text="{Binding User.LastName, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
@@ -200,18 +191,15 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="phone.png" WidthRequest="30"/>
+                    <Image Source="phone.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}"
                        x:Name="phoneFrame"/>
                         <controls:CustomInputBox
-                         TextColor="Black"
-                         HeightRequest="45"
-                         WidthRequest="300"
-                         x:Name="phoneInput" VerticalOptions="FillAndExpand"
-                         Placeholder="Phone Number"
-                         Text="{Binding User.Phone, Mode=TwoWay}"
-                         Margin="10,0,0,0">
+                            Style="{StaticResource CustomInputStyle}"
+                            x:Name="phoneInput"
+                             Placeholder="Phone Number"
+                             Text="{Binding User.Phone, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior 
                                 InvalidStyle="{StaticResource InvalidStyle}">
@@ -237,19 +225,14 @@
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource InputStackLayout}">
-                    <Image Source="ssn.png" WidthRequest="30"/>
+                    <Image Source="ssn.png" Style="{StaticResource Icon}"/>
                     <Grid>
                         <Frame Style="{StaticResource InputFrame}" x:Name="SSNFrame"/>
                         <controls:CustomInputBox
-                            TextColor="Black"
-                            HeightRequest="45"
-                            WidthRequest="300"
+                            Style="{StaticResource CustomInputStyle}"
                             x:Name="SSNInput" 
-                            VerticalOptions="FillAndExpand"
                             Placeholder="Social Security Number"
-                            PlaceholderColor="DarkGray"
-                            Text="{Binding User.SSN, Mode=TwoWay}"
-                            Margin="10, 0, 0, 0">
+                            Text="{Binding User.SSN, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <xct:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}">
                                     <xct:CharactersValidationBehavior 

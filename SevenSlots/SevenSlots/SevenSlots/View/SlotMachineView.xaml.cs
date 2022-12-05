@@ -1,5 +1,4 @@
-﻿using Android.Content.PM;
-using SevenSlots.Model;
+﻿using SevenSlots.Model;
 using SevenSlots.ViewModel;
 using System;
 using System.Collections.Generic;

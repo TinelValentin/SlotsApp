@@ -60,7 +60,14 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </Frame.Resources>
+                <Style TargetType="controls:CustomInputBox">
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="HeightRequest" Value="55"/>
+                        <Setter Property="WidthRequest" Value="300"/>
+                        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                        <Setter Property="PlaceholderColor" Value="DarkGray"/>
+                </Style>
+                </Frame.Resources>
             <Grid HeightRequest="380" WidthRequest="340">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150"/>
@@ -77,13 +84,8 @@
                        xct:ShadowEffect.Radius="10"
                        x:Name="UsernameFrame">
                     <controls:CustomInputBox
-                        TextColor="Black"
-                        HeightRequest="55"
-                        WidthRequest="300"
                         x:Name="UsernameInput" 
-                        VerticalOptions="FillAndExpand"
                         Placeholder="Username"
-                        PlaceholderColor="DarkGray"
                         Text="{Binding User.Username, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
@@ -91,12 +93,9 @@
                        x:Name="PasswordFrame" xct:ShadowEffect.Color="White"
                        xct:ShadowEffect.Radius="10">
                     <controls:CustomInputBox
-                        TextColor="Black"
-                        HeightRequest="55"
-                        WidthRequest="300"
-                        x:Name="PasswordInput" VerticalOptions="FillAndExpand"
+                        IsPassword="True"
+                        x:Name="PasswordInput" 
                         Placeholder="Password"
-                        PlaceholderColor="DarkGray"
                         Text="{Binding User.Password, Mode=TwoWay}">
                     </controls:CustomInputBox>
                 </Frame>
