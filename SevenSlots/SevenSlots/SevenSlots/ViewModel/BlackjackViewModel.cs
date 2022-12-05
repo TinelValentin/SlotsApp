@@ -142,6 +142,7 @@ namespace SevenSlots.ViewModel
             DealCommand = new Command(Deal);
             NextRoundCommand = new Command(NextRound);
         }
+
         private void InitializeGame()
         {
             _dealer = new Dealer("Mark");
@@ -179,6 +180,7 @@ namespace SevenSlots.ViewModel
                 App.Current.MainPage.DisplayAlert("Alert!", "You Must First Place A Bet!", "OK");
             }
         }
+
         private void Stand()
         {
             if (_player.TotalBet >= 1)
@@ -193,6 +195,7 @@ namespace SevenSlots.ViewModel
                 App.Current.MainPage.DisplayAlert("Alert!", "You Cannot Stand Without Betting First! Place A Bet!", "OK");
             }
         }
+
         private void Deal()
         {
             if (_player.TotalBet < 1)
@@ -269,6 +272,7 @@ namespace SevenSlots.ViewModel
                 PlayerBlackJack();
             }
         }
+
         private void NextRound()
         {
             _currentGameState = GameState.PlayerBet;
@@ -318,6 +322,7 @@ namespace SevenSlots.ViewModel
 
             return (playerCards, dealerCards);
         }
+
         private string DealCard()
         {
             ReshuffleCards();
@@ -330,6 +335,7 @@ namespace SevenSlots.ViewModel
 
             return dealtCard;
         }
+
         private void DealerDeal()
         {
             _currentGameState = GameState.DealerDraw;
@@ -355,6 +361,7 @@ namespace SevenSlots.ViewModel
             OnPropertyChanged(nameof(Player));
             CheckGameWinCondition();
         }
+
         private void ReshuffleCards()
         {
             if (_cards.Count <= 4)
@@ -367,6 +374,7 @@ namespace SevenSlots.ViewModel
                 _selectedCards.Clear();
             }
         }
+
         private void BetIncrease(object param)
         {
             if(Player.BankRoll <= 0)
@@ -379,6 +387,7 @@ namespace SevenSlots.ViewModel
                 Player.BankRoll -= _betModifier;
             }
         }
+
         private void BetDecrease(object param)
         {
             if(Player.TotalBet <= 0)
@@ -479,6 +488,7 @@ namespace SevenSlots.ViewModel
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DealerBust()
         {
             _currentGameState = GameState.RoundOver;
@@ -489,6 +499,7 @@ namespace SevenSlots.ViewModel
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void PlayerBlackJack()
         {
             if (_player.CardTotal == 21)
@@ -507,6 +518,7 @@ namespace SevenSlots.ViewModel
                 OnPropertyChanged(nameof(Player));
             }
         }
+
         private void DealerBlackJack()
         {
             _currentGameState = GameState.RoundOver;
@@ -515,6 +527,7 @@ namespace SevenSlots.ViewModel
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void PlayerWin()
         {
             _currentGameState = GameState.RoundOver;
@@ -525,6 +538,7 @@ namespace SevenSlots.ViewModel
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DealerWin()
         {
             _currentGameState = GameState.RoundOver;
@@ -533,6 +547,7 @@ namespace SevenSlots.ViewModel
             _player.TotalBet = 0;
             SaveData();
         }
+
         private void DrawGame()
         {
             _currentGameState = GameState.RoundOver;
@@ -562,6 +577,7 @@ namespace SevenSlots.ViewModel
                 return true;
             }
         }
+
         public bool Visible()
         {
             if (_currentGameState == GameState.RoundOver || _currentGameState == GameState.PlayerBlackJack || _currentGameState == GameState.PlayerBust)
@@ -573,21 +589,22 @@ namespace SevenSlots.ViewModel
                 return false;
             }
         }
+
         private void ResetBoard()
         {
             _player.Card.Clear();
             InitializeGame();
         }
+
         public void GameOver()
         {
             App.Current.MainPage.DisplayAlert("Alert!", "Game Over!", "OK");
         }
+
         public void SaveData()
         {
             User.Wallet = _player.BankRoll;
             _userService.patchWallet(User.Id, User.Wallet);
-
-            //TestUser; testpass -> credentials for testing; don't delete yet!
         }
 
         #endregion
