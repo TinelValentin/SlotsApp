@@ -38,7 +38,7 @@ namespace SevenSlots.View
             var bc = BindingContext as SlotMachineViewModel;
             if (bc.User.Username != null)
             {
-                await (BindingContext as SlotMachineViewModel).UpdateWallet();
+                await bc.UpdateWallet();
             }
 
             //Save the wallet locally as well

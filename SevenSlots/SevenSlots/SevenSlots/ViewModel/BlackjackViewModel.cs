@@ -7,9 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using SevenSlots.Helpers;
+using Session = SevenSlots.Helpers.Session;
 
 namespace SevenSlots.ViewModel
 {
@@ -618,7 +620,10 @@ namespace SevenSlots.ViewModel
             _userService.patchWallet(User.Id, User.Wallet);
         }
 
-
+        public async Task UpdateWallet()
+        {
+            await _userService.patchWallet(User.Id, User.Wallet);
+        }
         #endregion
 
         #endregion
