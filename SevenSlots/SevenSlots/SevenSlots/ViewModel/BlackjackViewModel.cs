@@ -101,13 +101,13 @@ namespace SevenSlots.ViewModel
         public bool CanIncreaseBet
         {
             get { return _canIncreaseBet; }
-            set { _canIncreaseBet = value; }
+            set { _canIncreaseBet = value; OnPropertyChanged(); }
         }
 
         public bool CanDecreaseBet
         {
             get { return _canDecreaseBet; }
-            set { _canDecreaseBet = value; }
+            set { _canDecreaseBet = value; OnPropertyChanged(); }
         }
         public bool IsDealVisible
         {
@@ -204,6 +204,7 @@ namespace SevenSlots.ViewModel
                 return;
             }
 
+            Player.BankRoll -= Player.TotalBet;
             CanIncreaseBet = CanDecreaseBet = false;
             CanClick = Clickable();
 
@@ -284,8 +285,8 @@ namespace SevenSlots.ViewModel
             }
             else
             {
+                CanIncreaseBet = CanDecreaseBet = true;
                 ResetBoard();
-                _player.TotalBet = 0;
                 OnPropertyChanged(nameof(Player));
                 OnPropertyChanged(nameof(Dealer));
             }
@@ -384,7 +385,6 @@ namespace SevenSlots.ViewModel
             else
             {
                 Player.TotalBet += _betModifier;
-                Player.BankRoll -= _betModifier;
             }
         }
 
@@ -397,7 +397,6 @@ namespace SevenSlots.ViewModel
             else
             {
                 Player.TotalBet -= _betModifier;
-                Player.BankRoll += _betModifier;
             }
         }
 
@@ -487,7 +486,6 @@ namespace SevenSlots.ViewModel
 
             CanClick = Clickable();
             IsNextRoundVisible = Visible();
-            _player.TotalBet = 0;
             SaveData();
         }
 
@@ -498,7 +496,6 @@ namespace SevenSlots.ViewModel
 
             _player.TotalWinnings += _player.TotalBet * 2;
             _player.BankRoll += _player.TotalBet * 2;
-            _player.TotalBet = 0;
             SaveData();
         }
 
@@ -511,7 +508,6 @@ namespace SevenSlots.ViewModel
 
                 _player.TotalWinnings += _player.TotalBet * 2;
                 _player.BankRoll += _player.TotalBet * 2;
-                _player.TotalBet = 0;
 
                 IsNextRoundVisible = Visible();
                 CanClick = Clickable();
@@ -526,7 +522,6 @@ namespace SevenSlots.ViewModel
             _currentGameState = GameState.RoundOver;
             App.Current.MainPage.DisplayAlert("Alert!", "Dealer Blackjack!", "OK");
 
-            _player.TotalBet = 0;
             SaveData();
         }
 
@@ -537,7 +532,6 @@ namespace SevenSlots.ViewModel
 
             _player.TotalWinnings += _player.TotalBet * 2;
             _player.BankRoll += _player.TotalBet * 2;
-            _player.TotalBet = 0;
             SaveData();
         }
 
@@ -546,7 +540,6 @@ namespace SevenSlots.ViewModel
             _currentGameState = GameState.RoundOver;
             App.Current.MainPage.DisplayAlert("Alert!", "Dealer Won!", "OK");
 
-            _player.TotalBet = 0;
             SaveData();
         }
 
@@ -556,7 +549,6 @@ namespace SevenSlots.ViewModel
             App.Current.MainPage.DisplayAlert("Alert!", "It's A Draw!", "OK");
 
             _player.BankRoll += _player.TotalBet;
-            _player.TotalBet = 0;
             SaveData();
         }
 

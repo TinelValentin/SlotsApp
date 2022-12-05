@@ -78,7 +78,7 @@
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
             <Label Text="Bet Modifier:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.TotalBet}" 
                    Style="{StaticResource BlackjackLabel}"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
@@ -94,14 +94,14 @@
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
             <Label Text="Bankroll:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.BankRoll}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
             <Label Text="Total Win:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+            <Label Text="{Binding Player.TotalWinnings}" 
                    Style="{StaticResource BlackjackLabel}"/>
         </StackLayout>
     </StackLayout>
