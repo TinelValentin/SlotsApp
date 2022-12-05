@@ -115,16 +115,6 @@
                  TextColor="White"
                  CommandParameter="{Binding User}"
                  Command="{Binding LoginCommand}"/>
-        <Button WidthRequest="200"
-                HeightRequest="50"
-                Margin="0, 0, 0, 0"
-                HorizontalOptions="Center"
-                CornerRadius="30"
-                Text="Forgot Password"
-                FontSize="15"
-                FontAttributes="Bold"
-                Background="Transparent"
-                TextColor="White"/>
         </StackLayout>
    </StackLayout>
 </ContentPage>
