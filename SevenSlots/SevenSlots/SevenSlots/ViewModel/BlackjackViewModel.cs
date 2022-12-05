@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SevenSlots.ViewModel
 {
@@ -44,6 +45,7 @@ namespace SevenSlots.ViewModel
             {
                 User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
                 _userService = DependencyService.Get<IUserService>();
+
             }
             _currentPlayer = new Player("John", User.Wallet);
             _player = _currentPlayer;
@@ -285,6 +287,10 @@ namespace SevenSlots.ViewModel
             }
             else
             {
+                //Save the wallet locally as well
+                string userString = JsonSerializer.Serialize(User);
+                Session.GeneralSettings = userString;
+
                 CanIncreaseBet = CanDecreaseBet = true;
                 ResetBoard();
                 OnPropertyChanged(nameof(Player));
@@ -598,8 +604,14 @@ namespace SevenSlots.ViewModel
         public void SaveData()
         {
             User.Wallet = _player.BankRoll;
+
+            // Save the wallet locally as well
+            string userString = JsonSerializer.Serialize(User);
+            Session.GeneralSettings = userString;
+            
             _userService.patchWallet(User.Id, User.Wallet);
         }
+
 
         #endregion
 
