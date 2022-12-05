@@ -55,6 +55,7 @@
                        Text="{Binding User.Email}"/>
                 </StackLayout>
                 <Image IsVisible="{Binding LogoutIsVisible, Mode=OneWay}"
+                       HorizontalOptions="End"
                        Source="Logout.png" 
                        Margin="20, 20, 20 ,20">
                     <Image.GestureRecognizers>

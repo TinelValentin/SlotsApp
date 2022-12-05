@@ -1,6 +1,8 @@
-﻿using SevenSlots.Helpers;
+﻿using Rg.Plugins.Popup.Services;
+using SevenSlots.Helpers;
 using SevenSlots.Model;
 using SevenSlots.Services;
+using SevenSlots.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -114,7 +116,8 @@ namespace SevenSlots.ViewModel
             }
             else
             {
-                isLoggedIn= false;
+                PopupNavigation.Instance.PushAsync(new GameUnloggedErrorPopup());
+                isLoggedIn = false;
             }
         }
     }
