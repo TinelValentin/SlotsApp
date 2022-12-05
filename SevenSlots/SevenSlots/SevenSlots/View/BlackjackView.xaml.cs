@@ -27,7 +27,7 @@ namespace SevenSlots.View
             var bc = BindingContext as BlackjackViewModel;
             if (bc.User.Username != null)
             {
-                await (BindingContext as BlackjackViewModel).UpdateWallet();
+                await bc.UpdateWallet();
             }
 
             //Save the wallet locally as well
