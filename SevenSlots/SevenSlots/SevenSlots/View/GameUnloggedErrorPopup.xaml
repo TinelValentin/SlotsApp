@@ -13,11 +13,11 @@
                      xct:CornerRadiusEffect.CornerRadius = "30">
             <Image Source="warning.png" WidthRequest="60" HorizontalOptions="Center"/>
             <Label Text="You must be logged in to play this game!"
-                   HorizontalOptions="Center"
+                   HorizontalOptions="Center" TextColor="Black"
                    FontSize="16"
                    FontAttributes="Bold"
                    Margin="20"/>
-            <Label Text="Please log in!"
+            <Label Text="Please log in!" TextColor="Black"
                    FontSize="15"
                    HorizontalOptions="Center"/>
         </StackLayout>
