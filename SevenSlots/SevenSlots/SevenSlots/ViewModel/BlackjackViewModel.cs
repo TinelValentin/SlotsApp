@@ -428,6 +428,7 @@ namespace SevenSlots.ViewModel
                 PlayerBlackJack();
             }
         }
+
         private void CheckDealerWinCondition()
         {
             if (_dealer.CardTotal >= 21)
@@ -441,6 +442,7 @@ namespace SevenSlots.ViewModel
                 }
             }
         }
+
         private void CheckGameWinCondition()
         {
             if (_dealer.CardTotal > 21)
@@ -505,7 +507,7 @@ namespace SevenSlots.ViewModel
             if (_player.CardTotal == 21)
             {
                 _currentGameState = GameState.PlayerBlackJack;
-                App.Current.MainPage.DisplayAlert("Alert!", "Player Backjack!", "OK");
+                App.Current.MainPage.DisplayAlert("Alert!", "Player Blackjack!", "OK");
 
                 _player.TotalWinnings += _player.TotalBet * 2;
                 _player.BankRoll += _player.TotalBet * 2;
@@ -522,7 +524,7 @@ namespace SevenSlots.ViewModel
         private void DealerBlackJack()
         {
             _currentGameState = GameState.RoundOver;
-            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Backjack!", "OK");
+            App.Current.MainPage.DisplayAlert("Alert!", "Dealer Blackjack!", "OK");
 
             _player.TotalBet = 0;
             SaveData();
@@ -551,7 +553,7 @@ namespace SevenSlots.ViewModel
         private void DrawGame()
         {
             _currentGameState = GameState.RoundOver;
-            App.Current.MainPage.DisplayAlert("Alert!", "It's Draw!", "OK");
+            App.Current.MainPage.DisplayAlert("Alert!", "It's A Draw!", "OK");
 
             _player.BankRoll += _player.TotalBet;
             _player.TotalBet = 0;
