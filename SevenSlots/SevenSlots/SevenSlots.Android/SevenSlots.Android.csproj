@@ -347,7 +347,8 @@
     <AndroidResource Include="Resources\drawable\SpinningSlot.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Logout.png" />
+    <Content Include="Resources\drawable\crashGraph.png" />
+    <AndroidResource Include="Resources\drawable\graph.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />

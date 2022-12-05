@@ -38,6 +38,10 @@
                       IsTabStop="True" 
                       ContentTemplate="{DataTemplate views:SlotMachineView}"
                       Route="Slot Machine"/>
+        <ShellContent Title="Crash" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:CrashView}"
+                      Route="Crash"/>
         
     </FlyoutItem>
 </Shell>
