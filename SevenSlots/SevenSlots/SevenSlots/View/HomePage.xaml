@@ -9,7 +9,7 @@
         <StackLayout>
             <Image Source="home.jpg">
                 <Image.Clip>
-                    <EllipseGeometry Center="100, 120" RadiusX="220" RadiusY="140"/>
+                    <EllipseGeometry Center="130, 120" RadiusX="240" RadiusY="140"/>
                 </Image.Clip>
             </Image>
             <StackLayout BackgroundColor="#c53b23">
@@ -45,8 +45,13 @@
                    LineBreakMode="WordWrap"
                    WidthRequest="250" 
                    HorizontalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" Margin="0, 40, 0, 0">
-                <StackLayout.Resources>
+            <Grid Margin="0, 20, 0, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
                     <ResourceDictionary>
                         <Style x:Key="FrameStyle" TargetType="{x:Type Frame}">
                             <Setter Property="Background">
@@ -59,6 +64,7 @@
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="WidthRequest" Value="100"/>
                             <Setter Property="CornerRadius" Value="20"/>
                         </Style>
                         <Style x:Key="FrameLabel" TargetType="{x:Type Label}">
@@ -72,30 +78,38 @@
                             <Setter Property="Margin" Value="10, 0, 0, 0"/>
                         </Style>
                     </ResourceDictionary>
-                </StackLayout.Resources>
-                <Frame HeightRequest="50" Style="{StaticResource FrameStyle}">
+                </Grid.Resources>
+                <Frame Grid.Column="0" HeightRequest="50" Style="{StaticResource FrameStyle}">
                     <StackLayout>
                         <Label Text="Sign in" Style="{StaticResource FrameLabel}"/>
                         <Image Source="form.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
-                <Frame Style="{StaticResource FrameStyle}">
+                <Frame Grid.Column="1" Style="{StaticResource FrameStyle}">
                     <StackLayout>
-                        <Label Text="Deposit" Style="{StaticResource FrameLabel}"/>
+                        <Label Text="Play" Style="{StaticResource FrameLabel}"/>
                         <Image Source="creditCard.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
-                <Frame Style="{StaticResource FrameStyle}">
+                <Frame Grid.Column="2" Style="{StaticResource FrameStyle}">
                     <StackLayout>
-                        <Label Text="Free Spins" Style="{StaticResource FrameLabel}"/>
+                        <Label Text="Profit" Style="{StaticResource FrameLabel}"/>
                         <Image Source="gift.png" Style="{StaticResource FrameIcon}"/>
                     </StackLayout>
                 </Frame>
-            </StackLayout>
+            </Grid>
+            <Button Text="Log in!"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{StaticResource SignButton}"
+                    CommandParameter="{Binding SignInView}"
+                    Command="{Binding RedirectToLoginCommand}"
+                    IsVisible="{Binding IsRegisterVisible}">
+            </Button>
             <Button Text="Register now!"
                     WidthRequest="200"
                     HeightRequest="50"
-                    Margin="0, 40, 0, 0"
                     Style="{StaticResource SignButton}"
                     CommandParameter="{Binding SignUpView}"
                     Command="{Binding PushPageCommand}"

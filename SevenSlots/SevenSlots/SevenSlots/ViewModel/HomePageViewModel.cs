@@ -3,6 +3,7 @@ using SevenSlots.Helpers;
 using SevenSlots.View;
 using System.ComponentModel;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace SevenSlots.ViewModel
 {
@@ -10,6 +11,7 @@ namespace SevenSlots.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand PushPageCommand { get; }
+        public ICommand RedirectToLoginCommand { get; }
 
         public ICommand AccordionAnimationCommand { get; }
 
@@ -36,11 +38,18 @@ namespace SevenSlots.ViewModel
                 OnPropertyChanged(nameof(IsRegisterVisible));
             } 
         }
+
+        async void RedirectToLogin()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new SignInView());
+        }
+
         public HomePageViewModel()
         {
-            AccordionText = "TestValue";
+            AccordionText = "";
             AccordionAnimationCommand = new AccordionAnimationCommand();
             PushPageCommand = new PushPageCommand();
+            RedirectToLoginCommand = new Command(RedirectToLogin);
             if (Session.GeneralSettings.Length != 0)
             {
                 isRegisterVisible= false;
