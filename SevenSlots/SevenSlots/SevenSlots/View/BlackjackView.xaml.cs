@@ -23,7 +23,12 @@ namespace SevenSlots.View
         protected override async void OnDisappearing()
         {
             base.OnDisappearing();
-            await (BindingContext as BlackjackViewModel).UpdateWallet();
+
+            var bc = BindingContext as BlackjackViewModel;
+            if (bc.User.Username != null)
+            {
+                await (BindingContext as BlackjackViewModel).UpdateWallet();
+            }
 
             //Save the wallet locally as well
             string userString = JsonSerializer.Serialize((BindingContext as BlackjackViewModel).User);
