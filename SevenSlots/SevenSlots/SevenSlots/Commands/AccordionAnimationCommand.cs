@@ -18,7 +18,7 @@ namespace SevenSlots.Commands
         //Animation time (speed)
         const int animationTime = 1000;
         //Needs to be changed when the real implementation with the games is decided
-        string[] arr = new string[5] { "BlackJack", "Roulette", "Slots", "Bingo", "Loto" };
+        string[] arr = new string[3] { "BlackJack", "Crash", "Slots" };
 
         public event EventHandler CanExecuteChanged;
 

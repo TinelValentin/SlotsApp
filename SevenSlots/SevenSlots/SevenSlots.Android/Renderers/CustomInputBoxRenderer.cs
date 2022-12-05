@@ -24,7 +24,8 @@ namespace SevenSlots.Droid.Renderers
 
             //Configure native control (TextBox)
             if (Control != null)
-            {
+            { 
+                Control.SetTextColor(Android.Graphics.Color.Black);
                 Control.Background = null;
             }
 
