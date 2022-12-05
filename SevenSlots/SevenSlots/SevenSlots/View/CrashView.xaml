@@ -78,7 +78,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1">
-                <Button Text="Cash out" WidthRequest="100" HeightRequest="80" Clicked="CashOut"></Button>
+                <Button Text="Cash out" WidthRequest="100" HeightRequest="80" Clicked="CashOut" Style="{StaticResource BlackjackButton}"></Button>
                 <Button Text="Bet" WidthRequest="100" HeightRequest="80" Clicked="SetBet"></Button>
                 <Grid>
                     <Grid.ColumnDefinitions>
