@@ -63,8 +63,7 @@
                                 Style="{StaticResource CustomInputStyle}"
                                 x:Name="usernameInput"
                                 Placeholder="Username"
-                                Text="{Binding User.Username,Mode=TwoWay}"
-                                >
+                                Text="{Binding User.Username,Mode=TwoWay}">
                                 <Entry.Behaviors>
                                     <xct:MultiValidationBehavior 
                                          InvalidStyle="{StaticResource InvalidStyle}">
