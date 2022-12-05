@@ -74,7 +74,6 @@
                    Grid.Column="1" 
                    Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
-
             <Label Grid.Row="1" 
                    Grid.Column="0" 
                    Text="Bet Modifier:" 
@@ -83,30 +82,28 @@
                 <Button Text="-" 
                         Style="{StaticResource AddAndSubstractButton}" 
                         Command="{Binding BetDecreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
+                        IsEnabled="{Binding CanDecreaseBet}"/>
                 <Button Text="+" 
                         Style="{StaticResource AddAndSubstractButton}" 
                         Command="{Binding BetIncreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
+                        IsEnabled="{Binding CanIncreaseBet}"/>
             </StackLayout>
-
             <Label Grid.Row="0" 
                    Grid.Column="3" 
                    Text="Bankroll:" 
                    Style="{StaticResource BlackjackLabel}"/>
             <Label Grid.Row="0" 
                    Grid.Column="4"
-                   Text="{Binding OwnedMoney, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                   Text="{Binding Player.BankRoll, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
-
             <Label Grid.Row="1" 
                    Grid.Column="3" 
                    Text="Total Win:" 
                    Style="{StaticResource BlackjackLabel}"/>
             <Label Grid.Row="1" 
                    Grid.Column="4" 
-                   Text="{Binding TotalWin, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                   Text="{Binding Player.TotalWinnings, StringFormat='{0:c1}', FallbackValue=$0.00}" 
                    Style="{StaticResource BlackjackLabel}"/>
         </Grid>
     </StackLayout>
