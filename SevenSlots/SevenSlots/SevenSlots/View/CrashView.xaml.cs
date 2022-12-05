@@ -1,5 +1,4 @@
-﻿using Android.Locations;
-using SevenSlots.Model;
+﻿using SevenSlots.Model;
 using SevenSlots.Services;
 using SevenSlots.ViewModel;
 using System;
@@ -24,6 +23,7 @@ namespace SevenSlots.View
         #region private members
 
         bool crash = false;
+        bool isLogged = false;
         decimal multiplier = 0.99m;
         decimal multiplierExponent = 0.01m;
         private int _countdown = 10;
@@ -92,7 +92,7 @@ namespace SevenSlots.View
 
         public bool CanBet
         {
-            get { return _canBet; }
+            get { return _canBet && isLogged; }
             set { _canBet = value; OnPropertyChanged(); }
         }
 
@@ -123,15 +123,12 @@ namespace SevenSlots.View
         {
             if (Session.GeneralSettings != "")
             {
+                isLogged = true;
                 _user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
 
                 userService = DependencyService.Get<IUserService>();
 
                 OwnedMoney = (int)_user.Wallet;
-            }
-            else
-            {
-                Application.Current.MainPage.Navigation.PushModalAsync(new AppShell(), true);
             }
 
             CanBet = false;
@@ -139,9 +136,9 @@ namespace SevenSlots.View
             BetDecreaseCommand = new Command(BetDecrease);
             InitializeComponent();
             BindingContext = this;
-            OwnedMoney = (int)_user.Wallet;
+            OwnedMoney = _user?.Wallet != null ? (int)_user.Wallet : 0;
             LastWin = 0;
-            Player = new Player(_user.FirstName, OwnedMoney);
+            Player = new Player(_user?.FirstName, OwnedMoney);
             StartCrashAsync().GetAwaiter();
         }
 
@@ -160,10 +157,14 @@ namespace SevenSlots.View
 
         private async Task RestartCrashAsync()
         {
-            _user.Wallet = OwnedMoney;
-            string userString = JsonSerializer.Serialize(CurrentUser);
-            Session.GeneralSettings = userString;
-            await UpdateWallet();
+            if(isLogged)
+            {
+                _user.Wallet = OwnedMoney;
+                string userString = JsonSerializer.Serialize(CurrentUser);
+                Session.GeneralSettings = userString;
+                await UpdateWallet();
+            }
+          
             LastResults.Insert(0, decimal.Round(multiplier, 2));
             OnPropertyChanged(nameof(LastResults));
             Player.TotalBet = 0;

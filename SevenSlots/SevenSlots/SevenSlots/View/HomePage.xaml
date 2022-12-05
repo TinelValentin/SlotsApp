@@ -92,10 +92,18 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
+            <Button Text="Log in!"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{StaticResource SignButton}"
+                    CommandParameter="{Binding SignInView}"
+                    Command="{Binding RedirectToLoginCommand}"
+                    IsVisible="{Binding IsRegisterVisible}">
+            </Button>
             <Button Text="Register now!"
                     WidthRequest="200"
                     HeightRequest="50"
-                    Margin="0, 40, 0, 0"
                     Style="{StaticResource SignButton}"
                     CommandParameter="{Binding SignUpView}"
                     Command="{Binding PushPageCommand}"
