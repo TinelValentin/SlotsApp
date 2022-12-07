@@ -18,9 +18,11 @@ namespace SevenSlots.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SlotMachineView : ContentPage
     {
+        double initialY;
         public SlotMachineView()
         {
             InitializeComponent();
+            initialY = spinSlot1.TranslationY;
         }
 
         protected override void OnAppearing()
@@ -192,7 +194,6 @@ namespace SevenSlots.View
                                 slot3.Source.ToString());
 
             int counter = 0;
-            double initialY = spinSlot1.TranslationY;
 
             Device.StartTimer(new TimeSpan(100), () =>
             {

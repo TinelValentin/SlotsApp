@@ -10,7 +10,7 @@ namespace SevenSlots.Services
     {
         Task<List<User>> getAllUsers();
 
-        Task addUser(User newUser);
+        Task<string> addUser(User newUser);
 
         Task updateWallet(Guid id, double wallet);
     }
