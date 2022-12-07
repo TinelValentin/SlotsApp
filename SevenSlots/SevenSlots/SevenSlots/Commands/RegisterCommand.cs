@@ -26,12 +26,31 @@ namespace SevenSlots.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
-            userService.register(parameter as User);
-            string userString = JsonSerializer.Serialize(parameter as User);
-            Session.GeneralSettings = userString;
-            Application.Current.MainPage = new AppShell();
+            string message = await userService.register(parameter as User);
+
+            if (message == "Ok") {
+                string userString = JsonSerializer.Serialize(parameter as User);
+                Session.GeneralSettings = userString;
+                Application.Current.MainPage = new AppShell();
+            }
+            else if (message.Length > 30)
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Sign up failed!",
+                    "You can't leave empty fields!",
+                    "Ok"
+                );
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Sign up failed!",
+                    message,
+                    "Ok"
+                );
+            }
         }
     }
 }

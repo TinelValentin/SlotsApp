@@ -41,7 +41,7 @@ namespace SevenSlots.Services
             return null;
         }
 
-        public async Task addUser(User newUser)
+        public async Task<string> addUser(User newUser)
         {
             try
             {
@@ -53,12 +53,18 @@ namespace SevenSlots.Services
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("Adding the user failed: {0}", response.Content.ReadAsStringAsync());
+                    string error = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("Adding the user failed: {0}", error);
+                    return error;
                 }
+
+                return "Ok";
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine("Exception caught while adding the user! Message :{0} ", e.Message);
+
+                return "HttpRequestException: " + e.Message;
             }
         }
 

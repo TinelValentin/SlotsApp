@@ -31,10 +31,10 @@ namespace SevenSlots.Services
             return result;
         }
 
-        public async Task register(User user)
+        public async Task<string> register(User user)
         {
             user.Wallet = defaultWalletValue;
-            await userRepository.addUser(user);
+            return await userRepository.addUser(user);
         }
 
         public async Task patchWallet(Guid id, double wallet)
