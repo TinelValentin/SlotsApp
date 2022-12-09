@@ -34,6 +34,7 @@ namespace SevenSlots.View
         private bool canCashOut = false;
         private int _ownedMoney;
         private int _lastWin;
+        private int betShown=0;
         private ObservableCollection<decimal> lastResults = new ObservableCollection<decimal>()
         {
             1.26m, 1.25m
@@ -108,6 +109,7 @@ namespace SevenSlots.View
             get { return _lastWin; }
             set { _lastWin = value; OnPropertyChanged(); }
         }
+        public int BetShown { get { return betShown; } set { betShown = value;OnPropertyChanged(); } }
 
         public int Countdown { get { return _countdown; } set { _countdown = value; OnPropertyChanged(); } }
 
@@ -170,9 +172,8 @@ namespace SevenSlots.View
                 await UpdateWallet();
             }
           
-            LastResults.Insert(0, decimal.Round(multiplier, 2));
+            LastResults.Add(decimal.Round(multiplier, 2));
             OnPropertyChanged(nameof(LastResults));
-            Player.TotalBet = 0;
             canCashOut = false;
             CanBet = true;
             CrashFrame.Opacity = 0.2;
@@ -275,42 +276,42 @@ namespace SevenSlots.View
 
         private void BetIncrease(object param)
         {
-            Player.TotalBet += _betModifier;
-            OwnedMoney -= _betModifier;
+            BetShown += _betModifier;
             OnPropertyChanged(nameof(Player.TotalBet));
         }
 
         private void BetDecrease(object param)
         {
-            if (Player.TotalBet <= 0)
-            {
-                return;
-            }
-            Player.TotalBet -= _betModifier;
-            OwnedMoney += _betModifier;
+            BetShown -= _betModifier;
             OnPropertyChanged(nameof(Player.TotalBet));
         }
 
         private void SetBet(object sender, EventArgs e)
         {
-            if (!CanBet)
+            if (!CanBet || BetShown > Player.BankRoll)
             {
                 DisplayAlert("Alert", "You can't bet!", "OK").GetAwaiter();
                 return;
             }
+            Player.TotalBet = BetShown;
+            OwnedMoney -= BetShown;
+            Player.BankRoll -= BetShown;
+            UpdateWallet().GetAwaiter();
             CanBet = false;
         }
 
         private void CashOut(object sender, EventArgs e)
         {
-            if (!canCashOut)
+            if (!canCashOut || Player.TotalBet==0)
             {
                 return;
             }
 
             OwnedMoney += (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
             LastWin = (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
+            UpdateWallet().GetAwaiter();
             Player.TotalBet = 0;
+            canCashOut = false;
         }
 
         public async Task UpdateWallet()
