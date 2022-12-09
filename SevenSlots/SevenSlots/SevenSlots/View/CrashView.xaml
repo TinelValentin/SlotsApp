@@ -33,7 +33,7 @@
                         </LinearGradientBrush>
                     </CollectionView.Background>
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout   Orientation="Horizontal"/>
+                        <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
