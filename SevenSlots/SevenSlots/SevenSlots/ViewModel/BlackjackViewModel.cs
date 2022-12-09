@@ -214,6 +214,12 @@ namespace SevenSlots.ViewModel
                 return;
             }
 
+            if(Player.TotalBet > Player.BankRoll)
+            {
+                App.Current.MainPage.DisplayAlert("Alert!", "You Can't Bet More Than You Have!", "OK");
+                return;
+            }
+
             Player.BankRoll -= Player.TotalBet;
             CanIncreaseBet = CanDecreaseBet = false;
             CanClick = Clickable();

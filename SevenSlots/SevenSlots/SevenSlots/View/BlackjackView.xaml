@@ -92,7 +92,7 @@
                     IsEnabled="{Binding CanIncreaseBet}"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
-            <Label Text="Bankroll:" 
+            <Label Text="Wallet:" 
                    Style="{StaticResource BlackjackLabel}"/>
             <Label Text="{Binding Player.BankRoll}" 
                    Style="{StaticResource BlackjackLabel}" 
