@@ -33,8 +33,8 @@
                         </LinearGradientBrush>
                     </CollectionView.Background>
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout   Orientation="Horizontal"/>
-                    </CollectionView.ItemsLayout>   
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Margin="10">
@@ -78,59 +78,41 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1">
-                <Button Text="Cash out" WidthRequest="100" HeightRequest="80" Clicked="CashOut"
-                        FontAttributes="Bold" FontSize="20"></Button>
-                <Button Text="Bet" WidthRequest="100" HeightRequest="80" Clicked="SetBet"></Button>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" 
-                   Grid.Column="0" 
-                   Text="Total Bet:" 
+                <Button Text="Cash out" 
+                        Clicked="CashOut"
+                        Style="{StaticResource CrashButton}"/>
+                <Button Text="Bet" 
+                        Clicked="SetBet"
+                        Style="{StaticResource CrashButton}"/>
+                <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+                    <Label Text="Total Bet:" 
                    Style="{StaticResource BlackjackLabel}"/>
-                    <Label Grid.Row="0" 
-                   Grid.Column="1" 
-                   Text="{Binding Player.TotalBet, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                    <Label Text="{Binding Player.TotalBet}" 
                    Style="{StaticResource BlackjackLabel}"/>
-                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HeightRequest="40">
-                    <Button Text="-" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetDecreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
-                    <Button Text="+" 
-                        Style="{StaticResource AddAndSubstractButton}" 
-                        Command="{Binding BetIncreaseCommand}" 
-                        IsEnabled="{Binding CanBet}"/>
                 </StackLayout>
-
-                <Label Grid.Row="0" 
-                   Grid.Column="3" 
-                   Text="Bankroll:" 
+                <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+                    <Button Text="-" 
+                    Style="{StaticResource AddAndSubstractButton}" 
+                    Command="{Binding BetDecreaseCommand}" 
+                    IsEnabled="{Binding CanBet}"/>
+                    <Button Text="+" 
+                    Style="{StaticResource AddAndSubstractButton}" 
+                    Command="{Binding BetIncreaseCommand}" 
+                    IsEnabled="{Binding CanBet}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+                    <Label Text="Wallet:" 
                    Style="{StaticResource BlackjackLabel}"/>
-                <Label Grid.Row="0" 
-                   Grid.Column="4"
-                   Text="{Binding OwnedMoney, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                    <Label Text="{Binding OwnedMoney}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
-
-                <Label Grid.Row="1" 
-                   Grid.Column="3" 
-                   Text="Last Win:" 
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
+                    <Label Text="Total Win:" 
                    Style="{StaticResource BlackjackLabel}"/>
-                <Label Grid.Row="1" 
-                   Grid.Column="4" 
-                   Text="{Binding LastWin, StringFormat='{0:c1}', FallbackValue=$0.00}" 
+                    <Label Text="{Binding LastWin}" 
                    Style="{StaticResource BlackjackLabel}"/>
-                </Grid>
+                </StackLayout>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
