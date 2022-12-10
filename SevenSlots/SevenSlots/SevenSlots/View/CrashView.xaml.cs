@@ -56,6 +56,13 @@ namespace SevenSlots.View
         {
             base.OnAppearing();
             isOnCrash = true;
+            if (Session.GeneralSettings != "")
+            {
+                isLogged = true;
+                _user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+
+                OwnedMoney = (int)_user.Wallet;
+            }
         }
 
         protected override async void OnDisappearing()
@@ -331,6 +338,7 @@ namespace SevenSlots.View
 
             OwnedMoney += (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
             LastWin = (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
+            Player.BankRoll += LastWin;
             UpdateWallet().GetAwaiter();
             Player.TotalBet = 0;
             canCashOut = false;

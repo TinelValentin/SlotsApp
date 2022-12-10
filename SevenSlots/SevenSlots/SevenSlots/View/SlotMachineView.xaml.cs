@@ -29,7 +29,12 @@ namespace SevenSlots.View
         {
             base.OnAppearing();
             MessagingCenter.Send(this, "AllowLandscape");
-        }
+
+            if (Session.GeneralSettings != "")
+            {
+                (BindingContext as SlotMachineViewModel).User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+            }
+    }
 
         //during page close setting back to portrait
         protected override async void OnDisappearing()
@@ -38,14 +43,16 @@ namespace SevenSlots.View
             MessagingCenter.Send(this, "PreventLandscape");
 
             var bc = BindingContext as SlotMachineViewModel;
+
+            //Save the wallet locally as well
+            string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
+            Session.GeneralSettings = userString;
+
             if (bc.User.Username != null)
             {
                 await bc.UpdateWallet();
             }
 
-            //Save the wallet locally as well
-            string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
-            Session.GeneralSettings = userString;
         }
         private string numberToImageSource(int nr)
         {

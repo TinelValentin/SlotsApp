@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SevenSlots.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SevenSlots.Model;
 
 namespace SevenSlots.View
 {
@@ -20,19 +21,28 @@ namespace SevenSlots.View
             BindingContext = new BlackjackViewModel();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Session.GeneralSettings != "")
+            {
+                (BindingContext as BlackjackViewModel).User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+            }
+        }
+
         protected override async void OnDisappearing()
         {
             base.OnDisappearing();
+
+            //Save the wallet locally as well
+            string userString = JsonSerializer.Serialize((BindingContext as BlackjackViewModel).User);
+            Session.GeneralSettings = userString;
 
             var bc = BindingContext as BlackjackViewModel;
             if (bc.User.Username != null)
             {
                 await bc.UpdateWallet();
             }
-
-            //Save the wallet locally as well
-            string userString = JsonSerializer.Serialize((BindingContext as BlackjackViewModel).User);
-            Session.GeneralSettings = userString;
         }
     }
 }
