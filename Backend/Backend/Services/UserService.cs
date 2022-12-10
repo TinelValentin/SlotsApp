@@ -102,5 +102,17 @@ namespace Backend.Services
 
             return true;
         }
+
+        public async Task<bool> DeleteAll()
+        {
+            var result = await _users.DeleteManyAsync(u => true);
+
+            if (!result.IsAcknowledged)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
