@@ -48,13 +48,6 @@ namespace SevenSlots.Services
             {
                 client = new HttpClient(httpClientHandler, true);
 
-                using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-                {
-                    UTF8Encoding utf8 = new UTF8Encoding();
-                    byte[] data = md5.ComputeHash(utf8.GetBytes(newUser.Password));
-                    newUser.Password = Convert.ToBase64String(data);
-                }
-
                 string json = JsonSerializer.Serialize<User>(newUser);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(baseUrl + "/User", content);

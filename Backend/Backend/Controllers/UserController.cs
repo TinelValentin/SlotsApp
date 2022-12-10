@@ -72,6 +72,19 @@ namespace Backend.Controllers
             return BadRequest("No user found with that id");
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAll()
+        {
+            var result = await _userService.DeleteAll();
+
+            if (result)
+            {
+                return Ok();
+            }
+
+            return BadRequest("No user found with that id");
+        }
+
         [HttpPatch]
         public async Task<IActionResult> PatchWallet([FromQuery] Guid id, [FromQuery] double wallet)
         {

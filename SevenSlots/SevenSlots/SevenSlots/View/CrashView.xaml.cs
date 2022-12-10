@@ -29,7 +29,7 @@ namespace SevenSlots.View
         decimal multiplierExponent = 0.01m;
         private int _countdown = 10;
         private Player _player;
-        private User _user;
+        private User _user = new User();
         private bool _canBet;
         private bool canCashOut = false;
         private int _ownedMoney;
@@ -49,7 +49,36 @@ namespace SevenSlots.View
         };
         const int _betModifier = 10;
         private IUserService userService;
+        private bool isOnCrash = false;
         #endregion
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            isOnCrash = true;
+            if (Session.GeneralSettings != "")
+            {
+                isLogged = true;
+                _user = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+
+                OwnedMoney = (int)_user.Wallet;
+            }
+        }
+
+        protected override async void OnDisappearing()
+        {
+            base.OnDisappearing();
+            isOnCrash = false;
+
+            if (_user.Username != null)
+            {
+                await UpdateWallet();
+            }
+
+            //Save the wallet locally as well
+            string userString = JsonSerializer.Serialize(_user);
+            Session.GeneralSettings = userString;
+        }
 
         #region properties
 
@@ -164,7 +193,7 @@ namespace SevenSlots.View
 
         private async Task RestartCrashAsync()
         {
-            if(isLogged)
+            if(isLogged && isOnCrash)
             {
                 _user.Wallet = OwnedMoney;
                 string userString = JsonSerializer.Serialize(CurrentUser);
@@ -309,6 +338,7 @@ namespace SevenSlots.View
 
             OwnedMoney += (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
             LastWin = (int)(Convert.ToDecimal(Player.TotalBet) * multiplier);
+            Player.BankRoll += LastWin;
             UpdateWallet().GetAwaiter();
             Player.TotalBet = 0;
             canCashOut = false;
