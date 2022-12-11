@@ -72,12 +72,12 @@ namespace SevenSlots.View
 
             if (_user.Username != null)
             {
+                //Save the wallet locally as well
+                string userString = JsonSerializer.Serialize(_user);
+                Session.GeneralSettings = userString;
+
                 await UpdateWallet();
             }
-
-            //Save the wallet locally as well
-            string userString = JsonSerializer.Serialize(_user);
-            Session.GeneralSettings = userString;
         }
 
         #region properties

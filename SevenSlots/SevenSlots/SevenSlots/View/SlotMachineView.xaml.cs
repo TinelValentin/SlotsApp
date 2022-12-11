@@ -44,15 +44,14 @@ namespace SevenSlots.View
 
             var bc = BindingContext as SlotMachineViewModel;
 
-            //Save the wallet locally as well
-            string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
-            Session.GeneralSettings = userString;
-
             if (bc.User.Username != null)
             {
+                //Save the wallet locally as well
+                string userString = JsonSerializer.Serialize((BindingContext as SlotMachineViewModel).User);
+                Session.GeneralSettings = userString;
+
                 await bc.UpdateWallet();
             }
-
         }
         private string numberToImageSource(int nr)
         {
