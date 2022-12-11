@@ -34,13 +34,13 @@ namespace SevenSlots.View
         {
             base.OnDisappearing();
 
-            //Save the wallet locally as well
-            string userString = JsonSerializer.Serialize((BindingContext as BlackjackViewModel).User);
-            Session.GeneralSettings = userString;
-
             var bc = BindingContext as BlackjackViewModel;
             if (bc.User.Username != null)
             {
+                //Save the wallet locally as well
+                string userString = JsonSerializer.Serialize((BindingContext as BlackjackViewModel).User);
+                Session.GeneralSettings = userString;
+
                 await bc.UpdateWallet();
             }
         }
