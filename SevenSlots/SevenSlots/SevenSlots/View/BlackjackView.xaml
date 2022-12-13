@@ -42,7 +42,8 @@
             <Label Grid.Row="1" 
                    Grid.Column="0" 
                    Text="{Binding Player.CardTotal}" 
-                   Style="{StaticResource BlackjackLabel}" 
+                   Style="{StaticResource BlackjackLabel}"
+                   IsVisible="{Binding IsPlayerTotalVisible}"
                    FontSize="40"
                    Margin="5, 0, 0, 0"/>
         </Grid>
