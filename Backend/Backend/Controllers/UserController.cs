@@ -82,7 +82,7 @@ namespace Backend.Controllers
                 return Ok();
             }
 
-            return BadRequest("No user found with that id");
+            return BadRequest();
         }
 
         [HttpPatch]
