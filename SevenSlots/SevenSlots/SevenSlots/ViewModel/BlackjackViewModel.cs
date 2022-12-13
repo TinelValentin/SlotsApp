@@ -87,6 +87,7 @@ namespace SevenSlots.ViewModel
         private const int _aceAdjustment = 10;
         private const int _betModifier = 10;
         private IUserService _userService;
+        private bool _isPlayerTotalVisible;
 
         #endregion
 
@@ -129,6 +130,11 @@ namespace SevenSlots.ViewModel
             get { return _isNextRoundVisible; }
             set { _isNextRoundVisible = value; OnPropertyChanged(); }
         }
+        public bool IsPlayerTotalVisible
+        {
+            get { return _isPlayerTotalVisible; }
+            set { _isPlayerTotalVisible = value; OnPropertyChanged(); }
+        }
 
         public ICommand BetIncreaseCommand { get; set; }
         public ICommand BetDecreaseCommand { get; set; }
@@ -161,6 +167,7 @@ namespace SevenSlots.ViewModel
             CanIncreaseBet = CanDecreaseBet = true;
             IsDealVisible = true;
             IsNextRoundVisible = false;
+            IsPlayerTotalVisible = false;
         }
 
         #endregion
@@ -220,6 +227,7 @@ namespace SevenSlots.ViewModel
                 return;
             }
 
+            IsPlayerTotalVisible = true;
             Player.BankRoll -= Player.TotalBet;
             CanIncreaseBet = CanDecreaseBet = false;
             CanClick = Clickable();
@@ -405,6 +413,7 @@ namespace SevenSlots.ViewModel
             else
             {
                 Player.TotalBet += _betModifier;
+                CanDecreaseBet = true;
             }
         }
 
