@@ -30,6 +30,15 @@ namespace SevenSlots.Commands
         public async void Execute(object parameter)
         {
             User newUser = parameter as User;
+            if(string.IsNullOrWhiteSpace(newUser.Password))
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Sign up failed!",
+                    "You can't leave empty fields!",
+                    "Ok"
+                );
+                return;
+            }
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
                 UTF8Encoding utf8 = new UTF8Encoding();
