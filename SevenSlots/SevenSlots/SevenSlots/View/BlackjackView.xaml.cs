@@ -24,9 +24,12 @@ namespace SevenSlots.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var bc = BindingContext as BlackjackViewModel;
             if (Session.GeneralSettings != "")
             {
-                (BindingContext as BlackjackViewModel).User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                User sessionUser = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                bc.User = sessionUser;
+                bc.Player.BankRoll = sessionUser.Wallet;
             }
         }
 

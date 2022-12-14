@@ -30,9 +30,12 @@ namespace SevenSlots.View
             base.OnAppearing();
             MessagingCenter.Send(this, "AllowLandscape");
 
+            var bc = BindingContext as SlotMachineViewModel;
+
             if (Session.GeneralSettings != "")
             {
-                (BindingContext as SlotMachineViewModel).User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                bc.User = JsonSerializer.Deserialize<User>(Session.GeneralSettings);
+                bc.Wallet = bc.User.Wallet;
             }
     }
 

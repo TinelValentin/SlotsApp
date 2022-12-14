@@ -88,49 +88,65 @@ namespace SevenSlots.View
         public ObservableCollection<decimal> LastResults
         {
             get { return lastResults; }
-            set { lastResults = value; OnPropertyChanged(); }
+            set { lastResults = value; 
+                  OnPropertyChanged(nameof(LastResults)); 
+            }
         }
 
         public List<int> MultiplierLabelValues
         {
             get { return multiplierLabelValues; }
-            set { multiplierLabelValues = value; OnPropertyChanged(); }
+            set { multiplierLabelValues = value; 
+                  OnPropertyChanged(nameof(MultiplierLabelValues)); 
+            }
         }
 
         public List<int> SecondsPassedValues
         {
             get { return secondsPassedValues; }
-            set { secondsPassedValues = value; OnPropertyChanged(); }
+            set { secondsPassedValues = value; 
+                  OnPropertyChanged(nameof(SecondsPassedValues)); 
+            }
         }
 
         public decimal MultiplierValue
         {
             get { return decimal.Round(multiplier, 2); }
-            set { multiplier = value; OnPropertyChanged(nameof(MultiplierValue)); }
+            set { multiplier = value; 
+                  OnPropertyChanged(nameof(MultiplierValue)); 
+            }
         }
 
         public Player Player
         {
             get { return _player; }
-            set { _player = value; OnPropertyChanged(nameof(Player)); }
+            set { _player = value; 
+                  OnPropertyChanged(nameof(Player)); 
+            }
         }
 
         public User CurrentUser
         {
             get { return _user; }
-            set { _user = value; OnPropertyChanged(nameof(User)); }
+            set { _user = value; 
+                OnPropertyChanged(nameof(CurrentUser)); 
+            }
         }
 
         public bool CanBet
         {
             get { return _canBet && isLogged; }
-            set { _canBet = value; OnPropertyChanged(); }
+            set { _canBet = value; 
+                OnPropertyChanged(nameof(CanBet)); 
+            }
         }
 
         public int OwnedMoney
         {
             get { return _ownedMoney; }
-            set { _ownedMoney = value; OnPropertyChanged(); }
+            set { _ownedMoney = value; 
+                OnPropertyChanged(nameof(OwnedMoney)); 
+            }
         }
 
         public int LastWin
@@ -138,9 +154,19 @@ namespace SevenSlots.View
             get { return _lastWin; }
             set { _lastWin = value; OnPropertyChanged(); }
         }
-        public int BetShown { get { return betShown; } set { betShown = value;OnPropertyChanged(); } }
+        public int BetShown { 
+            get { return betShown; }
+            set { betShown = value; 
+                  OnPropertyChanged(nameof(BetShown)); 
+            } 
+        }
 
-        public int Countdown { get { return _countdown; } set { _countdown = value; OnPropertyChanged(); } }
+        public int Countdown { 
+            get { return _countdown; } 
+            set { _countdown = value; 
+                  OnPropertyChanged(nameof(Countdown)); 
+            } 
+        }
 
         #endregion
 

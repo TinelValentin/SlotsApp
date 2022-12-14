@@ -95,7 +95,7 @@
         <StackLayout Orientation="Horizontal" Margin="5, 0, 0, 0">
             <Label Text="Wallet:" 
                    Style="{StaticResource BlackjackLabel}"/>
-            <Label Text="{Binding Player.BankRoll}" 
+            <Label Text="{Binding Player.BankRoll, Mode=OneWay}" 
                    Style="{StaticResource BlackjackLabel}" 
                    Margin="0, 0, 0, 0"/>
         </StackLayout>

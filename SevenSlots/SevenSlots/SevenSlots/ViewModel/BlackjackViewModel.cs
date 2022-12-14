@@ -102,7 +102,9 @@ namespace SevenSlots.ViewModel
         public Player Player
         {
             get { return _player; }
-            set { _player = value; OnPropertyChanged(); }
+            set { _player = value; 
+                  OnPropertyChanged(nameof(Player)); 
+            }
         }
         public bool CanClick
         {
